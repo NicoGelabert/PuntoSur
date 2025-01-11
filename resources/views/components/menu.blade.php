@@ -3,16 +3,16 @@
     'gap' => '4',      // Valor por defecto: espacio entre elementos
 ])
 
-<nav {{ $attributes->merge(['class' => "flex flex-$layout gap-$gap container mx-4 justify-between items-center"]) }}>
+<nav {{ $attributes->merge(['class' => "flex flex-$layout gap-$gap container justify-between items-center"]) }}>
     <div class="logo flex justify-center">
         <x-application-logo/>
     </div>
-    <ul class="grid lg:grid-flow-col items-center justify-end gap-4">
-        <li x-data="{open: false}" class="relative">
+    <ul class="grid lg:grid-flow-col items-center justify-end gap-4 text-center">
+        <li x-data="{open: false}" >
             <a
                 @click="open = !open"
                 :class="{'w-full': open}"
-                class="cursor-pointer flex items-center"
+                class="cursor-pointer flex justify-center items-center"
             >
             Treatments
                 <svg
@@ -49,11 +49,9 @@
                 News
             </a>
         </li>
-        <div>
+        <li class="flex gap-4">
             <x-button href="#" class="btn btn-secondary">log in <x-icons.login /></x-button>
-        </div>
-        <div>
             <x-button href="#" class="btn btn-primary">book <x-icons.booking /></x-button>
-        </div>
+        </li>
     </ul>
 </nav>

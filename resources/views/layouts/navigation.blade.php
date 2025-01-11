@@ -9,10 +9,10 @@
 >
     <!-- Responsive Menu -->
     <div
-        class="block fixed z-10 top-0 bottom-0 height h-full w-full transition-all mobile-menu lg:hidden p-4"
+        class="block fixed z-10 top-0 bottom-0 h-full w-full transition-all mobile-menu lg:hidden p-4"
         :class="mobileMenuOpen ? 'left-0' : 'left-full'"
     >
-        <x-menu layout="col" />
+        <x-menu layout="col" gap="8" class="mobile-menu-inner" />
     </div>
     <div class="logo flex items-center lg:hidden">
         <x-application-logo/>
@@ -34,7 +34,7 @@
         :class="mobileMenuOpen ? 'hidden' : ''"
         class="hidden lg:flex w-full"
     >
-        <x-menu />
+        <x-menu class="desktop-menu-inner" />
     </div>
     <!--/ Main Menu -->
     

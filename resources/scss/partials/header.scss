@@ -15,12 +15,18 @@
 // }
 
 header{
-    @apply py-2;
+    @apply py-2 h-auto fixed top-0 w-full block shadow-none bg-transparent text-black dark:text-white;
+    transition: top 0.3s, background-color 0.3s ease;
+    .desktop-menu-inner{
+        .logo svg{
+            @apply h-12 w-auto;
+        }
+    }
     nav ul li a{
         @apply transition-all font-serif text-base
         hover:text-terciary;        
     }
 }
 .scrolled-bottom{
-    @apply shadow-md bg-white text-black dark:bg-black dark:text-white;
+    @apply shadow-md bg-yellow_light text-black dark:bg-black dark:text-white;
 }

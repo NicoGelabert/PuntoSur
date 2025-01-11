@@ -2,7 +2,7 @@
 
 .btn{
     @apply flex gap-2 items-center justify-center font-medium uppercase text-gray_50 leading-none transition-all
-    rounded-md sm:rounded-lg
+    rounded-md sm:rounded-lg font-sans_serif
     text-xs sm:text-sm md:text-base
     px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3;
     svg{

@@ -39,6 +39,9 @@ export default {
                 gray_900            : '#030712',
                 gray_950            : '#030712',
             },
+            backgroundImage: {
+                'custom_gradient': 'linear-gradient(141deg, rgba(247,236,102,1) 40%, rgba(201,163,61,0.5) 100%)',
+            },
             fontSize: {
                 mobile_h1           : '2.5rem',
                 tablet_h1           : '3.5rem',

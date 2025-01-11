@@ -7,9 +7,7 @@ $body-font: "Barlow",  sans-serif;
 a{
     @apply text-secondary hover:text-primary;
 }
-.logo svg{
-    @apply h-12 sm:h-16 lg:h-20 w-auto transition-all;
-}
+
 // nav{
 //     .logo{
 //         @apply bg-primary p-2;
@@ -28,7 +26,24 @@ a{
 }
 
 .mobile-menu{
-    @apply bg-white text-black dark:bg-black dark:text-white;
+    @apply bg-yellow_light text-secondary;
+    .mobile-menu-inner{
+        @apply h-full justify-center;
+        .logo {
+            a{
+                @apply flex-col;
+                svg{
+                    @apply h-28 w-auto;
+                }
+                p{
+                    @apply text-center;    
+                }
+            }
+        }
+        ul{
+            @apply gap-6;
+        }
+    }
 }
 header, .mobile-menu{
     .dropdown{
