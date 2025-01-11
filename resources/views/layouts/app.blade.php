@@ -29,8 +29,8 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <div id="loader-wrapper" class="dark:bg-black">
-            <div class="w-40">
+        <div id="loader-wrapper">
+            <div class="logo">
                 <x-application-logo/>
             </div>
             <div id="loader">

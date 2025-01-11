@@ -9,10 +9,6 @@ import Splide from '@splidejs/splide';
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 import ProductList from './components/products/ProductList.vue';
 
-const appDemo = createApp({});
-appDemo.component('product-list', ProductList);
-appDemo.mount('#app-demo');
-
 Alpine.plugin(collapse)
 
 window.Alpine = Alpine;

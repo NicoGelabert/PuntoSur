@@ -1,22 +1,21 @@
 #loader-wrapper {
     @apply bg-white dark:bg-black items-center flex flex-col gap-8 h-full justify-center left-0 fixed top-0 w-full z-20;
+    .logo svg{
+        @apply w-24 h-auto;
+    }
 }
 
 #loader {
-    @apply bg-dark_gray dark:bg-ligth_gray rounded-2xl h-1.5 overflow-hidden relative w-1/2;
+    @apply bg-gray_700 rounded-2xl h-1.5 overflow-hidden relative w-1/2;
 }
 
 #progress-bar {
     @apply bg-primary rounded-2xl h-full w-0;
     transition: width 0.3s;
 }
-#demo-progress-bar{
-    @apply bg-demo_primary rounded-2xl h-full w-0;
-    transition: width 0.3s;
-}
 
 #loader-percentage {
-    @apply text-black dark:text-white text-xl;
+    @apply text-gray_900 text-xl;
 }
 
 #body-content{
@@ -107,5 +106,5 @@
 }
 
 .big-text{
-    @apply text-ligth_gray dark:text-dark_gray;
+    @apply text-gray_300 dark:text-gray_700;
 }
