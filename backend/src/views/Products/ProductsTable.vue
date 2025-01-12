@@ -33,13 +33,9 @@
                            @click="sortProducts('title')">
             Title
           </TableHeaderCell>
-          <!-- <TableHeaderCell field="price" :sort-field="sortField" :sort-direction="sortDirection"
-                           @click="sortProducts('price')">
-            Price
-          </TableHeaderCell> -->
-          <TableHeaderCell field="quantity" :sort-field="sortField" :sort-direction="sortDirection"
-                           @click="sortProducts('quantity')">
-            Quantity
+          <TableHeaderCell field="category" :sort-field="sortField" :sort-direction="sortDirection"
+                           @click="sortProducts('category')">
+            Categories
           </TableHeaderCell>
           <TableHeaderCell field="updated_at" :sort-field="sortField" :sort-direction="sortDirection"
                            @click="sortProducts('updated_at')">
@@ -70,11 +66,8 @@
           <td class="border-b p-2 max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">
             {{ product.title }}
           </td>
-          <!-- <td class="border-b p-2">
-            {{ $filters.currencyUSD(product.price) }}
-          </td> -->
-          <td class="border-b p-2">
-            {{ product.quantity }}
+          <td class="border-b p-2 max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">
+            {{ product.categories.map(category => category.name).join(', ') }}
           </td>
           <td class="border-b p-2 ">
             {{ product.updated_at }}

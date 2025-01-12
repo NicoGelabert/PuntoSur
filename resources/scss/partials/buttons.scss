@@ -1,18 +1,18 @@
 @use '../globals/variables' as *;
 
 .btn{
-    @apply flex gap-2 items-center justify-center font-medium uppercase text-gray_50 leading-none transition-all
+    @apply w-fit flex gap-2 items-center justify-center font-medium uppercase text-gray_50 leading-none transition-all
     rounded-md sm:rounded-lg font-sans_serif
     text-xs sm:text-sm md:text-base
     px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3;
     svg{
-        @apply h-auto fill-terciary
+        @apply h-auto fill-terciary max-h-4
         w-4 sm:w-5 md:w-6;
     }
 }
 .btn-primary{
-    @apply bg-secondary hover:bg-blue_hover hover:text-white;
+    @apply border border-secondary bg-secondary hover:border-blue_hover hover:bg-blue_hover hover:text-white;
 }
 .btn-secondary{
-    @apply border border-gray_300 text-secondary hover:bg-gray_50 hover:text-gray_800 hover:border-transparent;
+    @apply border border-gray_300 text-secondary hover:bg-gray_50 hover:text-gray_800 hover:border-gray_50;
 }

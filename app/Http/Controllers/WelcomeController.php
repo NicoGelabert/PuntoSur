@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HomeHeroBanner;
-use App\Models\Feature;
+use App\Models\Product;
 use App\Models\Service;
 use App\Models\Tag;
 use App\Models\Client;
@@ -16,7 +16,7 @@ class WelcomeController extends Controller
     public function index()
     {
         $homeherobanners = HomeHeroBanner::all();
-        $features = Feature::all();
+        $products = Product::all();
         $services = Service::all();
         $tags = Tag::all();
         $clients = Client::all();
@@ -29,7 +29,7 @@ class WelcomeController extends Controller
         $faqs = Faq::all();
         return view('welcome', compact(
             'homeherobanners',
-            'features',
+            'products',
             'services',
             'tags',
             'clients',

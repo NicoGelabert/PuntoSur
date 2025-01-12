@@ -139,67 +139,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // SPLIDE
 document.addEventListener( 'DOMContentLoaded', function () {
-  // Portfolio
-var main = new Splide( '#main-carousel', {
-  type      : 'fade',
-  rewind    : true,
-  pagination: true,
-  arrows    : true,
-});
-
-var thumbnails = new Splide( '#thumbnail-carousel', {
-  type        : 'loop',
-  perPage     : 3,
-  gap         : 10,
-  rewind      : true,
-  pagination  : true,
-  arrows      : false,
-  isNavigation: true,
-});
-
-main.sync( thumbnails );
-main.mount();
-thumbnails.mount();
-
-thumbnails.on('mounted', function(){
-  limitPaginationDots(thumbnails);
-})
-
-function limitPaginationDots(thumbnails) {
-  const maxDots = 5;
-  const pagination = thumbnails.Components.Pagination;
-  const dots = pagination.data.list.childNodes;
-
-  if (dots.length > maxDots) {
-    const step = Math.ceil(dots.length / maxDots);
-    const newDots = [];
-
-    for (let i = 0; i < maxDots; i++) {
-      const dotIndex = i * step;
-      newDots.push(dots[dotIndex]);
-    }
-
-    // Clear existing dots
-    pagination.data.list.innerHTML = '';
-
-    // Append limited dots
-    newDots.forEach(dot => {
-      pagination.data.list.appendChild(dot);
-    });
-  }
-}
-// Fin Portfolio
-
   // Home Hero Banner
   var homeHeroBanner = new Splide('.home-hero-banner', {
       type        : 'fade',
       rewind      : true,
-      pagination  : false,
+      pagination  : true,
       isNavigation: false,
       arrows      : false,
       focus       : 'center',
       autoplay    : 'play',
-      interval    : '7000'
+      interval    : '7000',
+      classes:{
+        pagination:'splide__pagination_custom'
+      }
   });
 
   homeHeroBanner.on('mounted move', function() {
@@ -221,7 +173,7 @@ function limitPaginationDots(thumbnails) {
 
   function animateSlideElements(slide) {
     var h3 = slide.querySelector('.animate-h3');
-    var h1 = slide.querySelector('.animate-h1');
+    var h2 = slide.querySelector('.animate-h2');
     var p = slide.querySelector('.animate-p');
     var img = slide.querySelector('.animate-img');
     var caption = slide.querySelector('.animate-caption');
@@ -231,7 +183,7 @@ function limitPaginationDots(thumbnails) {
     var arrow = slide.querySelector('.animate-arrow');
 
     animateElement(h3, 500); // 0.5 segundos después
-    animateElement(h1, 750); // 0.75 segundos después
+    animateElement(h2, 750); // 0.75 segundos después
     animateElement(p, 1000); // 1 segundo después
     animateElement(img, 1250); // 1.25 segundos después
     animateElement(caption, 1500); // 1.5 segundos después
@@ -248,73 +200,23 @@ function limitPaginationDots(thumbnails) {
     });
   }
   // Fin Home Hero Banner
-  // Services home
-  var homeServices = new Splide('#home-services', {
-    perPage   : 3,
-    gap       : '2rem',
-    arrows    : false,
-    breakpoints: {
-      1024:{
-        perPage:2,
-        type   :'loop',
-      },
-      640: {
-        perPage: 1,
-      },
-      480: {
-        perPage: 1,
-      },
+  // Inicio productos
+  var products = new Splide('.treatments', {
+    type        : 'slide',
+    rewind      : true,
+    pagination  : true,
+    isNavigation: false,
+    arrows      : true,
+    focus       : 'center',
+    autoplay    : false,
+    interval    : '7000',
+    autoWidth   : true,
+    gap         : '1.5rem',
+    classes:{
+      pagination:'splide__pagination_custom',
+      arrows    :'splide__arrows_custom',
     }
   });
-  homeServices.mount();
-// Fin Services Home
-
+  products.mount();
+  // Fin productos
 });
-
-// Service galery
-if (document.querySelector('#service_gallery')) {
-  var servicegallery = new Splide('#service_gallery', {
-    type        : 'loop',
-    drag        : 'free',
-    focus       : 'center',
-    arrows      : false,
-    pagination  : false,
-    fixedWidth  : 300,
-    autoScroll  : {
-      speed     : 1,
-    },
-  });
-
-  servicegallery.mount({ AutoScroll });
-}
-// Fin Service galery
-
-// Demo Welcome products
-new Splide( '#image-carousel', {
-  type   : 'loop',
-  perPage: 4,
-  perMove: 1,
-  gap    : '0.5rem',
-  autoplay: false,
-  pagination: true,
-  omitEnd  : true,
-  autoWidth: false,
-  breakpoints: {
-    1280: {
-      perPage:4,
-      gap: '1rem',
-    },
-    800: {
-      perPage: 3,
-      gap    : '.7rem',
-    },
-    640: {
-      perPage: 2,
-      gap    : '.7rem',
-    },
-    480: {
-      perPage: 1,
-      gap    : '.5rem',
-    },
-  },
-}).mount();

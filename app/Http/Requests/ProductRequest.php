@@ -32,10 +32,11 @@ class ProductRequest extends FormRequest
             'prices.*.size' => ['required', 'string', 'max:200'],
             'quantity' => ['nullable', 'numeric', 'min:0'],
             'description' => ['nullable', 'string'],
+            'link' => ['nullable', 'string'],
             'images.*' => ['nullable', 'image'],
             'deleted_images.*' => ['nullable', 'int'],
             'image_positions.*' => ['nullable', 'int'],
-            'published' => ['required', 'boolean']
+            'published' => ['required', 'boolean'],
         ];
     }
 }

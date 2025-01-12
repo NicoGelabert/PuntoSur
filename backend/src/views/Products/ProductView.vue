@@ -27,6 +27,11 @@
           </div>
           <hr class="my-4">
           <div class="flex flex-col gap-2">
+            <h3 class="text-lg font-bold">Link</h3>
+            <CustomInput type="text" class="mb-2" v-model="product.link" label="Link" :errors="errors['link']"/>
+          </div>
+          <hr class="my-4">
+          <div class="flex flex-col gap-2">
             <h3 class="text-lg font-bold">Prices</h3>
             <div v-for="(price, index) in product.prices" :key="index" class="flex gap-1">
               <CustomInput 
@@ -128,6 +133,7 @@ const product = ref({
   deleted_images: [],
   image_positions: {},
   description: '',
+  link: '',
   prices: [{ number: '', size: '' }],
   quantity: null,
   published: false,

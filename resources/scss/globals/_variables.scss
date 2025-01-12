@@ -115,7 +115,7 @@ header, .mobile-menu{
 }
 // línea divisoria
 .divider{ 
-    @apply h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-black to-transparent opacity-30 dark:via-white my-16;
+    @apply h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-black to-transparent opacity-30 dark:via-white my-4;
 }
 // Social icons
 .social-icons a{

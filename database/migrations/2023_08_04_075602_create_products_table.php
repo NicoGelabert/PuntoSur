@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image_mime')->nullable();
             $table->integer('image_size')->nullable();
             $table->longText('description')->nullable();
+            $table->text('link')->nullable();
             $table->decimal('price', 10, 2);
             $table->boolean('published')->default(true);
             $table->foreignIdFor(User::class, 'created_by')->nullable();

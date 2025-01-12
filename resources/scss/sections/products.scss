@@ -1,0 +1,49 @@
+.treatments{
+    @apply flex flex-col gap-6;
+    .card{
+        @apply flex flex-col gap-3 w-full h-full max-w-72;
+        .card-image{
+            img{
+                @apply rounded-lg w-full object-cover aspect-square;
+            }
+        }
+        .card-content{
+            @apply flex flex-col justify-between gap-4 h-full;
+            .card-content-text{
+                @apply flex flex-col gap-3;
+                .trunkated-text{
+                    @apply line-clamp-3;
+                    p{
+                        @apply hidden;
+                    }
+                    p:first-of-type{
+                        @apply block;
+                    }
+                }
+            }
+        }
+    }
+}
+.blends{
+    @apply flex flex-col gap-6;
+    .blend-list ul{
+        @apply flex flex-wrap
+        flex-col sm:flex-row
+        sm:justify-between;
+        li{
+            @apply sm:w-1/2;
+            .blend-card{
+                @apply flex justify-between items-center;
+                .blend-card-content{
+                    @apply flex items-center gap-2.5;
+                    img{
+                        @apply max-w-12 rounded-full object-cover aspect-square;
+                    }
+                }
+            }
+        }
+    }
+    ul > li:last-child hr {
+        display: none;
+    }
+}
