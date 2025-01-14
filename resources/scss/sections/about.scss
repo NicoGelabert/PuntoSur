@@ -1,0 +1,23 @@
+.about{
+    @apply flex flex-col gap-6 py-12;
+    .about-content{
+        @apply flex flex-col gap-12
+        md:flex-row;
+        .about-sub-content{
+            @apply flex flex-col gap-6
+            md:w-1/2
+            md:justify-between;
+        }
+        img{
+            @apply rounded-lg w-full object-cover
+            aspect-square lg:aspect-video;
+        }
+    }
+    .about-large-image{
+        @apply hidden
+        md:flex
+        md:justify-center
+        md:items-center
+        md:w-1/2;
+    }
+}

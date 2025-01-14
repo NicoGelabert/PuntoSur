@@ -3,6 +3,8 @@
     <x-home-hero-banner :homeherobanners="$homeherobanners" />
 
     <x-products :products="$products"/>
+
+    <x-about />
     
     <!-- <x-services :services="$services"/>
     
@@ -22,10 +24,6 @@
     
     <!-- <hr class="divider" />
     
-    <x-faq :faqs="$faqs"/>
-    
-    <hr class="divider" id="contact" />
-
-    <x-contact /> -->
+    <x-faq :faqs="$faqs"/> -->
     
 </x-app-layout>
