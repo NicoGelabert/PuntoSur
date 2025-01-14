@@ -7,6 +7,12 @@
             @apply flex flex-col gap-6
             md:w-1/2
             md:justify-between;
+            .about-short-description p{
+                font-size: inherit;
+            }
+            h4{
+                @apply text-lg sm:text-xl lg:text-2xl;
+            }
         }
         img{
             @apply rounded-lg w-full object-cover

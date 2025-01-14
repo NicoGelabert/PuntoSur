@@ -288,6 +288,72 @@ export function deleteProduct({commit}, id) {
   return axiosClient.delete(`/products/${id}`)
 }
 
+// ABOUT
+export function getAbouts({commit, state}, {url = null, search = '', per_page, sort_field, sort_direction} = {}) {
+  commit('setAbouts', [true])
+  url = url || '/abouts'
+  const params = {
+    per_page: state.abouts.limit,
+  }
+  return axiosClient.get(url, {
+    params: {
+      ...params,
+      search, per_page, sort_field, sort_direction
+    }
+  })
+    .then((response) => {
+      commit('setAbouts', [false, response.data])
+    })
+    .catch(() => {
+      commit('setAbouts', [false])
+    })
+}
+
+
+export function getAbout({commit}, id) {
+  return axiosClient.get(`/abouts/${id}`)
+}
+
+
+export function createAbout({commit}, about) {
+  if (about.image instanceof File) {
+    const form = new FormData();
+    form.append('image', about.image);
+    form.append('headline', about.headline);
+    form.append('short_description', about.short_description);
+    form.append('large_description', about.large_description);
+    form.append('signature', about.signature);
+    form.append('mission_and_vision', about.mission_and_vision);
+    about = form;
+  }
+  return axiosClient.post('/abouts', about)
+}
+
+
+export function updateAbout({commit}, about) {
+  const id = about.id
+  if (about.image instanceof File) {
+    const form = new FormData();
+    form.append('id', about.id);
+    form.append('image', about.image);
+    form.append('headline', about.headline);
+    form.append('short_description', about.short_description);
+    form.append('large_description', about.large_description);
+    form.append('signature', about.signature);
+    form.append('mission_and_vision', about.mission_and_vision);
+    form.append('_method', 'PUT');
+    about = form;
+  } else {
+    about._method = 'PUT'
+  }
+  return axiosClient.post(`/abouts/${id}`, about)
+}
+
+
+export function deleteAbout({commit}, id) {
+  return axiosClient.delete(`/abouts/${id}`)
+}
+
 // USERS
 export function getUsers({commit, state}, {url = null, search = '', per_page, sort_field, sort_direction} = {}) {
   commit('setUsers', [true])

@@ -42,6 +42,15 @@
                 <ArchiveBoxIcon class="w-5"/>
             </span>
         </router-link>
+        <router-link :to="{name: 'app.abouts'}"
+                    class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
+            <span class="text-sm">
+                About
+            </span>
+            <span class="mr-2">
+                <ArchiveBoxIcon class="w-5"/>
+            </span>
+        </router-link>
         <router-link :to="{name: 'app.alergens'}"
                     class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">

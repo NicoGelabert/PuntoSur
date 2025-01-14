@@ -4,7 +4,7 @@
 
     <x-products :products="$products"/>
 
-    <x-about />
+    <x-about :abouts="$abouts" />
     
     <!-- <x-services :services="$services"/>
     

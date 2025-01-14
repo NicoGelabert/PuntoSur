@@ -8,12 +8,15 @@ use Illuminate\View\Component;
 
 class About extends Component
 {
+    public $abouts;
     /**
      * Create a new component instance.
+     * @param  mixed  $clients
+     * @return void
      */
-    public function __construct()
+    public function __construct($abouts)
     {
-        //
+        $this->abouts = $abouts;
     }
 
     /**

@@ -1,22 +1,22 @@
 <div class="container about">
     <h3>About Me</h3>
+    @foreach ($abouts as $about)
     <div class="about-content">
         <div class="about-sub-content">
-            <div>
-                <p class="text-large">I am member of NRRI (National Reflexologist Registered Ireland) so I work with prívate health insurances as LAYA, VHI, Irish Life Health among others. Please claim your receipt once you receive your treatment.</p>
+            <div class="about-short-description text-large">
+                {!! $about->short_description !!}
             </div>
             <div class="flex justify-center items-center md:hidden">
-                <img src="{{ asset('storage/common/masajes-008.jpg') }}" alt="">
+                <img src="{{ $about->image }}" alt="">
             </div>
             <div>
-                <h5>Yanina Pellegrino</h5>
-                <p>Holistic Therapist<br>
-                NRRI Member nº 123456789</p>
+                {!! $about->signature !!}
             </div>
             <x-button class="btn btn-primary">see more <x-icons.send /></x-button>
         </div>
         <div class="about-large-image">
-            <img src="{{ asset('storage/common/masajes-008.jpg') }}" alt="">
+            <img src="{{ $about->image }}" alt="">
         </div>
     </div>
+    @endforeach
 </div>

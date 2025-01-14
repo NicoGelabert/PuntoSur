@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HomeHeroBanner;
 use App\Models\Product;
+use App\Models\About;
 use App\Models\Service;
 use App\Models\Tag;
 use App\Models\Client;
@@ -17,6 +18,7 @@ class WelcomeController extends Controller
     {
         $homeherobanners = HomeHeroBanner::all();
         $products = Product::all();
+        $abouts = About::all();
         $services = Service::all();
         $tags = Tag::all();
         $clients = Client::all();
@@ -30,6 +32,7 @@ class WelcomeController extends Controller
         return view('welcome', compact(
             'homeherobanners',
             'products',
+            'abouts',
             'services',
             'tags',
             'clients',
