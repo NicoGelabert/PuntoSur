@@ -7,6 +7,8 @@
     <x-about :abouts="$abouts" />
 
     <x-promos />
+
+    <x-news />
     
     <!-- <x-services :services="$services"/>
     
