@@ -48,6 +48,10 @@
     }
 }
 
+.promos{
+    @apply bg-blue_light;
+}
+
 #faqs{
     .questions{
         @apply flex flex-col md:flex-row justify-between flex-wrap w-full gap-4;

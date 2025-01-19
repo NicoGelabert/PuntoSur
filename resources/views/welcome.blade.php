@@ -5,6 +5,8 @@
     <x-products :products="$products"/>
 
     <x-about :abouts="$abouts" />
+
+    <x-promos />
     
     <!-- <x-services :services="$services"/>
     

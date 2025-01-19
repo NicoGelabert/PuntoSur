@@ -1,3 +1,4 @@
+<x-icons.first_leave class="absolute" />
 <div class="home-hero-banner container splide" aria-label="Chi Balance Therapies">
     <div class="splide__track">
         <ul class="splide__list">

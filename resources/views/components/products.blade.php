@@ -1,4 +1,5 @@
-<div class="bg-blue_light">
+<div class="bg-blue_light relative">
+    <x-icons.second_leave class="absolute right-0 -top-12 sm:-top-16 md:-top-20" />
     <div class="container flex flex-col gap-6 py-12">
         <div class="treatments splide">
             <h3>Popular Treatments</h3>
@@ -26,6 +27,7 @@
                 </ul>
             </div>
         </div>
+        <x-icons.third_leave class="absolute right-0 top-[60%]" />
         <div class="blends">
             <h4>Blends</h4>
             <p class="text-large">Improve your experience combining treatments.</p>
