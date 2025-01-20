@@ -75,6 +75,23 @@ export function setAbouts(state, [loading, data = null]) {
   state.abouts.loading = loading;
 }
 
+export function setAuthors(state, [loading, data = null]) {
+
+  if (data) {
+    state.authors = {
+      ...state.authors,
+      data: data.data,
+      links: data.meta?.links,
+      page: data.meta.current_page,
+      limit: data.meta.per_page,
+      from: data.meta.from,
+      to: data.meta.to,
+      total: data.meta.total,
+    }
+  }
+  state.authors.loading = loading;
+}
+
 export function setUsers(state, [loading, data = null]) {
 
   if (data) {

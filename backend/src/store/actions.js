@@ -354,6 +354,68 @@ export function deleteAbout({commit}, id) {
   return axiosClient.delete(`/abouts/${id}`)
 }
 
+// AUTHOR
+export function getAuthors({commit, state}, {url = null, search = '', per_page, sort_field, sort_direction} = {}) {
+  commit('setAuthors', [true])
+  url = url || '/authors'
+  const params = {
+    per_page: state.authors.limit,
+  }
+  return axiosClient.get(url, {
+    params: {
+      ...params,
+      search, per_page, sort_field, sort_direction
+    }
+  })
+    .then((response) => {
+      commit('setAuthors', [false, response.data])
+    })
+    .catch(() => {
+      commit('setAuthors', [false])
+    })
+}
+
+
+export function getAuthor({commit}, id) {
+  return axiosClient.get(`/authors/${id}`)
+}
+
+
+export function createAuthor({commit}, author) {
+  if (author.image instanceof File) {
+    const form = new FormData();
+    form.append('name', author.name);
+    form.append('image', author.image);
+    form.append('description', author.description);
+    form.append('active', author.active ? 1 : 0);
+    author = form;
+  }
+  return axiosClient.post('/authors', author)
+}
+
+
+export function updateAuthor({commit}, author) {
+  const id = author.id
+  if (author.image instanceof File) {
+    const form = new FormData();
+    form.append('id', author.id);
+    form.append('name', author.name);
+    form.append('image', author.image);
+    form.append('description', author.description);
+    form.append('active', author.active ? 1 : 0);
+    form.append('_method', 'PUT');
+    author = form;
+  } else {
+    author._method = 'PUT'
+  }
+  return axiosClient.post(`/authors/${id}`, author)
+}
+
+
+export function deleteAuthor({commit}, id) {
+  return axiosClient.delete(`/authors/${id}`)
+}
+
 // USERS
 export function getUsers({commit, state}, {url = null, search = '', per_page, sort_field, sort_direction} = {}) {
   commit('setUsers', [true])

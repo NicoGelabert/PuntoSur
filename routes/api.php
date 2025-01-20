@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\HomeHeroBannerController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\AboutController;
+use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\AlergenController;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\ProjectController;
@@ -37,6 +38,7 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::get('/categories/tree', [CategoryController::class, 'getAsTree']);
     Route::apiResource('products', ProductController::class);
     Route::apiResource('abouts', AboutController::class);
+    Route::apiResource('authors', AuthorController::class);
     Route::apiResource('alergens', AlergenController::class)->except('show');
     Route::get('/alergens/tree', [AlergenController::class, 'getAsTree']);
     Route::apiResource('services', ServiceController::class)->except('show');

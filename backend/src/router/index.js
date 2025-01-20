@@ -12,6 +12,8 @@ import Products from "../views/Products/Products.vue";
 import ProductView from "../views/Products/ProductView.vue";
 import Abouts from "../views/Abouts/Abouts.vue";
 import AboutView from "../views/Abouts/AboutView.vue";
+import Authors from "../views/Authors/Authors.vue";
+import AuthorView from "../views/Authors/AuthorView.vue";
 import Alergens from "../views/Alergens/Alergens.vue";
 import Services from "../views/Services/Services.vue";
 import Projects from "../views/Projects/Projects.vue";
@@ -89,6 +91,24 @@ const routes = [
         path: 'abouts/:id',
         name: 'app.abouts.edit',
         component: AboutView,
+        props: {
+          id: (value) => /^\d+$/.test(value)
+        }
+      },
+      {
+        path: 'authors',
+        name: 'app.authors',
+        component: Authors
+      },
+      {
+        path: 'authors/create',
+        name: 'app.authors.create',
+        component: AuthorView
+      },
+      {
+        path: 'authors/:id',
+        name: 'app.authors.edit',
+        component: AuthorView,
         props: {
           id: (value) => /^\d+$/.test(value)
         }
