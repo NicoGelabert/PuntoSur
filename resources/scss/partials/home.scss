@@ -48,7 +48,7 @@
     }
 }
 
-.promos{
+.promos, .book{
     @apply bg-blue_light;
 }
 
@@ -152,4 +152,9 @@
     .splide__arrow--next{
         @apply right-0;
     }
+
+}
+// Splde arrows - Botonera de news
+.splide__arrows_custom_news{
+    @apply bottom-24 top-auto pr-4;
 }

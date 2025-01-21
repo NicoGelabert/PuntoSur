@@ -172,25 +172,15 @@ document.addEventListener( 'DOMContentLoaded', function () {
   }
 
   function animateSlideElements(slide) {
-    var h3 = slide.querySelector('.animate-h3');
     var h2 = slide.querySelector('.animate-h2');
-    var p = slide.querySelector('.animate-p');
     var img = slide.querySelector('.animate-img');
-    var caption = slide.querySelector('.animate-caption');
-    var h5 = slide.querySelector('.animate-h5');
+    var p = slide.querySelector('.animate-p');
     var button = slide.querySelector('.animate-button');
-    var border = slide.querySelector('.animate-border');
-    var arrow = slide.querySelector('.animate-arrow');
 
-    animateElement(h3, 500); // 0.5 segundos después
     animateElement(h2, 750); // 0.75 segundos después
-    animateElement(p, 1000); // 1 segundo después
-    animateElement(img, 1250); // 1.25 segundos después
-    animateElement(caption, 1500); // 1.5 segundos después
-    animateElement(border, 1750); // 1.75 segundos después (borde)
-    animateElement(h5, 2000); // 2 segundos después (texto dentro del borde)
-    animateElement(button, 2250); // 2.25 segundos después
-    animateElement(arrow, 2500); // 2.5 segundos después (flecha)
+    animateElement(img, 1000); // 1 segundo después
+    animateElement(p, 1250); // 1.25 segundos después
+    animateElement(button, 1750); // 1.75 segundos después
   }
 
   function animateSlideOutElements(slide) {
@@ -202,21 +192,34 @@ document.addEventListener( 'DOMContentLoaded', function () {
   // Fin Home Hero Banner
   // Inicio productos
   var products = new Splide('.treatments', {
-    type        : 'slide',
-    rewind      : true,
-    pagination  : true,
-    isNavigation: false,
     arrows      : true,
-    focus       : 'center',
     autoplay    : false,
-    interval    : '7000',
     autoWidth   : true,
-    gap         : '1.5rem',
     classes:{
       pagination:'splide__pagination_custom',
       arrows    :'splide__arrows_custom',
-    }
+    },
+    focus       : 'center',
+    gap         : '1.5rem',
+    interval    : '7000',
+    isNavigation: false,
+    pagination  : true,
+    rewind      : true,
+    type        : 'slide',
   });
   products.mount();
   // Fin productos
+
+  // News
+  var news = new Splide('.news', {
+    classes:{
+      pagination:'splide__pagination_custom',
+      arrows    :'splide__arrows_custom splide__arrows_custom_news',
+    },
+    gap         : '1.5rem',
+    pagination  : true,
+    rewind      : true,
+    type        : 'loop',
+  });
+  news.mount();
 });

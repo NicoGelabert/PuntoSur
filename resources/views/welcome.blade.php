@@ -9,6 +9,8 @@
     <x-promos />
 
     <x-news />
+
+    <x-book />
     
     <!-- <x-services :services="$services"/>
     
