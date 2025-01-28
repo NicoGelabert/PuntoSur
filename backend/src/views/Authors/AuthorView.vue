@@ -15,6 +15,12 @@
                         <CustomInput class="mb-2" v-model="author.name" label="Author name" :errors="errors['name']"/>
                     </div>
                     <hr class="my-4">
+                    <CustomInput type="select"
+                               :select-options="parentAuthors"
+                               class="mb-2"
+                               v-model="author.parent_id"
+                               label="Parent" :errors="errors['parent_id']"/>
+                    <hr class="my-4">
                     <div class="flex flex-col gap-2">
                         <h3 class="text-lg font-bold">Description</h3>
                         <CustomInput type="richtext" class="mb-2" v-model="author.description" label="Description" :errors="errors['description']"/>
@@ -48,7 +54,7 @@
 </template>
 
 <script setup>
-import {onMounted, ref} from 'vue'
+import {computed, onMounted, ref} from 'vue'
 import CustomInput from "../../components/core/CustomInput.vue";
 import store from "../../store/index.js";
 import Spinner from "../../components/core/Spinner.vue";
@@ -67,12 +73,32 @@ const author = ref({
     description: '',
     image: '',
     active: '',
+    parent_id: '',
 })
 
 const errors = ref({});
 const loading = ref(false);
 
 const emit = defineEmits(['update:modelValue', 'close'])
+
+const parentAuthors = computed(() => {
+  return [
+    {key: '', text: 'Select Parent Author'},
+    ...store.state.alergens.data
+      .filter(c => {
+        if (alergen.value.id) {
+          return c.id !== alergen.value.id
+        }
+        return true;
+      })
+      .map(c => ({key: c.id, text: c.name}))
+      .sort((c1, c2) => {
+        if (c1.text < c2.text) return -1;
+        if (c1.text > c2.text) return 1;
+        return 0;
+      })
+  ]
+})
 
 onMounted(() => {
     if (route.params.id) {

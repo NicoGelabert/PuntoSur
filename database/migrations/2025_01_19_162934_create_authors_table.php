@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image_mime')->nullable();
             $table->integer('image_size')->nullable();
             $table->boolean('active');
+            $table->foreignId('parent_id')->nullable()->constrained('authors');
             $table->foreignIdFor(User::class, 'created_by');
             $table->foreignIdFor(User::class, 'updated_by');
             $table->timestamp('deleted_at')->nullable();

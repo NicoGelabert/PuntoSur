@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\URL;
 
 class AuthorResource extends JsonResource
 {
-    public static $wrap = false;
     /**
      * Transform the resource into an array.
      *
@@ -20,9 +19,12 @@ class AuthorResource extends JsonResource
         return[
             'id' => $this->id,
             'name' => $this->name,
+            'slug' => $this->slug,
             'image_url' => $this->image ?: null,
             'description' => $this->description,
             'active' => (bool)$this->active,
+            'parent_id' => $this->parent_id,
+            'parent' => $this->parent ? new AuthorResource($this->parent) : null,
             'created_at' => (new \DateTime($this->created_at))->format('Y-m-d H:i:s'),
             'updated_at' => (new \DateTime($this->updated_at))->format('Y-m-d H:i:s'),
         ];

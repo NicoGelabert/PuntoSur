@@ -75,11 +75,11 @@ export function setAbouts(state, [loading, data = null]) {
   state.abouts.loading = loading;
 }
 
-export function setAuthors(state, [loading, data = null]) {
+export function setArticles(state, [loading, data = null]) {
 
   if (data) {
-    state.authors = {
-      ...state.authors,
+    state.articles = {
+      ...state.articles,
       data: data.data,
       links: data.meta?.links,
       page: data.meta.current_page,
@@ -87,6 +87,17 @@ export function setAuthors(state, [loading, data = null]) {
       from: data.meta.from,
       to: data.meta.to,
       total: data.meta.total,
+    }
+  }
+  state.articles.loading = loading;
+}
+
+export function setAuthors(state, [loading, data = null]) {
+
+  if (data) {
+    state.authors = {
+      ...state.authors,
+      data: data.data,
     }
   }
   state.authors.loading = loading;
