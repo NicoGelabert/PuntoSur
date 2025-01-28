@@ -22,6 +22,8 @@ export default {
                 secondary           : '#1F254A',
                 terciary            : '#C9A33D',
 
+                violet              : '#6E5073',
+
                 yellow_light        : '#FEFFF9',
                 blue_light          : '#F4F4F6',
 

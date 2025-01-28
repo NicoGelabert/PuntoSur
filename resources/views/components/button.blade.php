@@ -1,3 +1,8 @@
+@php
+    $class = $class ?? '';
+    $slot = $slot ?? '';
+@endphp
+
 @if ($href)
     <a href="{{ $href }}" {{ $attributes->merge(['class' => $class]) }}>
         {{ $slot }}

@@ -1,4 +1,4 @@
-<x-app-demo>
+<x-app-layout>
     <div x-data="productItem({{ json_encode([
         'id' => $product->id,
         'slug' => $product->slug,
@@ -7,196 +7,85 @@
         'quantity' => $product->quantity,
         'addToCartUrl' => route('cart.add', $product),
         'categories' => $product->categories->pluck('name'),
-        'prices' => $product->prices->pluck('number'),
+        'prices' => $product->prices->map(function ($price) {
+            return [
+                'number' => $price->number,
+                'size' => $price->size,
+            ];
+        }),
         'alergens' => $product->alergens->pluck('name'),
         'images' => $product->images->pluck('url') 
         ]) }})"
-        class="mx-auto"
+        class="mx-auto" id="product-view"
     >
-        <div class="grid gap-6 grid-cols-1 lg:grid-cols-4 my-32">
-            <div class="lg:col-span-2">
-                <div
-                    x-data="{
-                      images: ['{{$product->image}}'],
-                      activeImage: null,
-                      prev() {
-                          let index = this.images.indexOf(this.activeImage);
-                          if (index === 0)
-                              index = this.images.length;
-                          this.activeImage = this.images[index - 1];
-                      },
-                      next() {
-                          let index = this.images.indexOf(this.activeImage);
-                          if (index === this.images.length - 1)
-                              index = -1;
-                          this.activeImage = this.images[index + 1];
-                      },
-                      init() {
-                          this.activeImage = this.images.length > 0 ? this.images[0] : null
-                      }
-                    }"
-                    class="max-w-fit flex flex-col-reverse lg:flex-row gap-4 md:sticky top-24" id="imagen"
-                >
-                    <div class="flex">
-                        <template x-for="image in images">
-                            <a
-                                @click.prevent="activeImage = image"
-                                class="cursor-pointer w-[80px] h-[80px] border flex items-center justify-center product-thumbnail"
-                                :class="{'product-thumbnail-active': activeImage === image}"
-                            >
-                                <img :src="image" alt="" class=""/>
-                            </a>
-                        </template>
-                    </div>
-                    <div class="relative">
-                        <template x-for="image in images">
-                            <div
-                                x-show="activeImage === image"
-                                class="aspect-w-3 aspect-h-2"
-                            >
-                                <img :src="image" alt="" class="w-auto mx-auto"/>
-                            </div>
-                        </template>
-                        <a
-                            @click.prevent="prev"
-                            class="cursor-pointer bg-black/30 text-white absolute left-0 top-1/2 -translate-y-1/2"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-10 w-10"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                stroke-width="2"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M15 19l-7-7 7-7"
-                                />
-                            </svg>
-                        </a>
-                        <a
-                            @click.prevent="next"
-                            class="cursor-pointer bg-black/30 text-white absolute right-0 top-1/2 -translate-y-1/2"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-10 w-10"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                stroke-width="2"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M9 5l7 7-7 7"
-                                />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="lg:col-span-2">
-                <div class="flex flex-col gap-2">
-                    <ul>
-                        <template x-for="price in product.prices" :key="price">
-                            <li class="font-bold text-lg" x-text="'€ ' + price"></li>
-                        </template>
-                    </ul>
-                    <h3 class="font-semibold">
-                        {{$product->title}}
-                    </h3>
+        <x-icons.first_leave class="absolute" />
+        <x-icons.second_leave class="absolute right-0 top-40 sm:top-28 z-10" />
+        <div class="product_view_hero">
+            <h2>
+                {{$product->title}}
+            </h2>
+        </div>
+        <div class="product-content">
+            <div class="flex flex-col md:flex-row gap-3 md:gap-12 container">
+                <img src="{{ $product->image }}" alt="" class="product-view-img">
+                <div class="flex flex-col gap-3 md:w-1/2">
                     <div class="flex gap-4">
                         <ul>
                             <template x-for="category in product.categories" :key="category">
-                                <li x-text="category"></li>
+                                <li class="product-view-category" x-text="category"></li>
                             </template>
                         </ul>
+                    </div>
+                    <ul>
+                        <template x-for="price in product.prices" :key="price.number">
+                            <li class="flex justify-between">
+                                <h4 x-text="'€ ' + price.number"></h4>
+                                <div class="flex gap-2 items-center product-view-prices">
+                                    <x-icons.clock class="fill-gray_400" />
+                                    <h4 class="text-gray_400" x-text="price.size"></h4>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                    <div x-data="{expanded: false}">
+                        <div
+                            x-show="expanded"
+                            x-collapse.min.120px
+                            class="text-gray-500 wysiwyg-content"
+                        >
+                            {!! $product->description !!}
+                        </div>
+                        <p class="text-right">
+                            <a
+                                @click="expanded = !expanded"
+                                href="javascript:void(0)"
+                                class="text-purple-500 hover:text-purple-700"
+                                x-text="expanded ? 'Read Less' : 'Read More'"
+                            ></a>
+                        </p>
+                    </div>
+        
+                    <div class="flex gap-4">
+                        <x-button class="btn btn-primary" href="{{ $product->link }}" >
+                            Book <x-icons.booking />
+                        </x-button>
                         
-                        <ul>
-                            <template x-for="alergen in product.alergens" :key="alergen">
-                                <li x-text="alergen"></li>
-                            </template>
-                        </ul>
+                        <!-- <button
+                            :disabled="product.quantity === 0"
+                            @click="addToCart($refs.quantityEl.value)"
+                            class="btn btn-secondary"
+                            :class="product.quantity === 0 ? 'cursor-not-allowed' : 'cursor-pointer'"
+                        >
+                            Add to cart <x-icons.cart />
+                        </button> -->
                     </div>
-                </div>
-
-                @if ($product->quantity === 0)
-                    <div class="bg-red-400 text-white py-2 px-3 rounded mb-3">
-                        The product is out of stock
-                    </div>
-                @endif
-                <div class="flex items-center mb-5">
-                    <label for="quantity" class="block font-bold mr-4">
-                        Quantity
-                    </label>
-                    <div class="flex items-center content-center quantity">
-                        <button id="down" class="btn-qty" onclick=" down('0')">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="current" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </button>
-                        <input
-                            type="number"
-                            name="quantity"
-                            x-ref="quantityEl"
-                            value="1"
-                            min="1"
-                            class="w-32 qty bg-transparent border-none"
-                            id="myNumber"
-                        />
-                        <button id="up" class="btn-qty" onclick="up('10')">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="current" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                <button
-                    :disabled="product.quantity === 0"
-                    @click="addToCart($refs.quantityEl.value)"
-                    class="btn-primary py-4 text-lg flex justify-center min-w-0 w-full mb-6"
-                    :class="product.quantity === 0 ? 'cursor-not-allowed' : 'cursor-pointer'"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 mr-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                        />
-                    </svg>
-                    Add to Cart
-                </button>
-                <div class="mb-6" x-data="{expanded: false}">
-                    <div
-                        x-show="expanded"
-                        x-collapse.min.120px
-                        class="text-gray-500 wysiwyg-content"
-                    >
-                        {!! $product->description !!}
-                    </div>
-                    <p class="text-right">
-                        <a
-                            @click="expanded = !expanded"
-                            href="javascript:void(0)"
-                            class="text-purple-500 hover:text-purple-700"
-                            x-text="expanded ? 'Read Less' : 'Read More'"
-                        ></a>
-                    </p>
                 </div>
             </div>
+            <x-products :products="$products" header_title="More Treatments"/>
         </div>
+        <x-benefits />
     </div>
-</x-app-demo>
+</x-app-layout>
 <script>
     function up(max) {
     document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) + 1;

@@ -47,17 +47,17 @@ a{
 }
 header, .mobile-menu{
     .dropdown{
-        @apply absolute z-10 w-full text-center;
+        @apply mx-auto lg:absolute z-20 w-fit text-center transition-all;
         li{
-            @apply bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 w-full;
+            @apply lg:bg-gray-100 dark:bg-gray_400 dark:hover:bg-gray_600 w-full px-8;
             a{
-                @apply pt-0 pb-0 hover:bg-gray-200 dark:hover:bg-neutral-800;
+                @apply pt-0 pb-0 ;
             }
         }
         li:hover{
             @apply bg-gray-200;
             a{
-                @apply text-primary;
+                @apply text-secondary;
             }
         }
     }

@@ -30,8 +30,15 @@ class ProductController extends Controller
 
     public function view(Category $category, Product $product)
     {
-        $product->load(['prices', 'categories', 'alergens', 'images']);
-        return view('product.view', ['product' => $product, 'category' => $category]);
+        $product->load(['prices', 'categories', 'images']);
+        $products = Product::all();
+        $categorySlug = $product->categories->first()->slug ?? null;
+        return view('product.view', [
+            'product' => $product,
+            'category' => $category,
+            'products' => $products,
+            'categorySlug' => $categorySlug
+        ]);
     }
 
     private function renderProducts(Builder $query)

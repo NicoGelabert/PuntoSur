@@ -4,7 +4,7 @@
         cartItemsCount: {{ \App\Helpers\Cart::getCartItemsCount() }},
     }"
     @cart-change.window="cartItemsCount = $event.detail.count"
-    class="flex justify-between z-10 w-full px-4"
+    class="flex justify-between z-20 w-full px-4"
     id="navbar"
 >
     <!-- Responsive Menu -->

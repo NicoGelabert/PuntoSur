@@ -1,8 +1,9 @@
+@props(['header_title' => 'Popular Treatments'])
 <div class="bg-blue_light relative">
     <x-icons.second_leave class="absolute right-0 -top-12 sm:-top-16 md:-top-20" />
     <div class="container flex flex-col gap-6 py-12">
         <div class="treatments splide">
-            <h3>Popular Treatments</h3>
+            <h3>{{ $header_title }}</h3>
             <p class="text-large">Book professional massage from monday to friday.</p>
             <div class="splide__track">
                 <ul class="splide__list">
@@ -19,7 +20,10 @@
                                         {!! $product->description !!}
                                     </div>
                                 </div>
-                                <x-button href="{{ $product->link }}" class="btn btn-primary" target="_blank">book <x-icons.booking /></x-button>
+                                <div class="flex gap-2">
+                                    <x-button href="{{ $product->link }}" class="btn btn-primary" target="_blank">book <x-icons.booking /></x-button>
+                                    <x-button href="{{ route('product.view', ['category' => $product->categories->first()->slug, 'product' => $product->slug]) }}" class="btn btn-secondary">See more <x-icons.send /></x-button>
+                                </div>
                             </div>
                         </div>
                     </li>
