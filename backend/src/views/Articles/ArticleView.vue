@@ -115,12 +115,13 @@
           article.value = response.data;
         })
     }
-    
     axiosClient.get('/authors/tree')
     .then(result => {
-      authorsOptions.value = result.data
+      authorsOptions.value = result.data;
     })
-  
+    .catch(error => {
+      console.error("Error al obtener los autores:", error);
+    });
   })
   
   function onSubmit($event, close = false) {

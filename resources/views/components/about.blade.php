@@ -3,7 +3,7 @@
     @foreach ($abouts as $about)
     <div class="about-content">
         <div class="about-sub-content">
-            <div class="about-short-description text-large">
+            <div class="about-short-description text-large line-clamp-4">
                 {!! $about->short_description !!}
             </div>
             <div class="flex justify-center items-center md:hidden">

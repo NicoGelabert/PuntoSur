@@ -465,6 +465,10 @@ export function getAuthors({commit, state}, {sort_field, sort_direction} = {}) {
     })
 }
 
+export function getAuthor({commit}, id) {
+  return axiosClient.get(`/authors/${id}`)
+}
+
 export function createAuthor({commit}, author) {
   if (author.image instanceof File) {
     const form = new FormData();

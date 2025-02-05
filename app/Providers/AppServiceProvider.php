@@ -24,12 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $host = $_SERVER['HTTP_HOST'] ?? '';
-        if ($host === 'demo.chimicreativo.es' || $host === 'demo.chimicreativo.local') {
-            $dotenv = Dotenv::createImmutable(base_path(), '.env.demo');
-            $dotenv->load();
-            config(['app.url' => env('APP_URL', 'http://demo.chimicreativo.local:8001')]);
-        }
-        Blade::component('layouts.demo.app-demo', 'app-demo');
+        //
     }
 }

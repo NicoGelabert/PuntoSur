@@ -5,41 +5,27 @@
     </div>
     <div class="splide__track">
         <ul class="splide__list">
+            @foreach ($articles as $article)
             <li class="news-card splide__slide">
                 <div class="news-card-img">
-                    <img src="{{ asset('storage/common/masajes-005.jpg') }}" alt="">
+                    <img src="{{ $article->image }}" alt="">
                 </div>
                 <div class="news-card-content">
                     <div class="news-card-content-header">
+                        @foreach ($article->authors as $author)
                         <div class="author">
-                            <img src="{{ asset('storage/common/avatar.png') }}" alt="">
-                            <h6>Yanina Pellegrino</h6>
+                            <img src="{{ $author->image }}" alt="">
+                            <h6>{{ $author->name }}</h6>
                         </div>
+                        @endforeach
                         <p class="dot-divider">·</p>
-                        <p class="news-date">May 13, 2024</p>
+                        <p class="news-date">{{ $article->created_at->format('M d, Y') }}</p>
                     </div>
-                    <h5>Benefits of hot stone massage</h5>
-                    <p class="description">A strong treatment targeting day-to-day aches and chronic pain.</p>
+                    <h5>{{ $article->title }}</h5>
+                    <p class="description">{{ $article->news_lead }}</p>
                 </div>
             </li>
-
-            <li class="news-card splide__slide">
-                <div class="news-card-img">
-                    <img src="{{ asset('storage/common/masajes-005.jpg') }}" alt="">
-                </div>
-                <div class="news-card-content">
-                    <div class="news-card-content-header">
-                        <div class="author">
-                            <img src="{{ asset('storage/common/avatar.png') }}" alt="">
-                            <h6>Yanina Pellegrino</h6>
-                        </div>
-                        <p class="dot-divider">·</p>
-                        <p class="news-date">May 13, 2024</p>
-                    </div>
-                    <h5>Benefits of hot stone massage</h5>
-                    <p class="description">A strong treatment targeting day-to-day aches and chronic pain.</p>
-                </div>
-            </li>
+            @endforeach
         </ul>
     </div>
 </div>

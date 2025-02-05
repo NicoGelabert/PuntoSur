@@ -30,7 +30,7 @@ class Author extends Model
 
     public function articles()
     {
-        return $this->belongsToMany(Article::class); // article_author
+        return $this->belongsToMany(Article::class, 'article_authors'); // article_author
     }
 
     public static function getActiveAsTree($resourceClassName = null)

@@ -23,6 +23,7 @@ class StoreAuthorRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
+            'description' => ['nullable', 'string'],
             'parent_id' => ['nullable', 'exists:authors,id'],
             'image' => ['required', 'image'],
             'active' => ['required', 'boolean']
