@@ -11,6 +11,13 @@
 
         
         <title inertia>{{ config('app.name', 'Chi Balance Therapies') }}</title>
+        
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/common/chibalancetherapies.svg') }}">
+
+        <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
 
