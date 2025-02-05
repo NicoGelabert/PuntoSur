@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
+    <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title inertia>{{ config('app.name', 'Punto Sur Pastelería') }}</title>
+        <meta name="description" content="Chi Balance Therapies offers expert massage and holistic treatments in Ireland, helping you achieve relaxation, pain relief, and overall well-being. Our personalized therapies blend traditional and modern techniques to restore balance to your body and mind. Experience deep relaxation with our skilled therapist. Book your session today!">
 
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/img/puntosur.ico') }}">
+        <meta name="keywords" content="Chi Balance Therapies, massage therapy, holistic treatments, relaxation massage, deep tissue massage, sports massage, wellness center, stress relief, therapeutic massage, Ireland massage, body balance, professional massage services, pain relief therapy, healing massage, mindfulness and wellness">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=albert-sans:200,300,500,700|battambang:100,300,400,700,900" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+        <title inertia>{{ config('app.name', 'Chi Balance Therapies') }}</title>
     </head>
     <body>
 
     <main class="w-full mx-auto flex flex-col justify-evenly items-center h-screen px-10">
         <div class="enconstruccion">
-            <x-application-logo class="block fill-current" />
+            <x-application-logo />
         </div>
         <div class="w-full grid grid-cols-1 mx-16 gap-y-8 text-center">
             <h2 class="text-3xl font-bold sm:text-4xl">Página en construcción</h2>
             <hr class="h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
-            <p class="text-lg leading-8 text-gray-400">Encontranos en el local de Av. Ramón y Cajal 10, Fuengirola, Málaga</p>
+            <p class="text-lg leading-8 text-gray-400">11 Main Street, Dungloe, Donegal, F94 WR6T (above Kenneth Campbell's)</p>
             <div class="flex gap-6 social-icons justify-center">
-                <a href="https://wa.me/34623037048" class="h-10 w-10 aspect-square rounded-md bg-black/5 p-2 ring-1 ring-black/10" target="_blank">
+                <a href="https://wa.me/353852727422" class="h-10 w-10 aspect-square rounded-md bg-black/5 p-2 ring-1 ring-black/10" target="_blank">
                     <i class="flex text-2xl leading-none fi fi-brands-whatsapp"></i>
                 </a>
-                <a href="https://www.instagram.com/chimi.creativo/?hl=es" class="h-10 w-10 aspect-square rounded-md bg-black/5 p-2 ring-1 ring-black/10" target="_blank">
-                    <i class="flex text-2xl leading-none fi fi-brands-instagram"></i>
+                <a href="https://www.facebook.com/Chibalancetherapies" class="h-10 w-10 aspect-square rounded-md bg-black/5 p-2 ring-1 ring-black/10" target="_blank">
+                    <i class="flex text-2xl leading-none fi fi-brands-facebook"></i>
                 </a>
-                <a href="https://maps.app.goo.gl/22GUnZ2foJeEYud98" class="h-10 w-10 aspect-square rounded-md bg-black/5 p-2 ring-1 ring-black/10" target="_blank">
+                <a href="https://maps.app.goo.gl/wAKdYQRLxSdrLY4U6" class="h-10 w-10 aspect-square rounded-md bg-black/5 p-2 ring-1 ring-black/10" target="_blank">
                     <i class="flex text-2xl leading-none fi fi-rs-map-marker"></i>
                 </a>
             </div>
@@ -42,9 +38,15 @@
     </body>
 </html>
 <style>
+    .enconstruccion a{
+        flex-direction: column;
+
+    }
+    .enconstruccion a div{
+        align-items:center;
+    }
     .enconstruccion svg{
         height: auto;
-        width: 16rem;
-        fill: #6c4852;
+        width: 8rem;
     }
 </style>
