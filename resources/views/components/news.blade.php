@@ -1,7 +1,7 @@
 <div class="container news splide" aria-label="Latest news">
     <div class="news-title">
         <h3>News</h3>
-        <a href="#">See More <x-icons.chevron /></a>
+        <a href="/articles">See More <x-icons.chevron /></a>
     </div>
     <div class="splide__track">
         <ul class="splide__list">
