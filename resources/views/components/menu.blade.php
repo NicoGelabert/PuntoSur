@@ -67,7 +67,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="/articles">
                 News
             </a>
         </li>

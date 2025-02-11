@@ -1,0 +1,138 @@
+.news{
+    @apply flex flex-col gap-6 py-12;
+    .news-title{
+        @apply flex justify-between items-center;
+        a{
+            @apply flex gap-2 items-center font-medium
+            text-gray_500 hover:text-gray_700;
+            svg{
+                @apply fill-gray_500;
+            }
+        }
+        a:hover{
+            svg{
+                @apply fill-gray_700;
+            }
+        }
+    }
+    .news-card{
+        @apply flex flex-col sm:flex-row gap-6;
+        .news-card-img{
+            @apply sm:w-1/2;
+            img{
+                @apply rounded-lg lg:aspect-[5/2] object-cover;
+            }
+        }
+        .news-card-content{
+            @apply flex flex-col gap-4 sm:w-1/2;
+            .news-card-content-header{
+                @apply flex gap-2
+                sm:flex-col md:flex-row
+                items-center sm:items-start;
+                .author{
+                    @apply flex gap-2 text-gray_600;
+                    img{
+                        @apply max-h-6 w-auto rounded-full;
+                    }
+                }
+                .dot-divider{
+                    @apply sm:hidden md:block text-4xl leading-5;
+                }
+                .dot-divider, .news-date{
+                    @apply text-gray_500;
+                }
+            }
+            .description{
+                @apply text-gray_600 sm:line-clamp-2 md:line-clamp-none;
+            }
+        }
+    }
+}
+// VISTA DE PRODUCTOS
+#news_index{
+    .news_index_hero{
+        @apply flex justify-center mt-14 py-12 lg:py-24;
+        h2{
+            @apply text-center;
+        }
+    }
+    .news_list{
+        @apply grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-screen-xl px-4;
+        .news-card{
+            @apply flex flex-col gap-6;
+            .news-card-img{
+                img{
+                    @apply rounded-lg lg:aspect-[5/2] object-cover;
+                }
+            }
+            .news-card-content{
+                @apply flex flex-col gap-4;
+                .news-card-content-header{
+                    @apply flex gap-2
+                    flex-col md:flex-row
+                    justify-between;
+                    .author{
+                        @apply flex gap-2 text-gray_600;
+                        img{
+                            @apply max-h-6 w-auto rounded-full;
+                        }
+                    }
+                    .dot-divider{
+                        @apply sm:hidden md:block text-4xl leading-5;
+                    }
+                    .dot-divider, .news-date{
+                        @apply text-gray_500;
+                    }
+                }
+                .description{
+                    @apply text-gray_600 hidden md:block;
+                }
+            }
+        }
+    }
+}
+// FIN VISTA DE PRODUCTOS
+// VISTA DE PRODUCTO
+#news_view{
+    .news_view_hero{
+        @apply flex flex-col justify-center mt-14 px-4 gap-8
+        py-12 lg:py-24;
+        h2, p{
+            @apply text-center
+        }
+        .news_content_header{
+            @apply flex gap-2 justify-center
+            sm:flex-col md:flex-row
+            items-center;
+            .author{
+                @apply flex gap-2 text-gray_600;
+                img{
+                    @apply max-h-6 w-auto rounded-full;
+                }
+            }
+            .dot_divider{
+                @apply sm:hidden md:block text-4xl leading-5;
+            }
+            .dot_divider, .news_date{
+                @apply text-gray_500;
+            }
+        }
+    }
+    .news_content{
+        @apply bg-blue_light py-12 px-4;
+        .news_view_img{
+            @apply object-cover rounded-xl
+            aspect-square sm:aspect-video
+            md:w-1/2;
+        }
+        .news_lead{
+            @apply flex items-center
+            md:px-6 lg:px-12
+            md:bg-yellow_light rounded-xl;
+        }
+        .description{
+            @apply py-6 md:py-12;
+        }
+    }
+// FIN VISTA DE PRODUCTO
+}
