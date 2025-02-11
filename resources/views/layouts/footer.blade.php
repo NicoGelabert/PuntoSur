@@ -18,8 +18,8 @@
                 @endforeach
             </ul>
             <div class="flex flex-col gap-4">
-                <a href="/politica-de-privacidad"><p>Cancelation policy & Terms and conditions</p></a>
-                <a href="/terminos-y-condiciones"><p>Cookies & Privacy policy</p></a>
+                <a href="/terms-and-conditions"><p>Cancelation policy & Terms and conditions</p></a>
+                <a href="/privacy-policy"><p>Cookies & Privacy policy</p></a>
             </div>
         </div>
     </div>

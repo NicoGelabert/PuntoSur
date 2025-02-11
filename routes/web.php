@@ -63,10 +63,10 @@ Route::middleware(['guestOrVerified'])->group(function () {
     });
 
     // Política de Privacidad
-    Route::get('/politica-de-privacidad', function (){
+    Route::get('/privacy-policy', function (){
         return view('legal/privacy-policy');
     });
-    Route::get('/terminos-y-condiciones', function (){
+    Route::get('/terms-and-conditions', function (){
         return view('legal/terms-and-conditions');
     });
 });

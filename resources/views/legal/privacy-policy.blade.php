@@ -1,135 +1,123 @@
 <x-app-layout>
     <div class="flex flex-col justify-center gap-12 max-w-screen-xl px-4 py-32 mx-auto md:px-16 overflow-hidden">
-        <h3>{{ __('Política de Privacidad') }}</h3>
+        <h3>{{ __('Privacy Policy') }}</h3>
 
-        <p>{{ __('Última actualización: 23 de noviembre de 2024') }}</p>
+        <p>{{ __('Last updated: February, 2025') }}</p>
 
         <div class="flex flex-col gap-4">
-            <h6>{{ __('1. Información General') }}</h6>
-            <p>{{ __('Chimicreativo.es, como responsable del tratamiento de los datos, está comprometido con la privacidad de sus usuarios y garantiza que los datos personales recopilados serán tratados conforme al Reglamento General de Protección de Datos (RGPD) y demás normativas aplicables.') }}</p>
+            <h6>{{ __('1. General Information') }}</h6>
+            <p>{{ __('Chibalancetherapies.com, as the data controller, is committed to user privacy and ensures that personal data collected will be processed in accordance with the General Data Protection Regulation (GDPR) and other applicable regulations.') }}</p>
         </div>
 
         <div class="flex flex-col gap-4">
-            <h6>{{ __('2. Datos Recopilados') }}</h6>
+            <h6>{{ __('2. Data Collected') }}</h6>
             
-            <p>{{ __('Recopilamos los siguientes datos personales a través de nuestros formularios:') }}</p>
+            <p>{{ __('We collect the following personal data through our forms:') }}</p>
 
             <div>
-                <p class="strong">{{ __('Formulario de Contacto:') }}</p>
+                <p class="strong">{{ __('Contact Form:') }}</p>
                 <ul class="list-disc pl-12">
-                    <li>{{ __('Nombre') }}</li>
-                    <li>{{ __('Correo electrónico') }}</li>
-                    <li>{{ __('Teléfono') }}</li>
-                    <li>{{ __('Servicio solicitado (Diseño gráfico, Desarrollo web, Branding)') }}</li>
-                    <li>{{ __('Mensaje') }}</li>
-                </ul>
-            </div>
-            
-            <div>
-                <p class="strong">{{ __('Formulario de Presupuesto:') }}</p>
-                <ul class="list-disc pl-12">
-                    <li>{{ __('Nombre') }}</li>
-                    <li>{{ __('Correo electrónico') }}</li>
-                    <li>{{ __('Teléfono') }}</li>
-                    <li>{{ __('Detalles del servicio solicitado') }}</li>
-                    <li>{{ __('Mensaje') }}</li>
+                    <li><p>{{ __('Name') }}</p></li>
+                    <li><p>{{ __('Email') }}</p></li>
+                    <li><p>{{ __('Phone') }}</p></li>
+                    <li><p>{{ __('Message') }}</p></li>
                 </ul>
             </div>
 
             <div>
-                <p class="strong">{{ __('Automáticamente a través de cookies:') }}</p>
+                <p class="strong">{{ __('Automatically via Cookies:') }}</p>
                 <ul class="list-disc pl-12">
-                    <li>{{ __('Datos de navegación (dirección IP, dispositivo, tiempo de visita).') }}</li>
-                    <li>{{ __('Cookies: XSRF-TOKEN, _ga, _ga_9Q6H0QETRF, chimi_creativo_session, laravel_cookie_consent, ls_smartpush.') }}</li>
+                    <li><p>{{ __('Browsing data (IP address, device, visit duration).') }}</p></li>
+                    <li><p>{{ __('Cookies: XSRF-TOKEN, _ga, _ga_9Q6H0QETRF, chibalance_session, laravel_cookie_consent, ls_smartpush.') }}</p></li>
                 </ul>
             </div>
         </div>
 
         <div class="flex flex-col gap-4">
-            <h6>{{ __('3. Finalidad del Tratamiento') }}</h6>
+            <h6>{{ __('3. Purpose of Data Processing') }}</h6>
             
-            <p>{{ __('Los datos personales serán utilizados para:') }}</p>
+            <p>{{ __('Personal data will be used to:') }}</p>
 
             <ul class="list-disc pl-12">
-                <li>{{ __('Responder consultas y solicitudes de contacto.') }}</li>
-                <li>{{ __('Gestionar presupuestos.') }}</li>
-                <li>{{ __('Mejorar el rendimiento del sitio web mediante análisis estadísticos.') }}</li>
-                <li>{{ __('Garantizar la seguridad del sitio.') }}</li>
-                <li>{{ __('Actividades de marketing: Utilizamos los datos personales con fines de marketing, incluyendo:') }}
+                <li><p>{{ __('Respond to inquiries and contact requests.') }}</p></li>
+                <li><p>{{ __('Manage quote requests.') }}</p></li>
+                <li><p>{{ __('Improve website performance through statistical analysis.') }}</p></li>
+                <li><p>{{ __('Ensure site security.') }}</p></li>
+                <li><p>{{ __('Marketing activities: We use personal data for marketing purposes, including:') }}
                     <ul class="list-decimal pl-12">
-                        <li>{{ __('Email marketing: Enviar boletines informativos, actualizaciones y promociones relacionadas con nuestros servicios.') }}</li>
-                        <li>{{ __('Publicidad personalizada: Utilización de datos para crear campañas publicitarias en plataformas como Facebook Ads y Google Ads.') }}</li>
+                        <li><p>{{ __('Email marketing: Sending newsletters, updates, and promotions related to our services.') }}</p></li>
+                        <li><p>{{ __('Personalized advertising: Using data for targeted ad campaigns on platforms like Facebook Ads and Google Ads.') }}</p></li>
                     </ul>
-                </li>
+                </p></li>
             </ul>
-            <p>{{ __('Los datos no serán compartidos con terceros fuera de estos fines.') }}</p>
+            <p>{{ __('Data will not be shared with third parties beyond these purposes.') }}</p>
         </div>
         
         <div class="flex flex-col gap-4">
-            <h6>{{ __('4. Uso de Cookies') }}</h6>
+            <h6>{{ __('4. Use of Cookies') }}</h6>
             
-            <p>{{ __('En Chimicreativo.es utilizamos cookies para:') }}</p>
+            <p>{{ __('At Chibalancetherapies.com, we use cookies to:') }}</p>
 
             <ul class="list-disc pl-12">
-                <li>{{ __('Mejorar la experiencia del usuario.') }}</li>
-                <li>{{ __('Realizar análisis de tráfico (Google Analytics).') }}</li>
-                <li>{{ __('Personalización de anuncios (para campañas de publicidad en Facebook y Google).') }}</li>
+                <li><p>{{ __('Enhance user experience.') }}</p></li>
+                <li><p>{{ __('Conduct traffic analysis (Google Analytics).') }}</p></li>
+                <li><p>{{ __('Personalize ads (for advertising campaigns on Facebook and Google).') }}</p></li>
             </ul>
-            <p>{{ __('Puedes gestionar las cookies desde el banner inicial o configurando tu navegador.') }}</p>
+            <p>{{ __('You can manage cookies from the initial banner or by configuring your browser settings.') }}</p>
         </div>
         
         <div class="flex flex-col gap-4">
-            <h6>{{ __('5. Base Legal para el Tratamiento') }}</h6>
+            <h6>{{ __('5. Legal Basis for Processing') }}</h6>
             <ul class="list-disc pl-12">
-                <li>{{ __('Consentimiento explícito del usuario al suscribirse a nuestros boletines o aceptar recibir publicidad personalizada.') }}</li>
-                <li>{{ __('Cumplimiento de obligaciones legales.') }}</li>
-                <li>{{ __('Intereses legítimos para mejorar nuestro sitio y servicios.') }}</li>
-            </ul>
-        </div>
-        
-        <div class="flex flex-col gap-4">
-            <h6>{{ __('6. Conservación de los Datos') }}</h6>
-            <p>{{ __('Los datos personales serán conservados mientras sean necesarios para las finalidades descritas, o hasta que el usuario solicite su eliminación.') }}</p>
-        </div>
-
-        <div class="flex flex-col gap-4">
-            <h6>{{ __('7. Derechos de los Usuarios') }}</h6>
-
-            <p>{{ __('Los usuarios tienen derecho a:') }}</p>
-
-            <ul class="list-disc pl-12">
-                <li>{{ __('Acceder a sus datos personales.') }}</li>
-                <li>{{ __('Rectificar datos incorrectos.') }}</li>
-                <li>{{ __('Solicitar la eliminación de sus datos.') }}</li>
-                <li>{{ __('Limitar el tratamiento.') }}</li>
-                <li>{{ __('Revocar el consentimiento otorgado.') }}</li>
-            </ul>
-
-            <p>{{ __('Para ejercer tus derechos, puedes escribirnos a: ') }}<a href="mailto:privacidad@chimicreativo.es">privacidad@chimicreativo.es</a>.</p>
-        </div>
-
-        <div class="flex flex-col gap-4">
-            <h6>{{ __('8. Medidas de Seguridad') }}</h6>
-
-            <p>{{ __('El sitio está protegido mediante:') }}</p>
-
-            <ul class="list-disc pl-12">
-                <li>{{ __('Certificado SSL para cifrar las comunicaciones.') }}</li>
-                <li>{{ __('Almacenamiento en servidores seguros de Hostinger.') }}</li>
-                <li>{{ __('Copias de seguridad periódicas.') }}</li>
+                <li><p>{{ __('Explicit user consent when subscribing to our newsletters or agreeing to receive personalized advertising.') }}</p></li>
+                <li><p>{{ __('Compliance with legal obligations.') }}</p></li>
+                <li><p>{{ __('Legitimate interests in improving our site and services.') }}</p></li>
             </ul>
         </div>
         
         <div class="flex flex-col gap-4">
-            <h6>{{ __('9. Modificaciones') }}</h6>
-
-            <p>{{ __('Nos reservamos el derecho de actualizar esta Política de Privacidad en función de cambios legales o técnicos. La fecha de la última actualización aparecerá al inicio del documento.') }}</p>
+            <h6>{{ __('6. Data Retention') }}</h6>
+            <p>{{ __('Personal data will be retained as long as necessary for the described purposes or until the user requests its deletion.') }}</p>
         </div>
 
         <div class="flex flex-col gap-4">
-            <h6>{{ __('10. Contacto') }}</h6>
+            <h6>{{ __('7. User Rights') }}</h6>
 
-            <p>{{ __('Para consultas o solicitudes relacionadas con esta política, contáctanos en: ') }}<a href="mailto:privacidad@chimicreativo.es">privacidad@chimicreativo.es</a>.</p>
+            <p>{{ __('Users have the right to:') }}</p>
+
+            <ul class="list-disc pl-12">
+                <li><p>{{ __('Access their personal data.') }}</p></li>
+                <li><p>{{ __('Correct inaccurate data.') }}</p></li>
+                <li><p>{{ __('Request data deletion.') }}</p></li>
+                <li><p>{{ __('Restrict processing.') }}</p></li>
+                <li><p>{{ __('Withdraw granted consent.') }}</p></li>
+            </ul>
+
+            <p>{{ __('To exercise your rights, you can contact us at: ') }}<a href="mailto:chibalancetherapies@gmail.com">chibalancetherapies@gmail.com</a>.</p>
+        </div>
+
+        <div class="flex flex-col gap-4">
+            <h6>{{ __('8. Security Measures') }}</h6>
+
+            <p>{{ __('The site is protected with:') }}</p>
+
+            <ul class="list-disc pl-12">
+                <li><p>{{ __('SSL certificate to encrypt communications.') }}</p></li>
+                <li><p>{{ __('Storage on secure servers.') }}</p></li>
+                <li><p>{{ __('Regular backups.') }}</p></li>
+            </ul>
+        </div>
+        
+        <div class="flex flex-col gap-4">
+            <h6>{{ __('9. Modifications') }}</h6>
+
+            <p>{{ __('We reserve the right to update this Privacy Policy based on legal or technical changes. The last update date will appear at the beginning of the document.') }}</p>
+        </div>
+
+        <div class="flex flex-col gap-4">
+            <h6>{{ __('10. Contact') }}</h6>
+
+            <p>{{ __('For inquiries or requests related to this policy, contact us at: ') }}<a href="mailto:chibalancetherapies@gmail.com">chibalancetherapies@gmail.com</a>.</p>
         </div>
     </div>
 </x-app-layout>
