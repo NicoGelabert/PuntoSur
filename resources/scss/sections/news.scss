@@ -68,9 +68,7 @@
             .news-card-content{
                 @apply flex flex-col gap-4;
                 .news-card-content-header{
-                    @apply flex gap-2
-                    flex-col md:flex-row
-                    justify-between;
+                    @apply flex gap-2 justify-between;
                     .author{
                         @apply flex gap-2 text-gray_600;
                         img{
