@@ -8,7 +8,7 @@
             <x-button class="js-cookie-consent-agree cookie-consent__agree cursor-pointer btn btn-primary">
                 {{ trans('cookie-consent::texts.agree') }}<x-icons.send />
             </x-button>
-            <x-button class="js-cookie-consent-customize cookie-consent__customize cursor-pointer btn btn-primary">
+            <x-button class="js-cookie-consent-customize cookie-consent__customize cursor-pointer btn btn-secondary">
                 {{ trans('cookie-consent::texts.customize') }}<x-icons.send />
             </x-button>
         </div>
