@@ -9,11 +9,11 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $categories = Categories::all();
-        return view('categories.index', [
-            'categories' => $categories
-        ]);
+        return request()->expectsJson()
+            ? response()->json(['categories' => Categories::all()])
+            : view('categories.index', ['categories' => Categories::all()]);
     }
+
 
     public function view(Categories $categories)
     {

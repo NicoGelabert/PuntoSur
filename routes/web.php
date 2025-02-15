@@ -7,7 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\QuotationController;
@@ -43,6 +43,9 @@ Route::middleware(['guestOrVerified'])->group(function () {
     //Productos 
     Route::get('/all', [ProductController::class, 'index'])->name('products.index');
     Route::get('/all/{category:slug}/{product:slug}', [ProductController::class, 'view'])->name('product.view');
+
+    //Categorías 
+    Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
 
     //News
     Route::get('/articles', [ArticleController::class, 'index'])->name('news.index');
