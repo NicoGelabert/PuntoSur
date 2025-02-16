@@ -23,8 +23,5 @@ export default defineConfig({
             },
         }),
     ],
-    base: '/admin/',
-    build: {
-        outDir: 'dist', // El directorio donde se generan los archivos compilados
-      }
+    base: process.env.ASSET_URL,
 });
