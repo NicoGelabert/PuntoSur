@@ -16,7 +16,7 @@
         'alergens' => $product->alergens->pluck('name'),
         'images' => $product->images->pluck('url') 
         ]) }})"
-        class="mx-auto" id="product-view"
+        class="mx-auto product-view"
     >
         <x-icons.first_leave class="absolute" />
         <x-icons.second_leave class="absolute right-0 top-40 sm:top-28 z-10" />

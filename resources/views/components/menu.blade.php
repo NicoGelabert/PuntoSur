@@ -57,8 +57,8 @@
             </ul>
         </li>
         <li>
-            <a href="#">
-                Promos
+            <a href="/all/gift-cards/">
+                Gift Cards
             </a>
         </li>
         <li>

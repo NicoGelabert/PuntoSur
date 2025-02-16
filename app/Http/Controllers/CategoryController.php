@@ -16,6 +16,11 @@ class CategoryController extends Controller
 
     public function view(Category $category)
     {
-        return view('category.view', ['category' => $category]);
+        $products = $category->products()->where('published', 1)->get();
+
+        return view('category.view', [
+            'category' => $category,
+            'products' => $products,
+        ]);
     }
 }

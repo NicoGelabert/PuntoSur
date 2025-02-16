@@ -1,0 +1,42 @@
+.category-view{
+    h2{
+        @apply capitalize;
+    }
+    .category_index_hero{
+        @apply flex justify-center mt-14 py-12 lg:py-24;
+        h2{
+            @apply text-center
+        }
+    }
+    .card_list_container{
+        @apply bg-blue_light py-12;
+        .card_list{
+            @apply flex mx-auto gap-16 justify-center
+            flex-col sm:flex-row;
+            .card{
+                @apply flex flex-col gap-3 w-full h-full
+                sm:max-w-72;
+                .card_image{
+                    img{
+                        @apply rounded-lg w-full object-cover aspect-square;
+                    }
+                }
+                .card_content{
+                    @apply flex flex-col justify-between gap-4 h-full;
+                    .card_content_text{
+                        @apply flex flex-col gap-3;
+                        .trunkated_text{
+                            @apply line-clamp-3;
+                            p{
+                                @apply hidden;
+                            }
+                            p:first-of-type{
+                                @apply block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
