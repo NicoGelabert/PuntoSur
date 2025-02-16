@@ -27,3 +27,15 @@
         md:w-1/2;
     }
 }
+
+// VISTA ABOUT
+#about_view{
+    .about_view_hero{
+        @apply flex flex-col justify-center mt-14 px-4 gap-8
+        py-12 lg:py-24;
+        h2, p{
+            @apply text-center
+        }
+    }
+}
+// FIN VISTA ABOUT

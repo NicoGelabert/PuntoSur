@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -47,6 +48,9 @@ Route::middleware(['guestOrVerified'])->group(function () {
     //Categorías 
     Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
 
+    // About
+    Route::get('/about', [AboutController::class,'view'])->name('about.view');
+    
     //News
     Route::get('/articles', [ArticleController::class, 'index'])->name('news.index');
     Route::get('/articles/{article:slug}', [ArticleController::class, 'view'])->name('news.view');

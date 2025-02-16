@@ -62,7 +62,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="/about">
                 About Me
             </a>
         </li>
