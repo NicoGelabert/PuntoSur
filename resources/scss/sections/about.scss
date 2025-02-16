@@ -37,5 +37,21 @@
             @apply text-center
         }
     }
+    .about_content{
+        @apply bg-blue_light py-12 px-4;
+        .about_view_img{
+            @apply object-cover rounded-xl
+            aspect-square sm:aspect-video
+            md:w-1/2;
+        }
+        .about_short_description{
+            @apply flex items-center
+            md:px-6 lg:px-12
+            md:bg-yellow_light rounded-xl;
+        }
+        .large_description{
+            @apply py-6 md:py-12;
+        }
+    }
 }
 // FIN VISTA ABOUT

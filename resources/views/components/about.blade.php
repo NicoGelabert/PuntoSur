@@ -12,7 +12,7 @@
             <div>
                 {!! $about->signature !!}
             </div>
-            <x-button class="btn btn-primary">see more <x-icons.send /></x-button>
+            <x-button href="/about" class="btn btn-primary">see more <x-icons.send /></x-button>
         </div>
         <div class="about-large-image">
             <img src="{{ $about->image }}" alt="">
