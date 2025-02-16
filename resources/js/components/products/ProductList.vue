@@ -31,7 +31,7 @@
             <div :class="{ 'loading-opacity': loading }" class="flex-1">
                 <ul class="grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3">
                     <li v-for="product in products" :key="product.id" class="relative overflow-hidden flex flex-col">
-                        <a href="#" class="aspect-w-3 aspect-h-2 block overflow-hidden relative">
+                        <a :href="'/all/' + product.categories[0]?.slug + '/' + product.slug" class="aspect-w-3 aspect-h-2 block overflow-hidden relative">
                             <div v-if="product.categories && product.categories.length > 0" class="mt-2 text-xs flex gap-2 absolute">
                                 <ul class="font-bold text-xs">
                                     <li class="bg-gray_200 text-gray_600 rounded-md py-1 px-2 ml-2" v-for="category in product.categories" :key="category.id">{{ category.name }}</li>
