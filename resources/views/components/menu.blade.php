@@ -72,7 +72,7 @@
             </a>
         </li>
         <li class="flex gap-4">
-            <x-button href="#" class="btn btn-secondary">Intake <x-icons.login /></x-button>
+            <x-button href="/intake-form" class="btn btn-secondary">Intake <x-icons.login /></x-button>
             <x-button href="https://calendly.com/chibalancetherapies" target="_blank" class="btn btn-primary">book <x-icons.booking /></x-button>
         </li>
     </ul>

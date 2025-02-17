@@ -56,6 +56,11 @@ Route::middleware(['guestOrVerified'])->group(function () {
     Route::get('/articles', [ArticleController::class, 'index'])->name('news.index');
     Route::get('/articles/{article:slug}', [ArticleController::class, 'view'])->name('news.view');
 
+    // Intake Form
+    Route::get('/intake-form', function (){
+        return view('components/intake-form');
+    });
+
     //Contacto
     Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
     Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');

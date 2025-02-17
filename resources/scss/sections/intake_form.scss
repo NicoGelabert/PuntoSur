@@ -1,0 +1,41 @@
+.intake_form{
+    .intake_form_hero{
+        @apply flex justify-center mt-14 py-12 lg:py-24;
+        h2{
+            @apply text-center;
+        }
+    }
+    .intake_form_content{
+        #intakeForm{
+            @apply flex flex-col gap-16;
+            input, textarea{
+                @apply
+                w-full
+                bg-transparent
+                text-gray-900 
+                border-b-gray-300
+                border-transparent
+                focus:ring-transparent
+                focus:border-b-gray-600
+                focus:border-t-transparent
+                focus:border-x-transparent
+                focus:ring-0;
+            }
+            .radio-container .peer:checked + label {
+                @apply bg-primary text-secondary;
+            }
+            .consent_list{
+                @apply list-disc pl-4 flex flex-col gap-3;
+            }
+            .consentCheckbox{
+                @apply w-4 border-gray-600 bg-gray-300 mt-[0.1rem];
+            }
+            .consentCheckbox:checked{
+                @apply border-secondary bg-secondary;
+            }
+            hr{
+                @apply border-t-[2px];
+            }
+        }
+    }
+}
