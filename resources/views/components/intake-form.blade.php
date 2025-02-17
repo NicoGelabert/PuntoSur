@@ -64,13 +64,13 @@
                                 <div class="flex flex-col gap-4">
                                     <p class="text-base">Evaluate your current diet:</p>
                                     <div class="radio-container flex gap-4">
-                                        <input type="radio" name="currentDiet" value="poorDiet" id="poorDietInput" class="peer hidden">
+                                        <input type="radio" name="currentDiet" value="Poor" id="poorDietInput" class="peer hidden">
                                         <label for="poorDietInput" class="block bg-slate-100 px-4 py-2 rounded-full text-xs dark:bg-dark_gray">Poor</label>
                                         
-                                        <input type="radio" name="currentDiet" value="averageDiet" id="averageDietInput" class="peer hidden">
+                                        <input type="radio" name="currentDiet" value="Average" id="averageDietInput" class="peer hidden">
                                         <label for="averageDietInput" class="block bg-slate-100 px-4 py-2 rounded-full text-xs dark:bg-dark_gray">Average</label>
                                         
-                                        <input type="radio" name="currentDiet" value="veryGoodDiet" id="veryGoodDietInput" class="peer hidden">
+                                        <input type="radio" name="currentDiet" value="Very Good" id="veryGoodDietInput" class="peer hidden">
                                         <label for="veryGoodDietInput" class="block bg-slate-100 px-4 py-2 rounded-full text-xs dark:bg-dark_gray">Very good</label>
                                     </div>
                                 </div>
@@ -78,13 +78,13 @@
                                 <div class="flex flex-col gap-4">
                                     <p class="text-base">Sleep patterns:</p>
                                     <div class="radio-container flex gap-4">
-                                        <input type="radio" name="sleepPatterns" value="sleepPatternsPoor" id="sleepPatternsPoorInput" class="peer hidden">
+                                        <input type="radio" name="sleepPatterns" value="Poor" id="sleepPatternsPoorInput" class="peer hidden">
                                         <label for="sleepPatternsPoorInput" class="block bg-slate-100 px-4 py-2 rounded-full text-xs dark:bg-dark_gray">Poor</label>
                                         
-                                        <input type="radio" name="sleepPatterns" value="sleepPatternsFine" id="sleepPatternsFineInput" class="peer hidden">
+                                        <input type="radio" name="sleepPatterns" value="Fine" id="sleepPatternsFineInput" class="peer hidden">
                                         <label for="sleepPatternsFineInput" class="block bg-slate-100 px-4 py-2 rounded-full text-xs dark:bg-dark_gray">Fine</label>
                                         
-                                        <input type="radio" name="sleepPatterns" value="sleepPatternsGood" id="sleepPatternsGoodInput" class="peer hidden">
+                                        <input type="radio" name="sleepPatterns" value="Good" id="sleepPatternsGoodInput" class="peer hidden">
                                         <label for="sleepPatternsGoodInput" class="block bg-slate-100 px-4 py-2 rounded-full text-xs dark:bg-dark_gray">Good</label>
                                     </div>                        
                                 </div>
@@ -92,13 +92,13 @@
                                 <div class="flex flex-col gap-4">
                                     <p class="text-base">Water Intake:</p>
                                     <div class="radio-container flex gap-4">
-                                        <input type="radio" name="waterIntake" value="waterIntakeHalf" id="waterIntakeHalfInput" class="peer hidden">
+                                        <input type="radio" name="waterIntake" value="Half pint or less" id="waterIntakeHalfInput" class="peer hidden">
                                         <label for="waterIntakeHalfInput" class="block bg-slate-100 px-4 py-2 rounded-full text-xs dark:bg-dark_gray">Half pint or less</label>
                                         
-                                        <input type="radio" name="waterIntake" value="waterIntakeOne" id="waterIntakeOneInput" class="peer hidden">
+                                        <input type="radio" name="waterIntake" value="One pint" id="waterIntakeOneInput" class="peer hidden">
                                         <label for="waterIntakeOneInput" class="block bg-slate-100 px-4 py-2 rounded-full text-xs dark:bg-dark_gray">One pint</label>
                                         
-                                        <input type="radio" name="waterIntake" value="waterIntakeTwo" id="waterIntakeTwoInput" class="peer hidden">
+                                        <input type="radio" name="waterIntake" value="Two lts or more" id="waterIntakeTwoInput" class="peer hidden">
                                         <label for="waterIntakeTwoInput" class="block bg-slate-100 px-4 py-2 rounded-full text-xs dark:bg-dark_gray">2 lts or more</label>
                                     </div>
                                 </div>
@@ -147,7 +147,75 @@
                         <span>{{__('Enviar')}}</span><x-icons.send-info />
                     </x-button>
                 </form>
+                <div id="successMessage" class="mx-auto" style="display: none;">
+                    <H4 class="text-center">Form Sent!</H4>
+                    <img src="{{ asset('storage/common/mensaje-enviado.gif')}}" alt="Mensaje enviado">
+                </div>
+                <div id="errorMessage" class="mx-auto" style="display: none;">
+                    Submission failed. Please try again.
+                </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('intakeForm');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Evita el envío del formulario
+
+        // Capturar valores de inputs de texto
+        const name = document.getElementById('fullNameInput').value;
+        const age = document.getElementById('ageInput').value;
+        const phone = document.getElementById('phoneInput').value;
+        const emergencyContact = document.getElementById('emergencyContactInput').value;
+        const town = document.getElementById('townInput').value;
+        const occupancy = document.getElementById('occupancyInput').value;
+        const email = document.getElementById('emailInput').value;
+        const sore = document.getElementById('soreInput').value;
+        const medication = document.getElementById('medicationInput').value;
+        const allergies = document.getElementById('allergiesInput').value;
+        const medicalBackground = document.getElementById('medicalBackgroundInput').value;
+        const pregnancy = document.getElementById('pregnancyInput').value;
+        const menopause = document.getElementById('menopauseInput').value;
+
+        // Función para capturar el valor seleccionado de los radio buttons
+        function getSelectedRadio(name) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            return selected ? selected.value : "No seleccionado";
+        }
+
+        // Capturar valores de radio buttons
+        const currentDiet = getSelectedRadio("currentDiet");
+        const sleepPatterns = getSelectedRadio("sleepPatterns");
+        const waterIntake = getSelectedRadio("waterIntake");
+
+        // Mostrar la información en consola
+        console.log("Información del formulario:");
+        console.log({
+            name,
+            age,
+            phone,
+            emergencyContact,
+            town,
+            occupancy,
+            email,
+            sore,
+            medication,
+            allergies,
+            medicalBackground,
+            currentDiet,
+            sleepPatterns,
+            waterIntake,
+            pregnancy,
+            menopause
+        });
+        form.reset();
+
+        alert("Datos enviados a la consola para pruebas. Revisa la consola (F12).");
+    });
+});
+
+</script>
