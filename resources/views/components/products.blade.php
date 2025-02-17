@@ -11,7 +11,11 @@
                     <li class="splide__slide">
                         <div class="card">
                             <div class="card-image">
+                            @if ($product->image)
                                 <img src="{{ $product->image }}" alt="{{ $product->title }}">
+                                @else
+                                <img src="{{ asset('storage/common/noimage.png') }}" alt="">
+                            @endif
                             </div>
                             <div class="card-content">
                                 <div class="card-content-text">
@@ -41,7 +45,11 @@
                     <li>
                         <div class="blend-card">
                             <div class="blend-card-content">
+                            @if ($product->image)
                                 <img src="{{ $product->image }}" alt="{{ $product->title }}">
+                                @else
+                                <img src="{{ asset('storage/common/noimage.png') }}" alt="">
+                            @endif
                                 <h6>{{ $product->title }}</h6>
                             </div>
                             <x-button class="btn" href="{{ $product->link }}"> <x-icons.send /></x-button>

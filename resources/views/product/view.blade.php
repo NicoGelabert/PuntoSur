@@ -27,7 +27,11 @@
         </div>
         <div class="product-content">
             <div class="flex flex-col md:flex-row gap-3 md:gap-12 container">
-                <img src="{{ $product->image }}" alt="" class="product-view-img">
+                @if ($product->image)
+                    <img src="{{ $product->image }}" alt="{{ $product->title }}" class="product-view-img">
+                    @else
+                    <img src="{{ asset('storage/common/noimage.png') }}" alt="" class="product-view-img">
+                @endif
                 <div class="flex flex-col gap-3 md:w-1/2">
                     <div class="flex gap-4">
                         <ul>

@@ -31,7 +31,7 @@ class ProductController extends Controller
                             [
                                 'categories' => $product->categories,
                                 'prices' => $product->prices,
-                                'image_url' => $product->images->first()->url ?? '/default-image.jpg', // Primera imagen o default
+                                'image_url' => $product->images->first()->url ?? 'storage/common/noimage.png', // Primera imagen o default
                             ]
                         );
                     })
