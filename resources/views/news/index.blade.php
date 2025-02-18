@@ -6,7 +6,7 @@
             <h2>Latest news</h3>
         </div>
         <div class="bg-blue_light py-12">
-            <div class="news_list">
+            <div class="news_list container">
                 @foreach ($articles as $article)
                 <a href="{{ route('news.view', ['article' => $article->slug]) }}">
                     <div class="news-card">
