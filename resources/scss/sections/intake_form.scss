@@ -8,7 +8,7 @@
     .intake_form_content{
         #intakeForm{
             @apply flex flex-col gap-16;
-            input, textarea{
+            input, textarea, select{
                 @apply
                 w-full
                 bg-transparent

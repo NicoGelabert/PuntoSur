@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ServiceController;
@@ -57,9 +58,8 @@ Route::middleware(['guestOrVerified'])->group(function () {
     Route::get('/articles/{article:slug}', [ArticleController::class, 'view'])->name('news.view');
 
     // Intake Form
-    Route::get('/intake-form', function (){
-        return view('components/intake-form');
-    });
+    Route::get('/intake-form', [ClientController::class, 'create'])->name('client.create');
+    Route::post('/intake-form', [ClientController::class, 'store'])->name('client.store');
 
     //Contacto
     Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
@@ -83,9 +83,12 @@ Route::middleware(['guestOrVerified'])->group(function () {
     Route::get('/terms-and-conditions', function (){
         return view('legal/terms-and-conditions');
     });
+
 });
 
 Route::middleware(['auth', 'verified'])->group(function() {
+    Route::get('/clients', [ClientController::class, 'index'])->name('client.index');
+    Route::get('/clients/{client:slug}', [ClientController::class, 'view'])->name('client.view');
     Route::get('/profile', [ProfileController::class, 'view'])->name('profile');
     Route::post('/profile', [ProfileController::class, 'store'])->name('profile.update');
     Route::post('/profile/password-update', [ProfileController::class, 'passwordUpdate'])->name('profile_password.update');

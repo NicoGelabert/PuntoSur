@@ -7,19 +7,19 @@
         </div>
         <div class="bg-blue_light py-12">
             <div class="container intake_form_content">
-                <form id="intakeForm" action="">
+                <form id="intakeForm" action="{{ route('client.store') }}" method="POST">
                     @csrf
                     <div class="flex flex-col gap-4">
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <input id="fullNameInput" type="text" name="fullName" placeholder="Your full name" required>
+                            <input id="fullNameInput" type="text" name="full_name" placeholder="Your full name" required>
                             
                             <input id="ageInput" type="number" name="age" placeholder="Your age" required>
                         </div>
                         
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <input id="phoneInput" type="tel" name="phone" placeholder="Your contact number" required pattern="[0-9]{9}">
+                            <input id="phoneInput" type="tel" name="phone_number" placeholder="Your contact number" required pattern="[0-9]{9}">
                             
-                            <input id="emergencyContactInput" type="tel" name="emergencyContact" placeholder="Emergency contact number" required pattern="[0-9]{9}">
+                            <input id="emergencyContactInput" type="tel" name="emergency_phone_number" placeholder="Emergency contact number" required pattern="[0-9]{9}">
                         </div>
                         
                         <div class="flex flex-col sm:flex-row gap-4">
@@ -32,7 +32,13 @@
                     </div>
                     
                     <div class="flex flex-col gap-4">
-                        <h4>Treatment booked</h4>
+                        <label for="treatment">Treatment booked</label>
+                        <select name="treatment" id="treatmentInput">
+                            <option value="" disabled selected>Select your booked treatment</option>
+                            @foreach($products as $product)
+                                <option value="{{ $product->title }}">{{ $product->title }}</option>
+                            @endforeach
+                        </select>
 
                         <div class="flex flex-col gap-10">
                             <div class="flex flex-col gap-2">
@@ -113,12 +119,12 @@
                         <div class="flex flex-col gap-10">
                             <div class="flex flex-col gap-2">
                                 <label for="pregnancy">If you are pregnant, mention pregnancy stage (weeks) and any medical considerations to know.</label>
-                                <textarea id="pregnancyInput" name="pregnancy" rows="1" placeholder="Your answer" required ></textarea>
+                                <textarea id="pregnancyInput" name="pregnancy" rows="1" placeholder="Your answer" ></textarea>
                             </div>
         
                             <div class="flex flex-col gap-2">
                                 <label for="menopause">If you are going through menopause or perimenopause please describe symptoms related and any treatments you are doing or HRT.</label>
-                                <textarea id="menopauseInput" name="menopause" rows="1" placeholder="Your answer" required ></textarea>
+                                <textarea id="menopauseInput" name="menopause" rows="1" placeholder="Your answer" ></textarea>
                             </div>
                         </div>
                     </div>
@@ -136,8 +142,8 @@
                         </ul>
     
                         <div class="flex items-start gap-2">
-                            <input type="checkbox" id="termsCheckbox" name="terms" class="consentCheckbox" required>
-                            <label for="termsCheckbox" class="text-sm">
+                            <input type="checkbox" id="signedCheckbox" name="signed" class="consentCheckbox" value="1" required>
+                            <label for="signedCheckbox" class="text-sm">
                                 By signing this form, I give my consent to proceed with the treatment as outlined above.
                             </label>
                         </div>
@@ -146,10 +152,16 @@
                     <x-button id="subscribeBtn" type="submit" class="btn btn-primary" >
                         <span>{{__('Enviar')}}</span><x-icons.send-info />
                     </x-button>
+                    <div id="loader_container" class="loader_container hidden_loader">
+                    <div class="form_loader">
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <span>{{__('Enviando...')}}</span>
+                </div>
                 </form>
                 <div id="successMessage" class="mx-auto" style="display: none;">
                     <H4 class="text-center">Form Sent!</H4>
-                    <img src="{{ asset('storage/common/mensaje-enviado.gif')}}" alt="Mensaje enviado">
                 </div>
                 <div id="errorMessage" class="mx-auto" style="display: none;">
                     Submission failed. Please try again.
@@ -160,61 +172,56 @@
 </x-app-layout>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('intakeForm');
+    const subscribeBtn = document.getElementById('subscribeBtn');
+    const signedCheckbox = document.getElementById('signedCheckbox');
+    const loader = document.getElementById('loader_container');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Evita el envío del formulario
+    // Habilitar/deshabilitar botón de enviar según el estado de la casilla
+    signedCheckbox.addEventListener('input', function() {
+        subscribeBtn.disabled = !signedCheckbox.checked;
+    });
 
-        // Capturar valores de inputs de texto
-        const name = document.getElementById('fullNameInput').value;
-        const age = document.getElementById('ageInput').value;
-        const phone = document.getElementById('phoneInput').value;
-        const emergencyContact = document.getElementById('emergencyContactInput').value;
-        const town = document.getElementById('townInput').value;
-        const occupancy = document.getElementById('occupancyInput').value;
-        const email = document.getElementById('emailInput').value;
-        const sore = document.getElementById('soreInput').value;
-        const medication = document.getElementById('medicationInput').value;
-        const allergies = document.getElementById('allergiesInput').value;
-        const medicalBackground = document.getElementById('medicalBackgroundInput').value;
-        const pregnancy = document.getElementById('pregnancyInput').value;
-        const menopause = document.getElementById('menopauseInput').value;
+    // Asegurarse de que el botón está inicialmente deshabilitado
+    subscribeBtn.disabled = !signedCheckbox.checked;
 
-        // Función para capturar el valor seleccionado de los radio buttons
-        function getSelectedRadio(name) {
-            const selected = document.querySelector(`input[name="${name}"]:checked`);
-            return selected ? selected.value : "No seleccionado";
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Evitar el envío predeterminado del formulario
+
+        subscribeBtn.style.display = 'none';
+        loader.classList.remove('hidden_loader');
+
+        // Usar FormData para capturar todos los datos del formulario
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('{{ route("client.store") }}', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Añadir el token CSRF en los headers
+                },
+                body: formData // Enviar el formulario como FormData
+            });
+
+            const data = await response.json();
+            if (response.ok && data.success) {
+                // Mostrar el mensaje de éxito
+                successMessage.style.display = 'block';
+                form.style.display = 'none';
+            } else {
+                // Mostrar mensaje de error si el envío falla
+                errorMessage.style.display = 'block';
+            }
+        } catch (error) {
+            // Mostrar mensaje de error en caso de error de red o cualquier otra excepción
+            errorMessage.style.display = 'block';
+        } finally {
+            // Ocultar el loader cuando termine el proceso
+            loader.classList.add('hidden_loader');
         }
-
-        // Capturar valores de radio buttons
-        const currentDiet = getSelectedRadio("currentDiet");
-        const sleepPatterns = getSelectedRadio("sleepPatterns");
-        const waterIntake = getSelectedRadio("waterIntake");
-
-        // Mostrar la información en consola
-        console.log("Información del formulario:");
-        console.log({
-            name,
-            age,
-            phone,
-            emergencyContact,
-            town,
-            occupancy,
-            email,
-            sore,
-            medication,
-            allergies,
-            medicalBackground,
-            currentDiet,
-            sleepPatterns,
-            waterIntake,
-            pregnancy,
-            menopause
-        });
-        form.reset();
-
-        alert("Datos enviados a la consola para pruebas. Revisa la consola (F12).");
     });
 });
 

@@ -69,7 +69,7 @@
                 <IdentificationIcon class="w-5"/>
             </span>
         </router-link>
-        <router-link :to="{name: 'app.alergens'}"
+        <!-- <router-link :to="{name: 'app.alergens'}"
                     class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">
                 Alergens
@@ -77,8 +77,8 @@
             <span class="mr-2">
                 <EyeDropperIcon class="w-5"/>
             </span>
-        </router-link>
-        <router-link :to="{name: 'app.services'}"
+        </router-link> -->
+        <!-- <router-link :to="{name: 'app.services'}"
                     class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">
                 Services
@@ -86,8 +86,8 @@
             <span class="mr-2">
                 <BriefcaseIcon class="w-5"/>
             </span>
-        </router-link>
-        <router-link :to="{name: 'app.projects'}"
+        </router-link> -->
+        <!-- <router-link :to="{name: 'app.projects'}"
                     class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">
                 Projects
@@ -95,8 +95,8 @@
             <span class="mr-2">
                 <LightBulbIcon class="w-5"/>
             </span>
-        </router-link>
-        <router-link :to="{name: 'app.tags'}"
+        </router-link> -->
+        <!-- <router-link :to="{name: 'app.tags'}"
                     class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">
                 Tags
@@ -104,7 +104,7 @@
             <span class="mr-2">
                 <TagIcon class="w-5"/>
             </span>
-        </router-link>
+        </router-link> -->
         <router-link :to="{name: 'app.clients'}"
                     class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">
@@ -114,7 +114,7 @@
                 <TrophyIcon class="w-5"/>
             </span>
         </router-link>
-        <router-link :to="{name: 'app.orders'}"
+        <!-- <router-link :to="{name: 'app.orders'}"
                     class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">
                 Orders
@@ -122,8 +122,8 @@
             <span class="mr-2">
                 <ClipboardDocumentListIcon class="w-5"/>
             </span>
-        </router-link>
-        <router-link :to="{name: 'app.users'}"
+        </router-link> -->
+        <!-- <router-link :to="{name: 'app.users'}"
                     class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">
                 Users
@@ -131,8 +131,8 @@
             <span class="mr-2">
                 <UsersIcon class="w-5"/>
             </span>
-        </router-link>
-        <router-link :to="{name: 'app.customers'}"
+        </router-link> -->
+        <!-- <router-link :to="{name: 'app.customers'}"
         class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">
                 Customers
@@ -140,8 +140,8 @@
             <span class="mr-2">
                 <UserGroupIcon class="w-5"/>
             </span>
-        </router-link>
-        <router-link :to="{name: 'reports'}"
+        </router-link> -->
+        <!-- <router-link :to="{name: 'reports'}"
                  class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">
                 Reports
@@ -149,7 +149,7 @@
             <span class="mr-2">
                 <PresentationChartLineIcon class="w-5"/>
             </span>
-        </router-link>
+        </router-link> -->
     </div>
   
 </template>

@@ -133,89 +133,89 @@ const routes = [
           id: (value) => /^\d+$/.test(value)
         }
       },
-      {
-        path: 'alergens',
-        name: 'app.alergens',
-        component: Alergens
-      },
-      {
-        path: 'services',
-        name: 'app.services',
-        component: Services
-      },
-      {
-        path: 'projects',
-        name: 'app.projects',
-        component: Projects
-      },
-      {
-        path: 'projects/create',
-        name: 'app.projects.create',
-        component: ProjectView
-      },
-      {
-        path: 'projects/:id',
-        name: 'app.projects.edit',
-        component: ProjectView,
-        props: {
-          id: (value) => /^\d+$/.test(value)
-        }
-      },
-      {
-        path: 'tags',
-        name: 'app.tags',
-        component: Tags
-      },
+      // {
+      //   path: 'alergens',
+      //   name: 'app.alergens',
+      //   component: Alergens
+      // },
+      // {
+      //   path: 'services',
+      //   name: 'app.services',
+      //   component: Services
+      // },
+      // {
+      //   path: 'projects',
+      //   name: 'app.projects',
+      //   component: Projects
+      // },
+      // {
+      //   path: 'projects/create',
+      //   name: 'app.projects.create',
+      //   component: ProjectView
+      // },
+      // {
+      //   path: 'projects/:id',
+      //   name: 'app.projects.edit',
+      //   component: ProjectView,
+      //   props: {
+      //     id: (value) => /^\d+$/.test(value)
+      //   }
+      // },
+      // {
+      //   path: 'tags',
+      //   name: 'app.tags',
+      //   component: Tags
+      // },
       {
         path: 'clients',
         name: 'app.clients',
         component: Clients
       },
-      {
-        path: 'users',
-        name: 'app.users',
-        component: Users
-      },
-      {
-        path: 'customers',
-        name: 'app.customers',
-        component: Customers
-      },
-      {
-        path: 'customers/:id',
-        name: 'app.customers.view',
-        component: CustomerView
-      },
-      {
-        path: 'orders',
-        name: 'app.orders',
-        component: Orders
-      },
-      {
-        path: 'orders/:id',
-        name: 'app.orders.view',
-        component: OrderView
-      },
-      {
-        path: '/report',
-        name: 'reports',
-        component: Report,
-        meta: {
-          requiresAuth: true
-        },
-        children: [
-          {
-            path: 'orders/:date?',
-            name: 'reports.orders',
-            component: OrdersReport
-          },
-          {
-            path: 'customers/:date?',
-            name: 'reports.customers',
-            component: CustomersReport
-          }
-        ]
-      },
+      // {
+      //   path: 'users',
+      //   name: 'app.users',
+      //   component: Users
+      // },
+      // {
+      //   path: 'customers',
+      //   name: 'app.customers',
+      //   component: Customers
+      // },
+      // {
+      //   path: 'customers/:id',
+      //   name: 'app.customers.view',
+      //   component: CustomerView
+      // },
+      // {
+      //   path: 'orders',
+      //   name: 'app.orders',
+      //   component: Orders
+      // },
+      // {
+      //   path: 'orders/:id',
+      //   name: 'app.orders.view',
+      //   component: OrderView
+      // },
+      // {
+      //   path: '/report',
+      //   name: 'reports',
+      //   component: Report,
+      //   meta: {
+      //     requiresAuth: true
+      //   },
+      //   children: [
+      //     {
+      //       path: 'orders/:date?',
+      //       name: 'reports.orders',
+      //       component: OrdersReport
+      //     },
+      //     {
+      //       path: 'customers/:date?',
+      //       name: 'reports.customers',
+      //       component: CustomersReport
+      //     }
+      //   ]
+      // },
     ]
   },
   {

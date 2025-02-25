@@ -10,6 +10,9 @@
         w-4 sm:w-5 md:w-6;
     }
 }
+.btn:disabled{
+    @apply opacity-50;
+}
 .btn-primary{
     @apply border border-secondary bg-secondary hover:border-blue_hover hover:bg-blue_hover hover:text-white;
 }

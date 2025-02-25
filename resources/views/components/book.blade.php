@@ -1,5 +1,5 @@
 <div class="book relative">
-    <x-icons.third_leave class="absolute -top-12 -scale-100"/>
+    <x-icons.third_leave class="absolute -top-12"/>
     <div class="container py-12 flex flex-col gap-6 text-center items-center">
         <h3>Book now!</h3>
         <p class="text-large">
