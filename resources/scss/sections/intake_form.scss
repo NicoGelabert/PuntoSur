@@ -1,12 +1,12 @@
-.intake_form{
-    .intake_form_hero{
+.intake_form, .contact_form{
+    .intake_form_hero, .contact_form_hero{
         @apply flex justify-center mt-14 py-12 lg:py-24;
         h2{
             @apply text-center;
         }
     }
-    .intake_form_content{
-        #intakeForm{
+    .intake_form_content, .contact_form_conten{
+        #intakeForm, #contactForm{
             @apply flex flex-col gap-16;
             input, textarea, select{
                 @apply

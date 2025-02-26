@@ -150,14 +150,14 @@
                     </div>
 
                     <x-button id="subscribeBtn" type="submit" class="btn btn-primary" >
-                        <span>{{__('Enviar')}}</span><x-icons.send-info />
+                        <span>{{__('Send')}}</span><x-icons.send-info />
                     </x-button>
                     <div id="loader_container" class="loader_container hidden_loader">
                     <div class="form_loader">
                         <div></div>
                         <div></div>
                     </div>
-                    <span>{{__('Enviando...')}}</span>
+                    <span>{{__('Sending...')}}</span>
                 </div>
                 </form>
                 <div id="successMessage" class="mx-auto" style="display: none;">

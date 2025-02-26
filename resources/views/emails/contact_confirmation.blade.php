@@ -60,7 +60,7 @@
 <body>
     <div class="container">
         <!-- Header -->
-        <div class="header">
+        <!-- <div class="header">
             <img src="https://chimicreativo.es/storage/images/logo_chimi.png" alt="Logo de la Empresa" class="logo">
             <div class="social-icons">
                 <a href="https://wa.me/34623037048" target="_blank">
@@ -71,10 +71,10 @@
                 </a>
                
             </div>
-        </div>
+        </div> -->
 
         <!-- Body -->
-        <div class="body">
+        <!-- <div class="body">
             <h3>¡Gracias por Contactarnos!</h3>
             <p>Hola {{ $contact->name }},</p>
             <p>
@@ -82,14 +82,15 @@
             </p>
             <p>Saludos cordiales,</p>
             <p><strong>Equipo de Atención al Cliente</strong><br><strong>Chimi Creativo</strong></p>
-        </div>
+        </div> -->
 
         <!-- Footer -->
-        <div class="footer">
+        <!-- <div class="footer">
             <p>© 2024 Chimi Creativo. Todos los derechos reservados.</p>
             <p>Fuengirola, Málaga</p>
             <p>Email: <a href="mailto:info@chimichimicreativo.es">info@chimicreativo.es</a></p>
-        </div>
+        </div> -->
+        {{ $contact->name }}
     </div>
 </body>
 </html>

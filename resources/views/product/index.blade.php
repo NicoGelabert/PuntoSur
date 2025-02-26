@@ -8,6 +8,6 @@
     <product-list>
     </product-list>
     <x-benefits />
-    <x-book />
+    <!-- <x-book /> -->
   </div>
 </x-app-layout>

@@ -4,6 +4,6 @@
     <li>Nombre del contacto: {{ $contact['name'] }}</li>
     <li>Mail: {{ $contact['email'] }}</li>
     <li>Teléfono: {{ $contact['phone'] }}</li>
-    <li>Servicios: {{ $contact['service'] }}</li>
+    <li>Tratamiento: {{ $contact['treatment'] }}</li>
     <li>Mensaje: {{ $contact['message'] }}</li>
 </ul>
