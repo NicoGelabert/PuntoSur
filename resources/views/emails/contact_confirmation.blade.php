@@ -55,42 +55,31 @@
             text-decoration: none;
         }
     </style>
-    <title>Email de Confirmación</title>
+    <title>onfirmation Email</title>
 </head>
 <body>
     <div class="container">
         <!-- Header -->
-        <!-- <div class="header">
-            <img src="https://chimicreativo.es/storage/images/logo_chimi.png" alt="Logo de la Empresa" class="logo">
-            <div class="social-icons">
-                <a href="https://wa.me/34623037048" target="_blank">
-                    <img src="https://chimicreativo.es/storage/images/WA_Logo.png" alt="Logo de la Empresa">
-                </a>
-                <a href="https://www.instagram.com/chimi.creativo/" target="_blank">
-                    <img src="https://chimicreativo.es/storage/images/instagram.png" alt="Logo de la Empresa">
-                </a>
-               
-            </div>
-        </div> -->
+        <div class="header">
+            <img src="https://chibalancetherapies.com/storage/common/chibalance_logo.png" alt="Chi Balance" class="logo">
+        </div>
 
         <!-- Body -->
-        <!-- <div class="body">
-            <h3>¡Gracias por Contactarnos!</h3>
-            <p>Hola {{ $contact->name }},</p>
+        <div class="body">
+            <h3>Thank you for contacting us!</h3>
+            <p>Hi {{ $contact->name }},</p>
             <p>
-                Gracias por completar nuestro formulario. Hemos recibido tu información y nos pondremos en contacto contigo a la brevedad. Si tienes alguna pregunta mientras tanto, no dudes en responder a este correo.
+                We have received your information and will get back to you shortly. If you have any questions in the meantime, please feel free to reply to this email.
             </p>
-            <p>Saludos cordiales,</p>
-            <p><strong>Equipo de Atención al Cliente</strong><br><strong>Chimi Creativo</strong></p>
-        </div> -->
+            <p>Kind regards,</p>
+            <p><strong>Yanina Pellegrino</strong><br><strong>Chi Balance Therapies</strong></p>
+        </div>
 
         <!-- Footer -->
-        <!-- <div class="footer">
-            <p>© 2024 Chimi Creativo. Todos los derechos reservados.</p>
-            <p>Fuengirola, Málaga</p>
-            <p>Email: <a href="mailto:info@chimichimicreativo.es">info@chimicreativo.es</a></p>
-        </div> -->
-        {{ $contact->name }}
+        <div class="footer">
+            <p>© 2025 Chi Balance Therapies. All rights reserved.</p>
+            <p>Email: <a href="mailto:chibalancetherapies@gmail.com">chibalancetherapies@gmail.com</a></p>
+        </div>
     </div>
 </body>
 </html>
