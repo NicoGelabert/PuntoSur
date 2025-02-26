@@ -1,7 +1,7 @@
 <x-app-layout>
     <div id="news_view">
-        <x-icons.first_leave class="absolute" />
-        <x-icons.second_leave class="absolute right-0 top-40 sm:top-28 z-10" />
+        <x-icons.first_leave class="absolute pointer-events-none" />
+        <x-icons.second_leave class="absolute pointer-events-none right-0 top-40 sm:top-28 z-10" />
         <div class="news_view_hero">
             <div class="news_content_header">
                 @foreach ($article->authors as $author)

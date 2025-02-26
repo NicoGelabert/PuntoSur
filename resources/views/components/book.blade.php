@@ -1,5 +1,5 @@
 <div class="book relative">
-    <x-icons.third_leave class="absolute -top-12"/>
+    <x-icons.third_leave class="absolute pointer-events-none -top-12"/>
     <div class="container py-12 flex flex-col gap-6 text-center items-center">
         <h3>Book now!</h3>
         <p class="text-large">
@@ -7,5 +7,5 @@
         </p>
         <x-button href="https://calendly.com/chibalancetherapies" target="_blank" class="btn btn-primary">Book <x-icons.send /></x-button>
     </div>
-    <x-icons.second_leave class="absolute right-0 -bottom-8" />
+    <x-icons.second_leave class="absolute pointer-events-none right-0 -bottom-8" />
 </div>
