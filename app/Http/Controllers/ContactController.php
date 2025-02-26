@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Product;
 use App\Events\ContactCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -13,7 +14,8 @@ class ContactController extends Controller
 {
     public function create()
     {
-        return view('contact.contact');
+        $products = Product::all();
+        return view('contact.contact', ['products' => $products]);
     }
 
     public function store(Request $request)
