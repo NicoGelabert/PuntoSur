@@ -36,7 +36,7 @@
         <router-link :to="{name: 'app.products'}"
                     class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">
-                Products
+                Treatments
             </span>
             <span class="mr-2">
                 <ArchiveBoxIcon class="w-5"/>
@@ -123,7 +123,7 @@
                 <ClipboardDocumentListIcon class="w-5"/>
             </span>
         </router-link> -->
-        <!-- <router-link :to="{name: 'app.users'}"
+        <router-link :to="{name: 'app.users'}"
                     class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">
                 Users
@@ -131,7 +131,7 @@
             <span class="mr-2">
                 <UsersIcon class="w-5"/>
             </span>
-        </router-link> -->
+        </router-link>
         <!-- <router-link :to="{name: 'app.customers'}"
         class="flex items-center justify-between p-2 gap-8 rounded transition-colors hover:bg-white">
             <span class="text-sm">

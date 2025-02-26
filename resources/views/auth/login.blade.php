@@ -29,21 +29,21 @@
                         />
                         <label for="loginRememberMe" class="small">{{ __('Remember me')}}</label>
                     </div>
-                    @if (Route::has('password.request'))
+                    <!-- @if (Route::has('password.request'))
                         <a href="{{ route('password.request') }}" class="small a-secondary">
                         {{ __('Forgot password?')}}'
                         </a>
-                    @endif
+                    @endif -->
                 </div>
                 <div class="flex flex-col">
                     <div class="">
                         <button
-                            class="btn-primary w-full"
+                            class="btn btn-primary w-full"
                         >
                         {{ __('Login')}}
                         </button>
                     </div>
-                    <hr class="my-8 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
+                    <!-- <hr class="my-8 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
                     <div class="flex flex-col gap-4 items-center">
                         <p class="small font-bold">Aún no tienes cuenta?</p>
                         <a
@@ -52,7 +52,7 @@
                             >
                             {{ __('Sign in')}}
                         </a>
-                    </div>
+                    </div> -->
                 </div>
             </form>
         </div>

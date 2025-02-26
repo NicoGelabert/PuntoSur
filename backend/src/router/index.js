@@ -171,11 +171,11 @@ const routes = [
         name: 'app.clients',
         component: Clients
       },
-      // {
-      //   path: 'users',
-      //   name: 'app.users',
-      //   component: Users
-      // },
+      {
+        path: 'users',
+        name: 'app.users',
+        component: Users
+      },
       // {
       //   path: 'customers',
       //   name: 'app.customers',
