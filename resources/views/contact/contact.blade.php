@@ -6,14 +6,14 @@
             <h2>Contact Form</h3>
         </div>
         <div class="bg-blue_light py-12">
-            <div class="container contact_form_content">
+            <div class="container max-w-xl contact_form_content">
                 <form id="contactForm" action="{{ route('contact.store') }}" method="post" class="flex gap-2 w-full form">
                     @csrf
                     <div class="flex flex-col gap-6 w-full">
                         <input id="nameInput" type="text" name="name" placeholder="Su nombre" required>
                         <input id="emailInput" type="email" name="email" placeholder="Su correo electrónico" required>
                         <input id="phoneInput" type="tel" name="phone" placeholder="Su teléfono" required pattern="[0-9]{9}">
-                        <label for="treatment">Treatment</label>
+                        <label for="treatment" class="pl-3">Treatment</label>
                             <select name="treatment" id="treatmentInput">
                                 <option value="" disabled selected>Select a treatment</option>
                                 @foreach($products as $product)
