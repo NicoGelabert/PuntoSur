@@ -10,17 +10,16 @@
                 <form id="contactForm" action="{{ route('contact.store') }}" method="post" class="flex gap-2 w-full form">
                     @csrf
                     <div class="flex flex-col gap-6 w-full">
-                        <input id="nameInput" type="text" name="name" placeholder="Su nombre" required>
-                        <input id="emailInput" type="email" name="email" placeholder="Su correo electrónico" required>
-                        <input id="phoneInput" type="tel" name="phone" placeholder="Su teléfono" required pattern="[0-9]{9}">
-                        <label for="treatment" class="pl-3">Treatment</label>
+                        <input id="nameInput" type="text" name="name" placeholder="Your full name" required>
+                        <input id="emailInput" type="email" name="email" placeholder="Your Email" required>
+                        <input id="phoneInput" type="tel" name="phone" placeholder="Your Phone" required pattern="[0-9]{9}">
                             <select name="treatment" id="treatmentInput">
                                 <option value="" disabled selected>Select a treatment</option>
                                 @foreach($products as $product)
                                     <option value="{{ $product->title }}">{{ $product->title }}</option>
                                 @endforeach
                             </select>
-                        <textarea id="messageInput" name="message" placeholder="Déjenos un mensaje" rows="4" required></textarea>
+                        <textarea id="messageInput" name="message" placeholder="Leave a message" rows="4" required></textarea>
                         
                         <!-- Casilla de verificación para Términos y Política -->
                         <div class="flex items-start gap-2">
