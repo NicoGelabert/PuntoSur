@@ -52,7 +52,10 @@
                             @endif
                                 <h6>{{ $product->title }}</h6>
                             </div>
-                            <x-button class="btn" href="{{ $product->link }}"> <x-icons.send /></x-button>
+                            <div class="flex">
+                                <x-button class="btn btn-primary px-2" href="{{ $product->link }}"> <x-icons.booking /></x-button>
+                                <x-button class="btn" href="{{ $product->slug }}"> <x-icons.send /></x-button>
+                            </div>
                         </div>
                         <hr class="divider">
                     </li>
