@@ -204,6 +204,17 @@ document.addEventListener('DOMContentLoaded', function () {
       arrows    : true,
       autoplay  : false,
       autoWidth : true,
+      breakpoints: {
+          1024: {
+              perPage     : 4,
+          },
+          768: {
+              perPage     : 2,
+          },
+          480: {
+              perPage     : 2,        
+          }
+      },
       classes: {
         pagination: 'splide__pagination_custom',
         arrows    : 'splide__arrows_custom',
@@ -212,6 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
       interval  : 7000,
       isNavigation: false,
       pagination  : true,
+      perPage     : '5',
       rewind      : true,
       type        : 'slide',
     });
