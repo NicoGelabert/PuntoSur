@@ -4,7 +4,6 @@
         'slug' => $product->slug,
         'image' => $product->image,
         'title' => $product->title,
-        'quantity' => $product->quantity,
         'addToCartUrl' => route('cart.add', $product),
         'categories' => $product->categories->pluck('name'),
         'prices' => $product->prices->map(function ($price) {
@@ -13,7 +12,11 @@
                 'size' => $price->size,
             ];
         }),
-        'alergens' => $product->alergens->pluck('name'),
+        'benefits' => $product->benefits->map(function ($benefit) {
+            return [
+                'text' => $benefit->text,
+            ];
+        }),
         'images' => $product->images->pluck('url') 
         ]) }})"
         class="mx-auto product-view"
@@ -70,69 +73,20 @@
                     </div>
         
                     <div class="flex gap-4">
+                        @if ($product->categories->contains('name', 'gift cards'))
+                        <x-button class="btn btn-primary" href="https://wa.me/353852727422?text={{ urlencode('Hello! I would like more information about ' . $product->title) }}" target="_blank">Whatsapp <x-icons.whatsapp /></x-button>
+                        @else
                         <x-button class="btn btn-primary" href="{{ $product->link }}" >
                             Book <x-icons.booking />
                         </x-button>
-                        
-                        <!-- <button
-                            :disabled="product.quantity === 0"
-                            @click="addToCart($refs.quantityEl.value)"
-                            class="btn btn-secondary"
-                            :class="product.quantity === 0 ? 'cursor-not-allowed' : 'cursor-pointer'"
-                        >
-                            Add to cart <x-icons.cart />
-                        </button> -->
+                        @endif
                     </div>
                 </div>
             </div>
-            <x-products :products="$products" header_title="More Treatments"/>
         </div>
-        <x-benefits />
+        @if ($product->benefits && $product->benefits->isNotEmpty())
+            <x-benefits :benefits="$product->benefits"/>
+        @endif
+        <x-products :products="$products" header_title="More Treatments"/>
     </div>
 </x-app-layout>
-<script>
-    function up(max) {
-    document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) + 1;
-    if (document.getElementById("myNumber").value >= parseInt(max)) {
-        document.getElementById("myNumber").value = max;
-    }
-    }
-    function down(min) {
-        document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) - 1;
-        if (document.getElementById("myNumber").value <= parseInt(min)) {
-            document.getElementById("myNumber").value = min;
-        }
-    }
-
-</script>
-<style>
-    /* Quantity */
-    .quantity {
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        align-items: stretch;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    }
-    .quantity .qty {
-        width: 50px;
-        height: 40px;
-        line-height: 40px;
-        background-color:transparent;
-        border: 0;
-        text-align: center;
-        margin-bottom: 0;
-    }
-    .quantity button{
-        color:white;
-        height:auto;
-    }
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-    input[type=number] {
-        -moz-appearance: textfield;
-    }
-</style>

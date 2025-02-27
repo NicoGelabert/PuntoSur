@@ -66,10 +66,10 @@
 
         <!-- Body -->
         <div class="body">
-            <h3>Thank you for contacting us!</h3>
+            <h3>Thank you for your request!</h3>
             <p>Hi {{ $contact->name }},</p>
             <p>
-                We have received your information and will get back to you shortly. If you have any questions in the meantime, please feel free to reply to this email.
+            Your information has been received and a response will be provided shortly. If there are any questions in the meantime, feel free to reply to this email.
             </p>
             <p>Kind regards,</p>
             <p><strong>Yanina Pellegrino</strong><br><strong>Chi Balance Therapies</strong></p>

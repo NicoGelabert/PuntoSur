@@ -9,8 +9,8 @@ use App\Http\Resources\ProductResource;
 use App\Models\Api\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductImage;
-use App\Models\ProductAlergen;
 use App\Models\ProductPrice;
+use App\Models\ProductBenefit;
 use App\Models\Api\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -31,7 +31,7 @@ class ProductController extends Controller
         $search = $request->get('search', '');
         $categorySlug = $request->get('category', '');  // Agregar parámetro category
 
-        $query = Product::query()->with(['prices', 'categories', 'alergens'])
+        $query = Product::query()->with(['categories', 'prices', 'images', 'benefits'])
             ->where('title', 'like', "%{$search}%");
 
         // Filtrar por categoría si se pasa el slug de la categoría
@@ -65,15 +65,15 @@ class ProductController extends Controller
         $images = $data['images'] ?? [];
         $imagePositions = $data['image_positions'] ?? [];
         $categories = $data['categories'] ?? [];
-        $alergens = $data['alergens'] ?? [];
         $prices = $data['prices'] ?? [];
+        $benefits = $data['benefits'] ?? [];
 
         $product = Product::create($data);
 
         $this->saveCategories($categories, $product);
         $this->saveImages($images, $imagePositions, $product);
-        $this->saveAlergens($alergens, $product);
         $this->savePrices($prices, $product);
+        $this->saveBenefits($benefits, $product);
 
         return new ProductResource($product);
     }
@@ -101,8 +101,8 @@ class ProductController extends Controller
         $data = $request->validated();
         $data['updated_by'] = $request->user()->id;
         $categories = $data['categories'] ?? [];
-        $alergens = $data['alergens'] ?? [];
         $prices = $data['prices'] ?? [];
+        $benefits = $data['benefits'] ?? [];
 
         /** @var \Illuminate\Http\UploadedFile[] $images */
         $images = $data['images'] ?? [];
@@ -114,8 +114,8 @@ class ProductController extends Controller
         if (count($deletedImages) > 0) {
             $this->deleteImages($deletedImages, $product);
         }
-        $this->saveAlergens($alergens, $product);
         $this->savePrices($prices, $product);
+        $this->saveBenefits($benefits, $product);
 
         $product->update($data);
 
@@ -143,20 +143,21 @@ class ProductController extends Controller
         ProductCategory::insert($data);
     }
 
-    private function saveAlergens($alergenIds, Product $product)
-    {
-        ProductAlergen::where('product_id', $product->id)->delete();
-        $data = array_map(fn($id) => (['alergen_id' => $id, 'product_id' => $product->id]), $alergenIds);
-
-        ProductAlergen::insert($data);
-    }
-
     protected function savePrices(array $prices, Product $product)
-    {
-        $product->prices()->delete(); // Limpia precios existentes para simplificar la actualización
+        {
+            $product->prices()->delete(); // Limpia precios existentes para simplificar la actualización
 
-        foreach ($prices as $price) {
-            $product->prices()->create($price); // Esto usará la relación hasMany para crear los precios
+            foreach ($prices as $price) {
+                $product->prices()->create($price); // Esto usará la relación hasMany para crear los precios
+            }
+        }
+    
+    protected function saveBenefits(array $benefits, Product $product)
+    {
+        $product->benefits()->delete(); // Limpia atributos existentes para simplificar la actualización
+
+        foreach ($benefits as $benefit) {
+            $product->benefits()->create($benefit); // Esto usará la relación hasMany para crear los atributos
         }
     }
 
