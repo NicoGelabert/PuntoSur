@@ -206,13 +206,10 @@ document.addEventListener('DOMContentLoaded', function () {
       autoWidth : true,
       breakpoints: {
           1024: {
-              perPage     : 4,
-          },
-          768: {
               perPage     : 2,
           },
           480: {
-              perPage     : 2,        
+              perPage     : 1,        
           }
       },
       classes: {
@@ -223,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function () {
       interval  : 7000,
       isNavigation: false,
       pagination  : true,
-      perPage     : '5',
+      perPage     : '3',
       rewind      : true,
       type        : 'slide',
     });
