@@ -14,7 +14,7 @@
       <div
         v-if="showTooltip"
         ref="tooltipRef"
-        class="absolute right-8 z-10 w-96 p-2 mt-1 text-sm text-white bg-gray-800 rounded-lg shadow-lg"
+        class="absolute right-8 z-10 w-64 md:w-96 p-2 mt-1 text-sm text-white bg-gray-800 rounded-lg shadow-lg"
       >
         <!-- Botón de cierre dentro del tooltip -->
         <button

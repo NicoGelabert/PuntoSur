@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white p-4 rounded-lg shadow animate-fade-in-down">
-    <div class="flex justify-between border-b-2 pb-3">
-      <div class="flex items-center">
+    <div class="flex flex-col md:flex-row justify-between border-b-2 pb-3 gap-4">
+      <div class="flex md:items-center flex-col md:flex-row gap-4">
         <span class="whitespace-nowrap mr-3">Per Page</span>
         <select @change="getUsers(null)" v-model="perPage"
                 class="appearance-none relative block w-24 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
@@ -15,13 +15,13 @@
       </div>
       <div>
         <input v-model="search" @change="getUsers(null)"
-               class="appearance-none relative block w-48 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+               class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                placeholder="Type to Search users">
       </div>
     </div>
 
     <table class="table-auto w-full">
-      <thead>
+      <thead class="hidden md:contents">
       <tr>
         <TableHeaderCell field="id" :sort-field="sortField" :sort-direction="sortDirection"
                          @click="sortUsers('id')">
@@ -60,72 +60,14 @@
         <td class="border-b p-2 ">
          {{ user.name }}
         </td>
-        <td class="border-b p-2 max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">
+        <td class="border-b p-2 max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis hidden md:table-cell">
           {{ user.email }}
         </td>
-        <td class="border-b p-2">
+        <td class="border-b p-2 hidden md:table-cell">
           {{ user.created_at }}
         </td>
         <td class="border-b p-2 ">
-          <Menu as="div" class="relative inline-block text-left">
-            <div>
-              <MenuButton
-                class="inline-flex items-center justify-center w-full justify-center rounded-full w-10 h-10 bg-black bg-opacity-0 text-sm font-medium text-white hover:bg-opacity-5 focus:bg-opacity-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-              >
-                <EllipsisVerticalIcon
-                  class="h-5 w-5 text-black"
-                  aria-hidden="true"/>
-              </MenuButton>
-            </div>
-
-            <transition
-              enter-active-class="transition duration-100 ease-out"
-              enter-from-class="transform scale-95 opacity-0"
-              enter-to-class="transform scale-100 opacity-100"
-              leave-active-class="transition duration-75 ease-in"
-              leave-from-class="transform scale-100 opacity-100"
-              leave-to-class="transform scale-95 opacity-0"
-            >
-              <MenuItems
-                class="absolute z-10 right-0 mt-2 w-32 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-              >
-                <div class="px-1 py-1">
-                  <MenuItem v-slot="{ active }">
-                    <button
-                      :class="[
-                        active ? 'bg-black text-white' : 'text-gray-900',
-                        'group flex w-full items-center rounded-md px-2 py-2 text-sm',
-                      ]"
-                      @click="editUser(user)"
-                    >
-                      <PencilSquareIcon
-                        :active="active"
-                        class="mr-2 h-5 w-5 text-gray-500"
-                        aria-hidden="true"
-                      />
-                      Edit
-                    </button>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active }">
-                    <button
-                      :class="[
-                        active ? 'bg-black text-white' : 'text-gray-900',
-                        'group flex w-full items-center rounded-md px-2 py-2 text-sm',
-                      ]"
-                      @click="deleteUser(user)"
-                    >
-                      <TrashIcon
-                        :active="active"
-                        class="mr-2 h-5 w-5 text-gray-500"
-                        aria-hidden="true"
-                      />
-                      Delete
-                    </button>
-                  </MenuItem>
-                </div>
-              </MenuItems>
-            </transition>
-          </Menu>
+          <ActionMenu :edit="() => editUser(user)" :remove="() => deleteUser(user)" />
         </td>
       </tr>
       </tbody>
@@ -174,6 +116,7 @@ import TableHeaderCell from "../../components/core/Table/TableHeaderCell.vue";
 import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/vue";
 import {EllipsisVerticalIcon, PencilSquareIcon, TrashIcon} from '@heroicons/vue/24/solid';
 import UserModal from "./UserModal.vue";
+import ActionMenu from "../../components/core/ActionMenu.vue";
 
 const perPage = ref(USERS_PER_PAGE);
 const search = ref('');

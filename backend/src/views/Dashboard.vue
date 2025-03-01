@@ -1,7 +1,7 @@
 <template>
-  <div class="mb-2 flex justify-between">
+  <div class="mb-2 flex flex-col md:flex-row justify-between">
     <h1 class="text-3xl font-semibold">Dashboard</h1>
-    <div class="flex items-center">
+    <div class="flex flex-col md:flex-row itens-start md:items-center">
       <label class="mr-2">Change Date Period</label>
       <CustomInput type="select" v-model="chosenDate" @change="onDatePickerChange" :select-options="dateOptions"/>
     </div>

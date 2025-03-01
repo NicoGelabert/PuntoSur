@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white p-4 rounded-lg shadow animate-fade-in-down">
-      <div class="flex justify-between border-b-2 pb-3">
-        <div class="flex items-center">
+      <div class="flex flex-col md:flex-row justify-between border-b-2 pb-3 gap-4">
+        <div class="flex md:items-center flex-col md:flex-row gap-4">
           <span class="whitespace-nowrap mr-3">Per Page</span>
           <select @change="getArticles(null)" v-model="perPage"
                   class="appearance-none relative block w-24 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
@@ -15,13 +15,13 @@
         </div>
         <div>
           <input v-model="search" @change="getArticles(null)"
-                 class="appearance-none relative block w-48 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                 class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                  placeholder="Type to Search articles">
         </div>
       </div>
   
       <table class="table-auto w-full">
-        <thead>
+        <thead class="hidden md:contents">
         <tr>
           <TableHeaderCell field="id" :sort-field="sortField" :sort-direction="sortDirection" @click="sortArticles('id')">
             ID
@@ -59,17 +59,19 @@
         <tbody v-else>
         <tr v-for="(article, index) of articles.data" :key="index">
           <td class="border-b p-2 ">{{ article.id }}</td>
-          <td class="border-b p-2 ">
+          <td class="border-b p-2 hidden md:table-cell">
             <img v-if="article.image_url" class="w-16 h-16 object-cover" :src="article.image_url" :alt="article.title">
             <img v-else class="w-16 h-16 object-cover" src="../../assets/noimage.png">
           </td>
-          <td class="border-b p-2 max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">
-            {{ article.title }}
+          <td class="border-b p-2">
+            <div class="truncate overflow-hidden text-ellipsis whitespace-nowrap w-[100px]">
+              {{ article.title }}
+            </div>
           </td>
-          <td class="border-b p-2 max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">
+          <td class="border-b p-2 max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis hidden md:table-cell">
             {{ article.authors.map(author => author.name).join(', ') }}
           </td>
-          <td class="border-b p-2 ">
+          <td class="border-b p-2 hidden md:table-cell">
             {{ article.updated_at }}
           </td>
           <td class="border-b p-2 ">
