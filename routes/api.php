@@ -42,15 +42,7 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::apiResource('articles', ArticleController::class);
     Route::apiResource('authors', AuthorController::class)->except('show');
     Route::get('/authors/tree', [AuthorController::class, 'getAsTree']);
-    // Route::apiResource('alergens', AlergenController::class)->except('show');
-    // Route::get('/alergens/tree', [AlergenController::class, 'getAsTree']);
-    // Route::apiResource('services', ServiceController::class)->except('show');
-    // Route::get('/services/tree', [ServiceController::class, 'getAsTree']);
-    // Route::apiResource('tags', TagController::class)->except('show');
-    // Route::get('/tags/tree', [TagController::class, 'getAsTree']);
-    // Route::apiResource('clients', ClientController::class)->except('show');
-    // Route::get('/clients/tree', [ClientController::class, 'getAsTree']);
-    // Route::apiResource('projects', ProjectController::class);
+    Route::apiResource('clients', ClientController::class);
     Route::apiResource('users', UserController::class);
     Route::apiResource('customers', CustomerController::class);
     Route::get('/countries', [CustomerController::class, 'countries']);
@@ -60,13 +52,13 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::get('orders/{order}', [OrderController::class, 'view']);
 
     // Dashboard Routes
-    Route::get('/dashboard/customers-count', [DashboardController::class, 'activeCustomers']);
+    Route::get('/dashboard/home-hero-banner-count', [DashboardController::class, 'activeHomeHeroBanners']);
+    Route::get('/dashboard/category-count', [DashboardController::class, 'activeCategories']);
     Route::get('/dashboard/products-count', [DashboardController::class, 'activeProducts']);
-    Route::get('/dashboard/orders-count', [DashboardController::class, 'paidOrders']);
-    Route::get('/dashboard/income-amount', [DashboardController::class, 'totalIncome']);
-    Route::get('/dashboard/orders-by-country', [DashboardController::class, 'ordersByCountry']);
-    Route::get('/dashboard/latest-customers', [DashboardController::class, 'latestCustomers']);
-    Route::get('/dashboard/latest-orders', [DashboardController::class, 'latestOrders']);
+    Route::get('/dashboard/articles-count', [DashboardController::class, 'activeArticles']);
+    Route::get('/dashboard/authors-count', [DashboardController::class, 'activeAuthors']);
+    Route::get('/dashboard/clients-count', [DashboardController::class, 'activeClients']);
+    Route::get('/dashboard/latest-clients', [DashboardController::class, 'latestClients']);
 
     // Report routes
     Route::get('/report/orders', [ReportController::class, 'orders']);

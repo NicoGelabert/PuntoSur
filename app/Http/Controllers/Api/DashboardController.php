@@ -3,15 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Enums\AddressType;
-use App\Enums\CustomerStatus;
 use App\Enums\OrderStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Dashboard\OrderResource;
-use App\Models\Customer;
+use App\Models\HomeHeroBanner;
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\Categories;
 use App\Models\Product;
-use App\Models\Alergen;
+use App\Models\Article;
+use App\Models\Author;
+use App\Models\Client;
 use App\Traits\ReportTrait;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -20,22 +22,19 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     use ReportTrait;
+
+    public function activeHomeHeroBanners()
+    {
+        return HomeHeroBanner::all()->count();
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function activeCustomers()
-    {
-        return Customer::where('status', CustomerStatus::Active->value)->count();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function activeCategories()
     {
-        return Categories::all();
+        return Category::where('active', 1)->count();
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -48,9 +47,36 @@ class DashboardController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function activeAlergens()
+    public function activeArticles()
     {
-        return Alegen::all();
+        return Article::where('published', '=', 1)->count();
+    }
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function activeAuthors()
+    {
+        return Author::where('active', '=', 1)->count();
+    }
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function activeClients()
+    {
+        return Client::where('signed', '=', 1)->count();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function latestClients()
+    {
+        return Client::query()
+            ->select(['id', 'full_name', 'age', 'town'])
+            ->where('signed', 1)
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
     }
 
     /**

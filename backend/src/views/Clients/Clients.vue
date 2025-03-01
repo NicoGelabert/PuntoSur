@@ -16,13 +16,29 @@
 import {computed, onMounted, ref} from "vue";
 import store from "../../store";
 import ClientsTable from "./ClientsTable.vue";
-import ClientModal from "./ClientModal.vue";
 
 const DEFAULT_CLIENT = {
     id: '',
-    name: '',
-    description: '',
-    image: '',
+    full_name: '',
+    slug: '',
+    age: '',
+    phone_number: '',
+    emergency_phone_number: '',
+    town: '',
+    occupancy: '',
+    email: '',
+    treatment: '',
+    sore: '',
+    medication: '',
+    allergies: '',
+    medicalBackground: '',
+    sports: '',
+    currentDiet: '',
+    sleepPatterns: '',
+    waterIntake: '',
+    pregnancy: '',
+    menopause: '',
+    signed: '',
 }
 
 const clients = computed(() => store.state.clients);

@@ -7,7 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 
-class ClientTreeResource extends JsonResource
+class ClientListResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,15 +16,12 @@ class ClientTreeResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $data = [
+        return[
             'id' => $this->id,
-            'label' => $this->name,
+            'full_name' => $this->full_name,
+            'age' => $this->age,
+            'town' => $this->town,
+            'updated_at' => (new \DateTime($this->updated_at))->format('d-m-Y'),
         ];
-
-        if ($this->children ?? false) {
-            $data['children'] = $this->children;
-        }
-
-        return $data;
     }
 }

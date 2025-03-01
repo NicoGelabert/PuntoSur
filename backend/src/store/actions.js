@@ -802,11 +802,16 @@ export function deleteTag({commit}, tag) {
 }
 
 //CLIENTS
-export function getClients({commit, state}, {sort_field, sort_direction} = {}) {
+export function getClients({commit, state}, {url = null, search = '', per_page, sort_field, sort_direction} = {}) {
   commit('setClients', [true])
-  return axiosClient.get('/clients', {
+  url = url || '/clients'
+  const params = {
+    per_page: state.clients.limit,
+  }
+  return axiosClient.get(url, {
     params: {
-      sort_field, sort_direction
+      ...params,
+      search, per_page, sort_field, sort_direction
     }
   })
     .then((response) => {
@@ -817,12 +822,32 @@ export function getClients({commit, state}, {sort_field, sort_direction} = {}) {
     })
 }
 
+export function getClient({commit}, id) {
+  return axiosClient.get(`/clients/${id}`)
+}
+
 export function createClient({commit}, client) {
   if (client.image instanceof File) {
     const form = new FormData();
-    form.append('name', client.name);
-    form.append('image', client.image);
-    form.append('active', client.active ? 1 : 0);
+    form.append('full_name', client.full_name);
+    form.append('age', client.age);
+    form.append('phone_number', client.phone_number);
+    form.append('emergency_phone_number', client.emergency_phone_number);
+    form.append('town', client.town);
+    form.append('occupancy', client.occupancy);
+    form.append('email', client.email);
+    form.append('treatment', client.treatment);
+    form.append('sore', client.sore);
+    form.append('medication', client.medication);
+    form.append('allergies', client.allergies);
+    form.append('medicalBackground', client.medicalBackground);
+    form.append('sports', client.sports);
+    form.append('currentDiet', client.currentDiet);
+    form.append('sleepPatterns', client.sleepPatterns);
+    form.append('waterIntake', client.waterIntake);
+    form.append('pregnancy', client.pregnancy);
+    form.append('menopause', client.menopause);
+    form.append('signed', client.signed ? 1 : 0);
     client = form;
   }
   return axiosClient.post('/clients', client)
@@ -832,10 +857,25 @@ export function updateClient({commit}, client) {
   const id = client.id
   if (client.image instanceof File) {
     const form = new FormData();
-    form.append('name', client.name);
-    form.append('image', client.image);
-    form.append('active', client.active ? 1 : 0);
-    form.append('_method', 'PUT');
+    form.append('full_name', client.full_name);
+    form.append('age', client.age);
+    form.append('phone_number', client.phone_number);
+    form.append('emergency_phone_number', client.emergency_phone_number);
+    form.append('town', client.town);
+    form.append('occupancy', client.occupancy);
+    form.append('email', client.email);
+    form.append('treatment', client.treatment);
+    form.append('sore', client.sore);
+    form.append('medication', client.medication);
+    form.append('allergies', client.allergies);
+    form.append('medicalBackground', client.medicalBackground);
+    form.append('sports', client.sports);
+    form.append('currentDiet', client.currentDiet);
+    form.append('sleepPatterns', client.sleepPatterns);
+    form.append('waterIntake', client.waterIntake);
+    form.append('pregnancy', client.pregnancy);
+    form.append('menopause', client.menopause);
+    form.append('signed', client.signed ? 1 : 0);
     client = form;
   } else {
     client._method = 'PUT'
