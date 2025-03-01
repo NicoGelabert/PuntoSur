@@ -8,65 +8,77 @@
   </div>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
     <!--    Active Hero Banners-->
-    <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center">
-      <label class="text-lg font-semibold block mb-2">Active Hero Banners</label>
-      <template v-if="!loading.homeHeroBannerCount">
-        <span class="text-3xl font-semibold">{{ homeHeroBannerCount }}</span>
-      </template>
-      <Spinner v-else text="" class=""/>
-    </div>
+    <router-link :to="{name: 'app.homeherobanners'}">
+      <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center">
+        <label class="text-lg font-semibold block mb-2">Active Hero Banners</label>
+        <template v-if="!loading.homeHeroBannerCount">
+          <span class="text-3xl font-semibold">{{ homeHeroBannerCount }}</span>
+        </template>
+        <Spinner v-else text="" class=""/>
+      </div>
+    </router-link>
     <!--/    Active Hero Banners-->
     <!--    Active Categories-->
-    <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center">
-      <label class="text-lg font-semibold block mb-2">Active Categories</label>
-      <template v-if="!loading.categoryCount">
-        <span class="text-3xl font-semibold">{{ categoryCount }}</span>
-      </template>
-      <Spinner v-else text="" class=""/>
-    </div>
+    <router-link :to="{name: 'app.categories'}">
+      <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center">
+        <label class="text-lg font-semibold block mb-2">Active Categories</label>
+        <template v-if="!loading.categoryCount">
+          <span class="text-3xl font-semibold">{{ categoryCount }}</span>
+        </template>
+        <Spinner v-else text="" class=""/>
+      </div>
+    </router-link>
     <!--/    Active Categories-->
     
     <!--    Active Products -->
-    <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center"
-         style="animation-delay: 0.1s">
-      <label class="text-lg font-semibold block mb-2">Active Treatments</label>
-      <template v-if="!loading.productsCount">
-        <span class="text-3xl font-semibold">{{ productsCount }}</span>
-      </template>
-      <Spinner v-else text="" class=""/>
-    </div>
+    <router-link :to="{name: 'app.products'}">
+      <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center"
+           style="animation-delay: 0.1s">
+        <label class="text-lg font-semibold block mb-2">Active Treatments</label>
+        <template v-if="!loading.productsCount">
+          <span class="text-3xl font-semibold">{{ productsCount }}</span>
+        </template>
+        <Spinner v-else text="" class=""/>
+      </div>
+    </router-link>
     <!--/    Active Products -->
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
     <!--    Active Articles-->
-    <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center">
-      <label class="text-lg font-semibold block mb-2">Active Articles</label>
-      <template v-if="!loading.articlesCount">
-        <span class="text-3xl font-semibold">{{ articlesCount }}</span>
-      </template>
-      <Spinner v-else text="" class=""/>
-    </div>
+    <router-link :to="{name: 'app.articles'}">
+      <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center">
+        <label class="text-lg font-semibold block mb-2">Active Articles</label>
+        <template v-if="!loading.articlesCount">
+          <span class="text-3xl font-semibold">{{ articlesCount }}</span>
+        </template>
+        <Spinner v-else text="" class=""/>
+      </div>
+    </router-link>
     <!--/    Active Articles-->
     <!--    Active Authors-->
-    <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center">
-      <label class="text-lg font-semibold block mb-2">Active Authors</label>
-      <template v-if="!loading.authorsCount">
-        <span class="text-3xl font-semibold">{{ authorsCount }}</span>
-      </template>
-      <Spinner v-else text="" class=""/>
-    </div>
+    <router-link :to="{name: 'app.authors'}">
+      <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center">
+        <label class="text-lg font-semibold block mb-2">Active Authors</label>
+        <template v-if="!loading.authorsCount">
+          <span class="text-3xl font-semibold">{{ authorsCount }}</span>
+        </template>
+        <Spinner v-else text="" class=""/>
+      </div>
+    </router-link>
     <!--/    Active Authors-->
     
     <!--    Active Clients -->
-    <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center"
-         style="animation-delay: 0.1s">
-      <label class="text-lg font-semibold block mb-2">Active Clients</label>
-      <template v-if="!loading.clientsCount">
-        <span class="text-3xl font-semibold">{{ clientsCount }}</span>
-      </template>
-      <Spinner v-else text="" class=""/>
-    </div>
+    <router-link :to="{name: 'app.clients'}">
+      <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center"
+           style="animation-delay: 0.1s">
+        <label class="text-lg font-semibold block mb-2">Active Clients</label>
+        <template v-if="!loading.clientsCount">
+          <span class="text-3xl font-semibold">{{ clientsCount }}</span>
+        </template>
+        <Spinner v-else text="" class=""/>
+      </div>
+    </router-link>
     <!--/    Active Clients -->
   </div>
 

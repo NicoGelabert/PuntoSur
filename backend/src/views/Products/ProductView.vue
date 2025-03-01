@@ -2,7 +2,7 @@
 <template>
   <div class="flex items-center justify-between mb-3">
     <h1 v-if="!loading" class="text-3xl font-semibold">
-      {{ product.id ? `Update product: "${product.title}"` : 'Create new Product' }}
+      {{ product.id ? `Update treatment: "${product.title}"` : 'Create new Treatment' }}
     </h1>
   </div>
   <div class="bg-white rounded-lg shadow animate-fade-in-down">
@@ -12,7 +12,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3">
         <div class="col-span-2 px-4 pt-5 pb-4">
           <div class="flex flex-col gap-2">
-            <h3 class="text-lg font-bold">Product Name</h3>
+            <h3 class="text-lg font-bold">Treatment Name</h3>
             <CustomInput class="mb-2" v-model="product.title" label="Product Title" :errors="errors['title']"/>
           </div>
           <hr class="my-4">

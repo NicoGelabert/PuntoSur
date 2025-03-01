@@ -11,12 +11,12 @@
             <option value="50">50</option>
             <option value="100">100</option>
           </select>
-          <span class="ml-3">Found {{ products.total }} products</span>
+          <span class="ml-3">Found {{ products.total }} treatments</span>
         </div>
         <div>
           <input v-model="search" @change="getProducts(null)"
                  class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                 placeholder="Type to Search products">
+                 placeholder="Type to Search treatments">
         </div>
       </div>
   
