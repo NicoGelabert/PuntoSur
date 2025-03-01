@@ -136,11 +136,11 @@ function onChange(value) {
 </script>
 
 <style scoped>
-/deep/ .ck-editor {
+::v-deep .ck-editor {
   width: 100%;
 }
 
-/deep/ .ck-content {
+::v-deep .ck-content {
   min-height: 200px;
 }
 </style>
