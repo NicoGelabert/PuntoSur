@@ -44,6 +44,7 @@ class ContactController extends Controller
         if (!$responseData['success']) {
             return back()->withErrors(['captcha' => 'reCAPTCHA validation failed.'])->withInput();
         }
+        dd($responseData);
 
         $contact = Contact::create([
             'name' => $request->name,
