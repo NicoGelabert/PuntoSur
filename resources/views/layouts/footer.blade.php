@@ -8,15 +8,6 @@
             </div>
             <p>11 Main Street, Dungloe, Donegal, F94 WR6T (above Kenneth Campbell's)</p>
             <x-social-icons />
-            <ul class="footer-menu">
-                @foreach ($services as $service)
-                    <li>
-                        <a href="{{ route('service.view', $service->slug) }}">
-                            <span>{{ $service->name }}</span>
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
             <div class="flex flex-col gap-4">
                 <a href="/terms-and-conditions"><p>Cancelation policy & Terms and conditions</p></a>
                 <a href="/privacy-policy"><p>Cookies & Privacy policy</p></a>

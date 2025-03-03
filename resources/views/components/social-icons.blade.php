@@ -5,7 +5,7 @@
     <a href="https://www.facebook.com/Chibalancetherapies" target="_blank">
         <x-icons.facebook />
     </a>
-    <a href="https://maps.app.goo.gl/wAKdYQRLxSdrLY4U6" target="_blank">
-        <x-icons.map />
+    <a href="mailto:chibalancetherapies@gmail.com" target="_blank">
+        <x-icons.mail />
     </a>
 </div>

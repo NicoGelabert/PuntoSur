@@ -73,13 +73,12 @@
                     </div>
         
                     <div class="flex gap-4">
-                        @if ($product->categories->contains('name', 'gift cards'))
-                        <x-button class="btn btn-primary" href="https://wa.me/353852727422?text={{ urlencode('Hello! I would like more information about ' . $product->title) }}" target="_blank">Whatsapp <x-icons.whatsapp /></x-button>
-                        @else
+                        @if ($product->link)
                         <x-button class="btn btn-primary" href="{{ $product->link }}" >
                             Book <x-icons.booking />
                         </x-button>
                         @endif
+                        <x-button class="btn btn-secondary" href="https://wa.me/353852727422?text={{ urlencode('Hello! I would like more information about ' . $product->title) }}" target="_blank">Whatsapp <x-icons.whatsapp /></x-button>
                     </div>
                 </div>
             </div>

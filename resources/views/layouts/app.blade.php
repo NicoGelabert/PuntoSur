@@ -84,12 +84,14 @@
             </div>
             <!--/ Toast -->
             @include('layouts.navigation')
+            <x-button href="https://wa.me/353852727422?text=Hello! I would like more information about your treatments" target="_blank" class="whatsapp-btn">
+                <x-icons.whatsapp />
+            </x-button>
             <main>
                 {{ $slot }}
             </main>
             
             @include('layouts.footer')
-            
         </div>
     </body>
 </html>
