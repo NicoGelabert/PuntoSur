@@ -41,8 +41,23 @@ class ClientController extends Controller
             'menopause' => 'nullable|string',
         
             'signed' => 'required|boolean',
+            'g-recaptcha-response' => 'required'
         ]);
         
+        // Validar reCAPTCHA con Google
+        $recaptchaResponse = $request->input('g-recaptcha-response');
+        $recaptchaSecret = env('RECAPTCHA_SECRET_KEY'); // Guarda la clave en el archivo .env
+
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => $recaptchaSecret,
+            'response' => $recaptchaResponse,
+        ]);
+
+        $responseData = $response->json();
+
+        if (!$responseData['success']) {
+            return back()->withErrors(['captcha' => 'reCAPTCHA validation failed.'])->withInput();
+        }
 
         try {
             // Aquí se realizan las validaciones y el almacenamiento de datos

@@ -31,7 +31,7 @@
                             </label>
                         </div>
 
-                        <div class="g-recaptcha" data-sitekey="6LfVW4kqAAAAAEdYw7ib6b04hXWw1e5IC2HBqsSR"></div>
+                        <div class="g-recaptcha" data-sitekey="6LfO-OcqAAAAAHuj85EAyhLuJXm_YVEkN_0aygzW"></div>
 
                         <x-button id="subscribeBtn" type="submit" disabled class="btn btn-primary" >
                             <span>{{__('Send')}}</span><x-icons.send-info />

@@ -54,7 +54,7 @@
                             </div>
                             <div class="flex">
                                 <x-button class="btn btn-primary px-2" href="{{ $product->link }}"> <x-icons.booking /></x-button>
-                                <x-button class="btn" href="{{ $product->slug }}"> <x-icons.send /></x-button>
+                                <x-button class="btn" href="{{ route('product.view', ['category' => $product->categories->first()->slug, 'product' => $product->slug]) }}"> <x-icons.send /></x-button>
                             </div>
                         </div>
                         <hr class="divider">
