@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Http;
 use App\Models\Contact;
 use App\Models\Product;
-use App\Events\ContactCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactConfirmation;
@@ -20,7 +20,7 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
+        // Validación de datos recibidos en el formulario
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
@@ -32,36 +32,36 @@ class ContactController extends Controller
 
         // Validar reCAPTCHA con Google
         $recaptchaResponse = $request->input('g-recaptcha-response');
-        $recaptchaSecret = env('RECAPTCHA_SECRET_KEY'); // Guarda la clave en el archivo .env
+        $recaptchaSecret = config('services.recaptcha.secret_key'); // Clave secreta de reCAPTCHA
 
         $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => $recaptchaSecret,
             'response' => $recaptchaResponse,
+            'remoteip' => $request->ip(),
         ]);
 
         $responseData = $response->json();
 
+        // Si la validación de reCAPTCHA falla, retornamos un mensaje de error
         if (!$responseData['success']) {
             return back()->withErrors(['captcha' => 'reCAPTCHA validation failed.'])->withInput();
         }
-        dd($responseData);
-
-        $contact = Contact::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'treatment' => $request->treatment,
-            'message' => $request->message,
-        ]);
 
         try {
-            // Send confirmation email to the subscriber
+            // Almacenamos los datos del contacto en la base de datos, usando el método 'create' con el objeto $request
+            $contact = Contact::create($request->only(['name', 'email', 'phone', 'treatment', 'message']));
+
+            // Enviar correo de confirmación al contacto
             Mail::to($contact->email)->send(new ContactConfirmation($contact));
+
+            // Enviar correo de notificación al administrador
             Mail::to(config('mail.from.address'))->send(new AdminNotificationMail($contact));
 
-            return response()->json(['message' => 'Mensaje Enviado!'], 200);
+            // Responder con éxito
+            return response()->json(['success' => true, 'message' => 'Mensaje enviado exitosamente!'], 200);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Falló el envío. Por favor intente en unos minutos.'], 500);
+            // Si ocurre un error, capturamos la excepción y respondemos con un mensaje de error
+            return response()->json(['success' => false, 'message' => 'Falló el envío. Por favor intente más tarde.'], 500);
         }
     }
 }

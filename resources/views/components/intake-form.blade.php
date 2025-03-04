@@ -149,7 +149,7 @@
                         </div>
                     </div>
 
-                    <div class="g-recaptcha" data-sitekey="6LeABugqAAAAAE1LHJ6QvpF6T3l4bXQ78eoWBdJK"></div>
+                    <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
                     <x-button id="subscribeBtn" type="submit" class="btn btn-primary" >
                         <span>{{__('Send')}}</span><x-icons.send-info />
                     </x-button>

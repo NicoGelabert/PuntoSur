@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Http;
 use App\Models\Client;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -46,8 +47,8 @@ class ClientController extends Controller
         
         // Validar reCAPTCHA con Google
         $recaptchaResponse = $request->input('g-recaptcha-response');
-        $recaptchaSecret = env('RECAPTCHA_SECRET_KEY'); // Guarda la clave en el archivo .env
-
+        $recaptchaSecret = config('services.recaptcha.secret_key'); // Guarda la clave en el archivo .env
+        
         $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => $recaptchaSecret,
             'response' => $recaptchaResponse,

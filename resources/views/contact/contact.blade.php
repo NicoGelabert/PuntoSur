@@ -3,22 +3,24 @@
         <x-icons.first_leave class="absolute pointer-events-none" />
         <x-icons.second_leave class="absolute pointer-events-none right-0 top-20 sm:top-28 z-10" />
         <div class="contact_form_hero">
-            <h2>Contact Form</h3>
+            <h2>Contact Form</h2>
         </div>
         <div class="bg-blue_light py-12">
             <div class="container max-w-xl contact_form_content">
-                <form id="contactForm" action="{{ route('contact.store') }}" method="post" class="flex gap-2 w-full form">
+                <form id="contactForm" class="flex gap-2 w-full form">
                     @csrf
                     <div class="flex flex-col gap-6 w-full">
                         <input id="nameInput" type="text" name="name" placeholder="Your full name" required>
                         <input id="emailInput" type="email" name="email" placeholder="Your Email" required>
                         <input id="phoneInput" type="tel" name="phone" placeholder="Your Phone" required pattern="[0-9]{9}">
-                            <select name="treatment" id="treatmentInput">
-                                <option value="" disabled selected>Select a treatment</option>
-                                @foreach($products as $product)
-                                    <option value="{{ $product->title }}">{{ $product->title }}</option>
-                                @endforeach
-                            </select>
+                        
+                        <select name="treatment" id="treatmentInput" required>
+                            <option value="" disabled selected>Select a treatment</option>
+                            @foreach($products as $product)
+                                <option value="{{ $product->title }}">{{ $product->title }}</option>
+                            @endforeach
+                        </select>
+
                         <textarea id="messageInput" name="message" placeholder="Leave a message" rows="4" required></textarea>
                         
                         <!-- Casilla de verificación para Términos y Política -->
@@ -31,9 +33,9 @@
                             </label>
                         </div>
 
-                        <div class="g-recaptcha" data-sitekey="6LeABugqAAAAAE1LHJ6QvpF6T3l4bXQ78eoWBdJK"></div>
+                        <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
 
-                        <x-button id="subscribeBtn" type="submit" disabled class="btn btn-primary" >
+                        <x-button id="subscribeBtn" type="submit" disabled class="btn btn-primary">
                             <span>{{__('Send')}}</span><x-icons.send-info />
                         </x-button>
 
@@ -46,16 +48,18 @@
                         </div>
                     </div>
                 </form>
+
                 <div id="successMessage" class="mx-auto" style="display: none;">
                     <h4 class="text-center">Message Sent!</h4>
                 </div>
+
                 <div id="errorMessage" class="mx-auto" style="display: none;">
                     Submission failed. Please try again.
                 </div>
             </div>
         </div>
     </div>
-    
+
 </x-app-layout>
 
 <script>
@@ -72,27 +76,32 @@
             subscribeBtn.disabled = !termsCheckbox.checked;
         });
 
+        // Asegurarse de que el botón esté inicialmente deshabilitado
+        subscribeBtn.disabled = !termsCheckbox.checked;
+
         form.addEventListener('submit', async function(event) {
             event.preventDefault(); // Evitar el envío predeterminado del formulario
-
             subscribeBtn.style.display = 'none';
             loader.classList.remove('hidden_loader');
 
-            const name = document.getElementById('nameInput').value;
-            const email = document.getElementById('emailInput').value;
-            const phone = document.getElementById('phoneInput').value;
-            const treatment = document.getElementById('treatmentInput').value;
-            const message = document.getElementById('messageInput').value;
+            // Usar FormData para capturar todos los datos del formulario
+            const formData = new FormData(form);
+
+            // Obtener el token de reCAPTCHA antes de enviar
+            const recaptchaToken = await grecaptcha.execute('{{ config("services.recaptcha.site_key") }}', { action: 'submit' });
+
+            // Añadir el token de reCAPTCHA a FormData
+            formData.append('g-recaptcha-response', recaptchaToken);
 
             try {
                 const response = await fetch('{{ route("contact.store") }}', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
-                    body: JSON.stringify({ name, email, phone, treatment, message })
+                    body: formData // Enviar FormData al backend
                 });
+
                 const data = await response.json();
                 if (response.ok) {
                     successMessage.style.display = 'block';
@@ -101,6 +110,7 @@
                     errorMessage.style.display = 'block';
                 }
             } catch (error) {
+                console.error('Error al enviar la solicitud:', error);
                 errorMessage.style.display = 'block';
             } finally {
                 loader.classList.add('hidden_loader');
