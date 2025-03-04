@@ -87,11 +87,18 @@
             // Usar FormData para capturar todos los datos del formulario
             const formData = new FormData(form);
 
-            // Obtener el token de reCAPTCHA antes de enviar
-            const recaptchaToken = await grecaptcha.execute('{{ config("services.recaptcha.site_key") }}', { action: 'submit' });
+    // Obtener el token de reCAPTCHA (reemplazar execute con getResponse)
+    const recaptchaToken = grecaptcha.getResponse();
 
-            // Añadir el token de reCAPTCHA a FormData
-            formData.append('g-recaptcha-response', recaptchaToken);
+    if (!recaptchaToken) {
+        errorMessage.textContent = 'Please verify that you are not a robot.';
+        errorMessage.style.display = 'block';
+        loader.classList.add('hidden_loader');
+        return; // Si el reCAPTCHA no se ha completado, evita enviar el formulario
+    }
+
+    // Añadir el token de reCAPTCHA a FormData
+    formData.append('g-recaptcha-response', recaptchaToken);
 
             try {
                 const response = await fetch('{{ route("contact.store") }}', {
