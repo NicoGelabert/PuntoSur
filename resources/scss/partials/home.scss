@@ -27,7 +27,7 @@
 .home-hero-banner{
     @apply flex flex-col gap-12 mt-14 py-12;
     .home-hero-banner-content{
-        @apply flex gap-12 h-full justify-between
+        @apply flex gap-12 h-full
         flex-col md:flex-row;
         .home-hero-banner-content-text{
             @apply flex flex-col gap-4
