@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
       arrows      : false,
       focus       : 'center',
       autoplay    : true,
-      interval    : 7000,
+      interval    : 10000,
       classes: {
         pagination: 'splide__pagination_custom',
       },
