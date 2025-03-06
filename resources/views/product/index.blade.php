@@ -7,7 +7,6 @@
     </div>
     <product-list>
     </product-list>
-    <x-benefits />
     <!-- <x-book /> -->
   </div>
 </x-app-layout>
