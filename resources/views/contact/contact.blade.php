@@ -12,7 +12,7 @@
                     <div class="flex flex-col gap-6 w-full">
                         <input id="nameInput" type="text" name="name" placeholder="Your full name" required>
                         <input id="emailInput" type="email" name="email" placeholder="Your Email" required>
-                        <input id="phoneInput" type="tel" name="phone" placeholder="Your Phone" required pattern="[0-9]{9}">
+                        <input id="phoneInput" type="tel" name="phone" placeholder="Your Phone" required pattern="[0-9]{9,10}">
                         
                         <select name="treatment" id="treatmentInput" required>
                             <option value="" disabled selected>Select a treatment</option>
