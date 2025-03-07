@@ -17,9 +17,9 @@
                         </div>
                         
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <input id="phoneInput" type="tel" name="phone_number" placeholder="Your contact number" required pattern="[0-9]{9}">
+                            <input id="phoneInput" type="tel" name="phone_number" placeholder="Your contact number" required pattern="[0-9]{9,10}">
                             
-                            <input id="emergencyContactInput" type="tel" name="emergency_phone_number" placeholder="Emergency contact number" required pattern="[0-9]{9}">
+                            <input id="emergencyContactInput" type="tel" name="emergency_phone_number" placeholder="Emergency contact number" required pattern="[0-9]{9,10}">
                         </div>
                         
                         <div class="flex flex-col sm:flex-row gap-4">
