@@ -68,7 +68,7 @@
         </li>
         <li>
             <a href="/articles">
-                News
+                Healthy Stuff
             </a>
         </li>
         <li>
