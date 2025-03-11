@@ -231,6 +231,14 @@ document.addEventListener('DOMContentLoaded', function () {
   var newsElement = document.querySelector('.news');
   if (newsElement) {
     var news = new Splide(newsElement, {
+      breakpoints: {
+        1024: {
+            perPage     : 2,
+        },
+        480: {
+            perPage     : 1,        
+        }
+      },
       classes: {
         pagination: 'splide__pagination_custom',
         arrows    : 'splide__arrows_custom splide__arrows_custom_news',
