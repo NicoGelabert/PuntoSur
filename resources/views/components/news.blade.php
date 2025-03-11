@@ -1,6 +1,6 @@
 <div class="container news splide" aria-label="Latest news">
     <div class="news-title">
-        <h3>Healthy Stuff</h3>
+        <h3>Healthy News</h3>
         <a href="/articles">See More <x-icons.chevron /></a>
     </div>
     <div class="splide__track">
