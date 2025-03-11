@@ -230,21 +230,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // Noticias
   var newsElement = document.querySelector('.news');
   if (newsElement) {
-    var news = new Splide(newsElement, {
-      breakpoints: {
-        1024: {
-            perPage     : 2,
-        },
-        480: {
-            perPage     : 1,        
-        }
-      },
+    var news = new Splide(newsElement, {      
       classes: {
         pagination: 'splide__pagination_custom',
         arrows    : 'splide__arrows_custom splide__arrows_custom_news',
       },
       gap       : '1.5rem',
       pagination: true,
+      perPage   : 1,
+      perMove   : 1,
       rewind    : true,
       type      : 'loop',
     });

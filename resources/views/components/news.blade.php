@@ -6,8 +6,8 @@
     <div class="splide__track">
         <ul class="splide__list">
             @foreach ($articles as $article)
-            <a href="{{ route('news.view', ['article' => $article->slug]) }}">
-                <li class="news-card splide__slide">
+            <li class="news-card splide__slide">
+                <a href="{{ route('news.view', ['article' => $article->slug]) }}">
                     <div class="news-card-img">
                         <img src="{{ $article->image }}" alt="">
                     </div>
@@ -25,8 +25,8 @@
                         <h5>{{ $article->title }}</h5>
                         <p class="description">{{ $article->news_lead }}</p>
                     </div>
-                </li>
-            </a>
+                </a>
+            </li>
             @endforeach
         </ul>
     </div>
