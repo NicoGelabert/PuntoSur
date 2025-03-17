@@ -20,7 +20,7 @@ class WelcomeController extends Controller
         $homeherobanners = HomeHeroBanner::all();
         $products = Product::all();
         $abouts = About::all();
-        $articles = Article::orderBy('created_at', 'desc')->get();
+        $articles = Article::orderBy('created_at', 'desc')->limit(5)->get();
         // $services = Service::all();
         // $tags = Tag::all();
         // $clients = Client::all();

@@ -32,6 +32,17 @@
                     <p> {!! $article->description !!}</p>
                 </div>
             </div>
+            <div class="news_gallery splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        @foreach ($article->images->skip(1) as $image)
+                        <li class="splide__slide">
+                            <img src="{{ $image->url }}" alt="" class="max-w-36">
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>

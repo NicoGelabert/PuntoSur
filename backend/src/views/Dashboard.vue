@@ -88,8 +88,8 @@
       <template v-if="!loading.latestClients">
         <div v-for="o of latestClients" :key="o.id" class="py-2 px-3 hover:bg-gray-50">
           <p>
-            <router-link :to="{name: 'app.clients.edit', params: {id: c.id}}" v-for="c of latestClients" :key="c.id" class="text-indigo-700 font-semibold">
-              {{ c.full_name }} | {{ c.age }} | {{ c.town }}
+            <router-link :to="{name: 'app.clients.edit', params: {id: o.id}}" class="text-indigo-700 font-semibold">
+              {{ o.full_name }} | {{ o.age }} | {{ o.town }}
             </router-link>
           </p>
         </div>

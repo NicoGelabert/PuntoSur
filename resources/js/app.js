@@ -228,19 +228,25 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Noticias
-  var newsElement = document.querySelector('.news');
+  var newsElement = document.querySelector('.news_gallery');
   if (newsElement) {
     var news = new Splide(newsElement, {      
-      classes: {
+      arrows      : false,
+      breakpoints : {
+        480 :{
+          perPage : 2,
+        }
+      },
+      classes     : {
         pagination: 'splide__pagination_custom',
         arrows    : 'splide__arrows_custom splide__arrows_custom_news',
       },
-      gap       : '1.5rem',
-      pagination: true,
-      perPage   : 1,
-      perMove   : 1,
-      rewind    : true,
-      type      : 'loop',
+      focus      : 'center',
+      gap         : '0.5rem',
+      pagination  : false,
+      perPage     : 3,
+      rewind      : false,
+      type        : 'carousel',
     });
     news.mount();
   }

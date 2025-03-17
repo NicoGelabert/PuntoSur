@@ -1,5 +1,5 @@
 .news{
-    @apply flex flex-col gap-6 py-12;
+    @apply flex flex-col gap-12 py-12;
     .news-title{
         @apply flex justify-between items-center;
         a{
@@ -15,24 +15,20 @@
             }
         }
     }
-    .news-card{
-        @apply flex flex-col sm:flex-row gap-6;
-        .news-card-img{
-            @apply sm:w-1/2;
-            img{
-                @apply rounded-lg lg:aspect-[5/2] object-cover;
-            }
-        }
-        .news-card-content{
-            @apply flex flex-col gap-4 sm:w-1/2;
+    .news_card{
+        @apply flex flex-col md:flex-row gap-8;
+        .news_card_first{
             .news-card-content-header{
                 @apply flex gap-2
                 sm:flex-col md:flex-row
-                items-center sm:items-start;
+                items-center;
                 .author{
-                    @apply flex gap-2 text-gray_600;
+                    @apply flex gap-2 text-gray_600 items-center;
                     img{
-                        @apply max-h-6 w-auto rounded-full;
+                        @apply max-w-8 rounded-full;
+                    }
+                    h6{
+                        @apply text-base;
                     }
                 }
                 .dot-divider{
@@ -42,13 +38,16 @@
                     @apply text-gray_500;
                 }
             }
-            .description{
-                @apply text-gray_600 sm:line-clamp-2 md:line-clamp-none;
+        }
+        .news_list_item{
+            @apply flex gap-4 items-center border-t py-8 md:px-4;
+            img{
+                @apply aspect-square object-cover max-w-12 rounded-full;
             }
         }
     }
 }
-// VISTA DE ARTÍCULOS
+// VISTA DE NOTICIAS
 #news_index{
     .news_index_hero{
         @apply flex justify-center mt-14 py-12 lg:py-24;
@@ -63,7 +62,7 @@
             @apply flex flex-col gap-6 sm:max-w-96;
             .news-card-img{
                 img{
-                    @apply rounded-lg lg:aspect-[5/2] object-cover;
+                    @apply rounded-lg object-cover max-h-[250px];
                 }
             }
             .news-card-content{
@@ -90,8 +89,8 @@
         }
     }
 }
-// FIN VISTA DE ARTÍCULOS
-// VISTA DE ARTÍCULO
+// FIN VISTA DE NOTICIAS
+// VISTA DE NOTICIAS
 #news_view{
     .news_view_hero{
         @apply flex flex-col justify-center mt-14 px-4 gap-8
@@ -121,7 +120,6 @@
         @apply bg-blue_light py-12 px-4;
         .news_view_img{
             @apply object-cover rounded-xl
-            aspect-square sm:aspect-video
             md:w-1/2;
         }
         .news_lead{
@@ -131,6 +129,9 @@
         }
         .description{
             @apply py-6 md:py-12;
+        }
+        .news_gallery{
+            @apply w-full lg:w-1/2 mx-auto;
         }
     }
 // FIN VISTA DE ARTÍCULO
