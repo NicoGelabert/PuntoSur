@@ -32,7 +32,8 @@
                     <p> {!! $article->description !!}</p>
                 </div>
             </div>
-            <div class="news_gallery splide">
+            <x-image-gallery :images="$article->images"></x-image-gallery>
+            <!-- <div class="news_gallery splide">
                 <div class="splide__track">
                     <ul class="splide__list">
                         @foreach ($article->images->skip(1) as $image)
@@ -42,7 +43,32 @@
                         @endforeach
                     </ul>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </x-app-layout>
+
+<!-- <style>
+    .splide__track {
+    display: flex;
+    justify-content: center;  /* Centra los elementos dentro de la pista */
+}
+
+.splide__list {
+    display: flex;
+    justify-content: center;  /* Asegura que los elementos dentro de la lista estén centrados */
+}
+
+.splide__slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;  /* Centra las imágenes dentro de cada slide */
+}
+
+.splide__slide img {
+    max-width: 100%;   /* Asegura que las imágenes no se desborden */
+    object-fit: cover; /* Asegura que las imágenes se mantengan proporcionales */
+    border-radius: 8px; /* Si quieres bordes redondeados */
+}
+
+</style> -->

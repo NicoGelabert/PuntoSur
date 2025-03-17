@@ -132,6 +132,11 @@
         }
         .news_gallery{
             @apply w-full lg:w-1/2 mx-auto;
+            #news_lightbox{
+                img{
+                    @apply max-h-full;
+                }
+            }
         }
     }
 // FIN VISTA DE ARTÍCULO
