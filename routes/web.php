@@ -43,31 +43,8 @@ Route::middleware(['guestOrVerified'])->group(function () {
     Route::get('/',[WelcomeController::class, 'index'])->name('welcome');
 
     //Productos 
-    Route::get('/all', [ProductController::class, 'index'])->name('products.index');
-    Route::get('/all/{category:slug}/{product:slug}', [ProductController::class, 'view'])->name('product.view');
-
-    //Categorías 
-    Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
-    Route::get('/all/{category:slug}', [CategoryController::class, 'view'])->name('category.view');
-
-    // About
-    Route::get('/about', [AboutController::class,'view'])->name('about.view');
-    
-    //News
-    Route::get('/articles', [ArticleController::class, 'index'])->name('news.index');
-    Route::get('/articles/{article:slug}', [ArticleController::class, 'view'])->name('news.view');
-
-    // Intake Form
-    Route::get('/intake-form', [ClientController::class, 'create'])->name('client.create');
-    Route::post('/intake-form', [ClientController::class, 'store'])->name('client.store');
-
-    //Contacto
-    Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
-    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-
-    //Presupuestos
-    Route::get('/quotation', [QuotationController::class, 'create'])->name('quotation.create');
-    Route::post('/quotation', [QuotationController::class, 'store'])->name('quotation.store');
+    // Route::get('/all', [ProductController::class, 'index'])->name('products.index');
+    // Route::get('/all/{category:slug}/{product:slug}', [ProductController::class, 'view'])->name('product.view');
 
     Route::prefix('/cart')->name('cart.')->group(function () {
         Route::get('/', [CartController::class, 'index'])->name('index');
