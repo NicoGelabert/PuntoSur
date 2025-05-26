@@ -34,7 +34,7 @@
     <router-link :to="{name: 'app.products'}">
       <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center"
            style="animation-delay: 0.1s">
-        <label class="text-lg font-semibold block mb-2">Active Treatments</label>
+        <label class="text-lg font-semibold block mb-2">Productos Activos</label>
         <template v-if="!loading.productsCount">
           <span class="text-3xl font-semibold">{{ productsCount }}</span>
         </template>

@@ -23,7 +23,7 @@ class Client extends Model
         'town',
         'occupancy',
         'email',
-        'treatment',
+        'producto',
         'sore',
         'medication',
         'allergies',

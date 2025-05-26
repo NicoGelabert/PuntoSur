@@ -12,11 +12,6 @@
                 'size' => $price->size,
             ];
         }),
-        'benefits' => $product->benefits->map(function ($benefit) {
-            return [
-                'text' => $benefit->text,
-            ];
-        }),
         'images' => $product->images->pluck('url') 
         ]) }})"
         class="mx-auto product-view"
@@ -83,9 +78,6 @@
                 </div>
             </div>
         </div>
-        @if ($product->benefits && $product->benefits->isNotEmpty())
-            <x-benefits :benefits="$product->benefits"/>
-        @endif
         <x-products :products="$products" header_title="More Treatments"/>
     </div>
 </x-app-layout>

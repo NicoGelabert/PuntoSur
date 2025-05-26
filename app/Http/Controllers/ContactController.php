@@ -25,7 +25,7 @@ class ContactController extends Controller
             'name' => 'required|string',
             'email' => 'required|email',
             'phone' => 'required|numeric',
-            'treatment' => 'nullable|string',
+            'producto' => 'nullable|string',
             'message' => 'required|string',
             'g-recaptcha-response' => 'required',
         ]);
@@ -49,7 +49,7 @@ class ContactController extends Controller
 
         try {
             // Almacenamos los datos del contacto en la base de datos, usando el método 'create' con el objeto $request
-            $contact = Contact::create($request->only(['name', 'email', 'phone', 'treatment', 'message']));
+            $contact = Contact::create($request->only(['name', 'email', 'phone', 'producto', 'message']));
 
             // Enviar correo de confirmación al contacto
             Mail::to($contact->email)->send(new ContactConfirmation($contact));

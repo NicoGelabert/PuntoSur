@@ -220,13 +220,6 @@ export function createProduct({ commit }, product) {
     });
   }
 
-  // Agregar beneficios al FormData
-  if (product.benefits && product.benefits.length) {
-    product.benefits.forEach((benefit) => {
-      form.append(`benefits[]`, benefit);
-    });
-  }
-
   // Agregar cantidad al FormData
   if (product.quantity) {
     form.append('quantity', product.quantity);
@@ -250,13 +243,6 @@ export function updateProduct({commit}, product) {
   if (product.categories && product.categories.length) {
     product.categories.forEach((category) => {
       form.append(`categories[]`, category);
-    });
-  }
-
-  // Agregar beneficios al FormData
-  if (product.benefits && product.benefits.length) {
-    product.benefits.forEach((benefit) => {
-      form.append(`benefits[]`, benefit);
     });
   }
   
@@ -290,72 +276,6 @@ export function updateProduct({commit}, product) {
 
 export function deleteProduct({commit}, id) {
   return axiosClient.delete(`/products/${id}`)
-}
-
-// ABOUT
-export function getAbouts({commit, state}, {url = null, search = '', per_page, sort_field, sort_direction} = {}) {
-  commit('setAbouts', [true])
-  url = url || '/abouts'
-  const params = {
-    per_page: state.abouts.limit,
-  }
-  return axiosClient.get(url, {
-    params: {
-      ...params,
-      search, per_page, sort_field, sort_direction
-    }
-  })
-    .then((response) => {
-      commit('setAbouts', [false, response.data])
-    })
-    .catch(() => {
-      commit('setAbouts', [false])
-    })
-}
-
-
-export function getAbout({commit}, id) {
-  return axiosClient.get(`/abouts/${id}`)
-}
-
-
-export function createAbout({commit}, about) {
-  if (about.image instanceof File) {
-    const form = new FormData();
-    form.append('image', about.image);
-    form.append('headline', about.headline);
-    form.append('short_description', about.short_description);
-    form.append('large_description', about.large_description);
-    form.append('signature', about.signature);
-    form.append('mission_and_vision', about.mission_and_vision);
-    about = form;
-  }
-  return axiosClient.post('/abouts', about)
-}
-
-
-export function updateAbout({commit}, about) {
-  const id = about.id
-  if (about.image instanceof File) {
-    const form = new FormData();
-    form.append('id', about.id);
-    form.append('image', about.image);
-    form.append('headline', about.headline);
-    form.append('short_description', about.short_description);
-    form.append('large_description', about.large_description);
-    form.append('signature', about.signature);
-    form.append('mission_and_vision', about.mission_and_vision);
-    form.append('_method', 'PUT');
-    about = form;
-  } else {
-    about._method = 'PUT'
-  }
-  return axiosClient.post(`/abouts/${id}`, about)
-}
-
-
-export function deleteAbout({commit}, id) {
-  return axiosClient.delete(`/abouts/${id}`)
 }
 
 // ARTICLES
@@ -840,7 +760,7 @@ export function createClient({commit}, client) {
     form.append('town', client.town);
     form.append('occupancy', client.occupancy);
     form.append('email', client.email);
-    form.append('treatment', client.treatment);
+    form.append('producto', client.producto);
     form.append('sore', client.sore);
     form.append('medication', client.medication);
     form.append('allergies', client.allergies);
@@ -868,7 +788,7 @@ export function updateClient({commit}, client) {
     form.append('town', client.town);
     form.append('occupancy', client.occupancy);
     form.append('email', client.email);
-    form.append('treatment', client.treatment);
+    form.append('producto', client.producto);
     form.append('sore', client.sore);
     form.append('medication', client.medication);
     form.append('allergies', client.allergies);

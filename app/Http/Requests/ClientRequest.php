@@ -29,7 +29,7 @@ class ClientRequest extends FormRequest
             'town' => ['required', 'max:100'],
             'occupancy' => ['required', 'max:100'],
             'email' => ['required'],
-            'treatment' => ['required'],
+            'producto' => ['required'],
             'sore' => ['required', 'max:1000'],
             'medication' => ['required', 'max:1000'],
             'allergies' => ['required', 'max:1000'],

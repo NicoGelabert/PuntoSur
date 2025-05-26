@@ -2,7 +2,7 @@
 <template>
   <div class="flex items-center justify-between mb-3">
     <h1 v-if="!loading" class="text-3xl font-semibold">
-      {{ product.id ? `Update treatment: "${product.title}"` : 'Create new Treatment' }}
+      {{ product.id ? `Editar producto: "${product.title}"` : 'Crear Nuevo Producto' }}
     </h1>
   </div>
   <div class="bg-white rounded-lg shadow animate-fade-in-down">
@@ -12,7 +12,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3">
         <div class="col-span-2 px-4 pt-5 pb-4">
           <div class="flex flex-col gap-2">
-            <h3 class="text-lg font-bold">Treatment Name</h3>
+            <h3 class="text-lg font-bold">Nombre</h3>
             <CustomInput class="mb-2" v-model="product.title" label="Product Title" :errors="errors['title']"/>
           </div>
           <hr class="my-4">
@@ -67,26 +67,6 @@
             </button>
           </div>
           <hr class="my-4">
-          <!-- Benefits Section -->
-          <div class="my-4">
-            <h4 class="text-lg font-medium text-gray-900 mb-2">Benefits</h4>
-            <div v-for="(benefit, index) in product.benefits" :key="index" class="flex items-center gap-2 mb-2">
-              <CustomInput class="flex-1" v-model="benefit.text" :label="'Benefit ' + (index + 1)" :errors="errors[`benefits.${index}.text`]"/>
-              <button class="group border-0 rounded-full" @click="removeBenefit(index)">
-                <TrashIcon
-                  class="mr-2 h-5 w-5 text-black group-hover:text-red-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-            <button class="group flex items-end gap-2 border rounded-lg px-4 py-2 w-fit hover:bg-black hover:text-white" type="button" @click="addBenefit">
-              <h4 class="text-sm">New Benefit</h4>
-              <PlusCircleIcon
-                class="h-5 w-5 text-black group-hover:text-white"
-                aria-hidden="true"
-              />
-            </button>
-          </div>
           <hr class="my-4">
           <div class="flex flex-col gap-2">
             <h3 class="text-lg font-bold">Published</h3>
@@ -148,7 +128,6 @@ const product = ref({
   prices: [{ number: '', size: '' }],
   published: false,
   categories: [],
-  benefits: [],
 })
 
 console.log(product.prices)
@@ -168,14 +147,6 @@ onMounted(() => {
         product.value = response.data;
         if (!product.value.prices.length) {
           product.value.prices.push({ number: '', size: '' }); // Asegúrate de tener un campo vacío si no hay precios
-        }
-        // Asegurarse de que benefits sea un array vacío si no existe
-        if (!Array.isArray(product.value.benefits)) {
-          product.value.benefits = [];
-        }
-        // Asegurarse de que siempre haya al menos un beneficio vacío
-        if (!product.value.benefits.length) {
-          product.value.benefits.push({ text: '' });
         }
       })
   }
@@ -198,26 +169,11 @@ function removePrice(index) {
     }
 }
 
-function addBenefit() {
-  product.value.benefits.push({ text: '' });
-}
-
-function removeBenefit(index) {
-  product.value.benefits.splice(index, 1);
-  if (product.value.benefits.length === 0) {
-    addBenefit(); // Asegúrate de que siempre haya al menos un campo
-    }
-}
-
 function onSubmit($event, close = false) {
   loading.value = true
   errors.value = {};
   product.value.prices = product.value.prices.filter(
     (price) => price.number !== '' && price.size !== ''
-  );
-  product.value.benefits = Array.isArray(product.value.benefits) ? product.value.benefits : [];
-  product.value.benefits = product.value.benefits.filter(
-    (benefit) => benefit.text !== ''
   );
   if (product.value.id) {
     store.dispatch('updateProduct', product.value)

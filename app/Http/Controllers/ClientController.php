@@ -26,7 +26,7 @@ class ClientController extends Controller
             'occupancy' => 'required|string',
             'email' => 'required|email',
             
-            'treatment' => 'required|string',
+            'producto' => 'required|string',
         
             'sore' => 'required|string',
             'medication' => 'required|string',

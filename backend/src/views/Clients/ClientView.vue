@@ -48,8 +48,8 @@
             </div>
             <hr class="my-4">
             <div class="flex flex-col gap-2">
-              <h3 class="text-lg font-bold">Treatment</h3>
-              <CustomInput class="mb-2" v-model="client.treatment" label="Treatment" :errors="errors['treatment']"/>
+              <h3 class="text-lg font-bold">Producto</h3>
+              <CustomInput class="mb-2" v-model="client.producto" label="Producto" :errors="errors['producto']"/>
             </div>
             <hr class="my-4">
             <div class="flex flex-col gap-2">
@@ -150,7 +150,7 @@
     town: '',
     occupancy: '',
     email: '',
-    treatment: '',
+    producto: '',
     sore: '',
     medication: '',
     allergies: '',

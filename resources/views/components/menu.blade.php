@@ -62,11 +62,6 @@
             </a>
         </li>
         <li>
-            <a href="/about">
-                About Me
-            </a>
-        </li>
-        <li>
             <a href="/articles">
                 Healthy News
             </a>
