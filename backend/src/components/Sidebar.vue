@@ -1,20 +1,33 @@
 <template>
 
-    <div class="min-w-[140px] md:min-w-[160px] w-[25%] pt-8 pl-2 md:pl-8 transition-all" id="sideBarContainer" >
-        <button id="toggleIconButton" @click="emit('toggle-sidebar', toggleChevronLeftIcon()) " class="flex items-center justify-center rounded transition-colors w-8 h-8 mr-2 text-white bg-black hover:text-black hover:bg-white">
+    <div
+      :class="[
+        toggleIconLeft ? 'w-[25%] min-w-[200px]' : 'w-[60px]',
+        'pt-8 pl-2 md:pl-4 transition-all duration-300 ease-in-out min-w-[60px]'
+      ]"
+      id="sideBarContainer"
+    >
+        <button id="toggleIconButton" @click="emit('toggle-sidebar', toggleChevronLeftIcon()) " class="flex items-center justify-center rounded transition-colors w-8 h-8 mr-2 mb-8 text-white bg-black hover:text-black hover:bg-white">
             <div :class="[toggleIconLeft ? 'iconOpen' : 'iconClosed']" >
                 <ChevronLeftIcon class="rotate-180 md:rotate-0 w-6"/>
             </div>
         </button>
-        <router-link v-for="item in menuItems" :key="item.name" :to="{ name: item.route }"
-            class="flex items-center justify-between p-2 w-full rounded transition-colors hover:bg-white">
-            <span class="text-sm">
-                {{ item.label }}
-            </span>
-            <span class="mr-2">
-                <component :is="item.icon" class="w-5" />
-            </span>
-        </router-link>
+        <div v-for="item in menuItems" :key="item.name || item.type" class="w-full">
+          <div
+            v-if="item.type === 'divider'"
+            class="w-full border-t border-gray-300 my-3"
+          ></div>
+          <router-link v-else :to="{ name: item.route }"
+              class="flex items-center justify-between px-2 py-1 w-full rounded transition-colors duration-200 hover:bg-white">
+              <span class="text-sm whitespace-nowrap overflow-hidden transition-all duration-200"
+                    :class="toggleIconLeft ? 'opacity-100 ml-2' : 'opacity-0 w-0 ml-0'">
+                  {{ item.label }}
+              </span>
+              <span class="mr-2">
+                  <component :is="item.icon" class="w-5" />
+              </span>
+          </router-link>
+        </div>
     </div>
   
 </template>
@@ -46,10 +59,13 @@ const toggleChevronLeftIcon = () => {
 const menuItems = ref([
     { name: 'dashboard', label: 'Dashboard', route: 'app.dashboard', icon: BuildingStorefrontIcon },
     { name: 'homeherobanners', label: 'Home Hero Banner', route: 'app.homeherobanners', icon: PhotoIcon },
+    { type: 'divider' },
     { name: 'categories', label: 'Categories', route: 'app.categories', icon: MegaphoneIcon },
     { name: 'products', label: 'Productos', route: 'app.products', icon: ArchiveBoxIcon },
+    { type: 'divider' },
     { name: 'articles', label: 'Articles', route: 'app.articles', icon: NewspaperIcon },
     { name: 'authors', label: 'Author', route: 'app.authors', icon: IdentificationIcon },
+    { type: 'divider' },
     { name: 'clients', label: 'Clients', route: 'app.clients', icon: TrophyIcon },
     { name: 'users', label: 'Users', route: 'app.users', icon: UsersIcon },
 ]);
@@ -58,13 +74,15 @@ const menuItems = ref([
 
 <style scoped lang="scss">
 
-#sideBarContainer{
+#sideBarContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap:1rem;
-  a{
-    width: 100%;    
+  gap: 0.25rem;
+  a {
+    width: 100%;
+    display: flex;
+    align-items: center;
   }
 }
 .iconOpen{
