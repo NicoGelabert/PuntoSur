@@ -14,21 +14,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminUserSeeder::class,
-            // CategorySeeder::class,
-            // CountrySeeder::class,
-            // HomeHeroBannerSeeder::class,
-            // ProductSeeder::class,
-            // ProjectSeeder::class,
-            // ServiceSeeder::class,
-            // ClientSeeder::class,
-            // PortfolioSeeder::class,
-            // FeatureSeeder::class,
-            // ServiceItemSeeder::class,
-            // PortfolioServiceItemSeeder::class,
-            // TagSeeder::class,
-            // FaqSeeder::class,
-            // PriceSeeder::class,
-            // ProductPriceSeeder::class,
         ]);
     }
 }

@@ -6,6 +6,7 @@ import ResetPassword from "../views/ResetPassword.vue";
 import AppLayout from '../components/AppLayout.vue'
 import store from "../store";
 import NotFound from "../views/NotFound.vue";
+import HomeHeroBannerView from "../views/HomeHeroBanners/HomeHeroBannerView.vue";
 import HomeHeroBanners from "../views/HomeHeroBanners/HomeHeroBanners.vue";
 import Categories from "../views/Categories/Categories.vue";
 import Products from "../views/Products/Products.vue";
@@ -51,6 +52,19 @@ const routes = [
         path: 'homeherobanners',
         name: 'app.homeherobanners',
         component: HomeHeroBanners
+      },
+      {
+        path: 'homeherobanners/create',
+        name: 'app.homeherobanners.create',
+        component: HomeHeroBannerView
+      },
+      {
+        path: 'homeherobanners/:id',
+        name: 'app.homeherobanners.edit',
+        component: HomeHeroBannerView,
+        props: {
+          id: (value) => /^\d+$/.test(value)
+        }
       },
       {
         path: 'categories',

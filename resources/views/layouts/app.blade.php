@@ -1,27 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        
-            <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VSERZWJ746"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-VSERZWJ746');
-        </script>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <meta name="description" content="Chi Balance Therapies offers expert massage and holistic treatments in Ireland, helping you achieve relaxation, pain relief, and overall well-being. Our personalized therapies blend traditional and modern techniques to restore balance to your body and mind. Experience deep relaxation with our skilled therapist. Book your session today!">
-
-        <meta name="keywords" content="Chi Balance Therapies, massage therapy, holistic treatments, relaxation massage, deep tissue massage, sports massage, wellness center, stress relief, therapeutic massage, Ireland massage, body balance, professional massage services, pain relief therapy, healing massage, mindfulness and wellness">
-
-        
-        <title inertia>{{ config('app.name', 'Chi Balance Therapies') }}</title>
+        @yield('meta', view('partials.meta'))
 
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/common/chibalancetherapies.svg') }}">
 
@@ -81,9 +66,6 @@
             </div>
             <!--/ Toast -->
             @include('layouts.navigation')
-            <!-- <x-button href="https://wa.me/353852727422?text=Hello! I would like more information about your treatments" target="_blank" class="whatsapp-btn">
-                <x-icons.whatsapp />
-            </x-button> -->
             <main>
                 {{ $slot }}
             </main>
