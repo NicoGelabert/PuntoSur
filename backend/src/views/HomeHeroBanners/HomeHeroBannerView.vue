@@ -13,7 +13,7 @@
         <div class="col-span-2 px-4 pt-5 pb-4">
           <div class="flex flex-col gap-2">
             <h3 class="text-lg font-bold">Título</h3>
-            <CustomInput class="mb-2" v-model="homeHeroBanner.headline" label="Banner headline" :errors="errors['headline']"/>
+            <CustomInput class="mb-2" v-model="homeHeroBanner.headline" label="Título del Banner" :errors="errors['headline']"/>
           </div>
           <hr class="my-4">
           <div class="flex flex-col gap-2">
@@ -32,8 +32,8 @@
           </div>
           <hr class="my-4">
           <div class="flex flex-col gap-2">
-            <h3 class="text-lg font-bold">Published</h3>
-            <CustomInput type="checkbox" class="mb-2" v-model="homeHeroBanner.published" label="Published" :errors="errors['published']"/>
+            <h3 class="text-lg font-bold">Publicar</h3>
+            <CustomInput type="checkbox" class="mb-2" v-model="homeHeroBanner.published" :label="homeHeroBanner.published ? 'Publicado' : 'No publicado'" :errors="errors['published']"/>
           </div>
         </div>
         <div class="col-span-1 px-4 pt-5 pb-4">
@@ -57,17 +57,17 @@
       <footer class="bg-gray-50 rounded-b-lg px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
         <button type="submit"
                 class="bg-black text-base font-medium text-white border rounded-md border-gray-300 shadow-sm w-full inline-flex justify-center mt-3 px-4 py-2 hover:bg-black/10 hover:text-black focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-black sm:w-auto sm:mt-0 sm:ml-3 sm:text-sm">
-          Save
+          Guardar
         </button>
         <button type="button"
                 @click="onSubmit($event, true)"
                 class="bg-black text-base font-medium text-white border rounded-md border-gray-300 shadow-sm w-full inline-flex justify-center mt-3 px-4 py-2 hover:bg-black/10 hover:text-black focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-black sm:w-auto sm:mt-0 sm:ml-3 sm:text-sm">
-          Save & Close
+          Guardar y Cerrar
         </button>
         <router-link :to="{name: 'app.homeherobanners'}"
                       class="bg-white text-base font-medium text-gray-700 border rounded-md border-gray-300 shadow-sm w-full inline-flex justify-center mt-3 px-4 py-2 hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-300 sm:w-auto sm:mt-0 sm:ml-3 sm:text-sm"
                       ref="cancelButtonRef">
-          Cancel
+          Cancelar
         </router-link>
       </footer>
     </form>

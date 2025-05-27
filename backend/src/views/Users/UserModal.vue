@@ -20,7 +20,7 @@
                        class="absolute left-0 top-0 bg-white right-0 bottom-0 flex items-center justify-center"/>
               <header class="py-3 px-4 flex justify-between items-center">
                 <DialogTitle as="h3" class="text-lg leading-6 font-medium text-gray-900">
-                  {{ user.id ? `Update user: "${props.user.name}"` : 'Create new User' }}
+                  {{ user.id ? `Editar Usuario: "${props.user.name}"` : 'Crear Nuevo Usuario' }}
                 </DialogTitle>
                 <button
                   @click="closeModal()"
@@ -44,20 +44,20 @@
               </header>
               <form @submit.prevent="onSubmit">
                 <div class="bg-white px-4 pt-5 pb-4">
-                  <CustomInput class="mb-2" v-model="user.name" label="Name"/>
+                  <CustomInput class="mb-2" v-model="user.name" label="Nombre"/>
                   <CustomInput class="mb-2" v-model="user.email" label="Email"/>
-                  <CustomInput type="password" class="mb-2" v-model="user.password" label="Password"/>
+                  <CustomInput type="password" class="mb-2" v-model="user.password" label="Contraseña"/>
                 </div>
                 <footer class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                   <button type="submit"
                           class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-black text-base font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm
                           text-white hover: hover:bg-black/10 focus:bg-black/10">
-                    Submit
+                    Guardar y Cerrar
                   </button>
                   <button type="button"
                           class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                           @click="closeModal" ref="cancelButtonRef">
-                    Cancel
+                    Cancelar
                   </button>
                 </footer>
               </form>

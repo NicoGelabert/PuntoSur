@@ -57,17 +57,17 @@ const toggleChevronLeftIcon = () => {
 
 // Lista de ítems del menú (más organizado)
 const menuItems = ref([
-    { name: 'dashboard', label: 'Dashboard', route: 'app.dashboard', icon: BuildingStorefrontIcon },
+    { name: 'dashboard', label: 'Panel Principal', route: 'app.dashboard', icon: BuildingStorefrontIcon },
     { name: 'homeherobanners', label: 'Home Hero Banner', route: 'app.homeherobanners', icon: PhotoIcon },
     { type: 'divider' },
-    { name: 'categories', label: 'Categories', route: 'app.categories', icon: MegaphoneIcon },
+    { name: 'categories', label: 'Categorías', route: 'app.categories', icon: MegaphoneIcon },
     { name: 'products', label: 'Productos', route: 'app.products', icon: ArchiveBoxIcon },
     { type: 'divider' },
-    { name: 'articles', label: 'Articles', route: 'app.articles', icon: NewspaperIcon },
-    { name: 'authors', label: 'Author', route: 'app.authors', icon: IdentificationIcon },
+    { name: 'articles', label: 'Novedades', route: 'app.articles', icon: NewspaperIcon },
+    { name: 'authors', label: 'Autores', route: 'app.authors', icon: IdentificationIcon },
     { type: 'divider' },
-    { name: 'clients', label: 'Clients', route: 'app.clients', icon: TrophyIcon },
-    { name: 'users', label: 'Users', route: 'app.users', icon: UsersIcon },
+    { name: 'clients', label: 'Clientes', route: 'app.clients', icon: TrophyIcon },
+    { name: 'users', label: 'Usuarios', route: 'app.users', icon: UsersIcon },
 ]);
 
 </script>

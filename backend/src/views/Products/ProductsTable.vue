@@ -2,7 +2,7 @@
     <div class="bg-white p-4 rounded-lg shadow animate-fade-in-down">
       <div class="flex flex-col md:flex-row justify-between border-b-2 pb-3 gap-4">
         <div class="flex md:items-center flex-col md:flex-row gap-4">
-          <span class="whitespace-nowrap mr-3">Per Page</span>
+          <span class="whitespace-nowrap mr-3">Por Página</span>
           <select @change="getProducts(null)" v-model="perPage"
                   class="appearance-none relative block w-24 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
             <option value="5">5</option>
@@ -11,7 +11,7 @@
             <option value="50">50</option>
             <option value="100">100</option>
           </select>
-          <span class="ml-3">Found {{ products.total }} productos</span>
+          <span class="ml-3">{{ products.total }} Productos encontrados</span>
         </div>
         <div>
           <input v-model="search" @change="getProducts(null)"
@@ -23,26 +23,26 @@
       <table class="table-auto w-full">
         <thead class="hidden md:contents">
         <tr>
-          <TableHeaderCell field="id" :sort-field="sortField" :sort-direction="sortDirection" @click="sortProducts('id')">
+          <TableHeaderCell field="id" :sort-field="sortField" :sort-direction="sortDirection" @click="sortProducts('id')" class="w-auto">
             ID
           </TableHeaderCell>
           <TableHeaderCell field="image" :sort-field="sortField" :sort-direction="sortDirection">
-            Image
+            Imágen
           </TableHeaderCell>
           <TableHeaderCell field="title" :sort-field="sortField" :sort-direction="sortDirection"
                            @click="sortProducts('title')">
-            Title
+            Nombre
           </TableHeaderCell>
           <TableHeaderCell field="category" :sort-field="sortField" :sort-direction="sortDirection"
                            @click="sortProducts('category')">
-            Categories
+            Categoría
           </TableHeaderCell>
           <TableHeaderCell field="updated_at" :sort-field="sortField" :sort-direction="sortDirection"
                            @click="sortProducts('updated_at')">
-            Last Updated At
+            Última edición
           </TableHeaderCell>
           <TableHeaderCell field="actions">
-            Actions
+            Acciones
           </TableHeaderCell>
         </tr>
         </thead>
@@ -51,20 +51,20 @@
           <td colspan="6">
             <Spinner v-if="products.loading"/>
             <p v-else class="text-center py-8 text-gray-700">
-              There are no products
+              No se encontraron productos
             </p>
           </td>
         </tr>
         </tbody>
         <tbody v-else>
         <tr v-for="(product, index) of products.data" :key="index">
-          <td class="border-b p-2 ">{{ product.id }}</td>
+          <td class="border-b p-2 w-auto">{{ product.id }}</td>
           <td class="border-b p-2 hidden md:table-cell">
             <img v-if="product.image_url" class="w-16 h-16 object-cover" :src="product.image_url" :alt="product.title">
             <img v-else class="w-16 h-16 object-cover" src="../../assets/noimage.png">
           </td>
           <td class="border-b p-2">
-            <div class="truncate overflow-hidden text-ellipsis whitespace-nowrap w-[100px]">
+            <div class="truncate overflow-hidden text-ellipsis whitespace-nowrap">
               {{ product.title }}
             </div>
           </td>
@@ -87,7 +87,7 @@
   
       <div v-if="!products.loading" class="flex flex-col md:flex-row gap-4 justify-between items-center mt-5">
         <div v-if="products.data.length">
-          Showing from {{ products.from }} to {{ products.to }}
+          Mostrando desde {{ products.from }} hasta {{ products.to }}
         </div>
         <nav
           v-if="products.total > products.limit"
@@ -110,7 +110,7 @@
                 i === 0 ? 'rounded-l-md' : '',
                 i === products.links.length - 1 ? 'rounded-r-md' : '',
                 !link.url ? ' bg-gray-100 text-gray-700': '',
-                (link.label.includes('Previous') || link.label.includes('Next')) ? 'hidden md:inline' : ''
+                (link.label.includes('Anterior') || link.label.includes('Próxima')) ? 'hidden md:inline' : ''
               ]"
             v-html="link.label"
           >

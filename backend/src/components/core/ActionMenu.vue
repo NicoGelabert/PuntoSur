@@ -15,7 +15,7 @@
                             v-bind="editProps"
                             >
                             <PencilSquareIcon class="mr-2 h-5 w-5 text-black" aria-hidden="true" />
-                                Edit
+                                Editar
                         </component>
                     </MenuItem>
                     <MenuItem v-slot="{ active }">
@@ -24,7 +24,7 @@
                             :class="[active ? 'bg-red-500 text-white' : 'text-gray-900','group flex w-full items-center rounded-md px-2 py-2 text-sm']"
                             >
                             <TrashIcon class="mr-2 h-5 w-5 text-red-500" aria-hidden="true" />
-                                Delete
+                                Eliminar
                         </button>
                     </MenuItem>
                 </div>

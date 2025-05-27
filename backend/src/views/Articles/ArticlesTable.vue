@@ -2,7 +2,7 @@
     <div class="bg-white p-4 rounded-lg shadow animate-fade-in-down">
       <div class="flex flex-col md:flex-row justify-between border-b-2 pb-3 gap-4">
         <div class="flex md:items-center flex-col md:flex-row gap-4">
-          <span class="whitespace-nowrap mr-3">Per Page</span>
+          <span class="whitespace-nowrap mr-3">Por Página</span>
           <select @change="getArticles(null)" v-model="perPage"
                   class="appearance-none relative block w-24 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
             <option value="5">5</option>
@@ -11,12 +11,12 @@
             <option value="50">50</option>
             <option value="100">100</option>
           </select>
-          <span class="ml-3">Found {{ articles.total }} articles</span>
+          <span class="ml-3">{{ articles.total }} Artículos encontrados</span>
         </div>
         <div>
           <input v-model="search" @change="getArticles(null)"
                  class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                 placeholder="Type to Search articles">
+                 placeholder="Buscar artículos">
         </div>
       </div>
   
@@ -27,22 +27,22 @@
             ID
           </TableHeaderCell>
           <TableHeaderCell field="image" :sort-field="sortField" :sort-direction="sortDirection">
-            Image
+            Imagen
           </TableHeaderCell>
           <TableHeaderCell field="title" :sort-field="sortField" :sort-direction="sortDirection"
                            @click="sortArticles('title')">
-            Title
+            Título
           </TableHeaderCell>
           <TableHeaderCell field="author" :sort-field="sortField" :sort-direction="sortDirection"
                            @click="sortArticles('author')">
-            Author
+            Autor
           </TableHeaderCell>
           <TableHeaderCell field="updated_at" :sort-field="sortField" :sort-direction="sortDirection"
                            @click="sortArticles('updated_at')">
-            Last Updated At
+            Última edición
           </TableHeaderCell>
           <TableHeaderCell field="actions">
-            Actions
+            Acciones
           </TableHeaderCell>
         </tr>
         </thead>
@@ -51,7 +51,7 @@
           <td colspan="6">
             <Spinner v-if="articles.loading"/>
             <p v-else class="text-center py-8 text-gray-700">
-              There are no articles
+              No se encontraron artículos
             </p>
           </td>
         </tr>
@@ -87,7 +87,7 @@
   
       <div v-if="!articles.loading" class="flex justify-between items-center mt-5">
         <div v-if="articles.data.length">
-          Showing from {{ articles.from }} to {{ articles.to }}
+          Mostrando desde {{ articles.from }} hasta {{ articles.to }}
         </div>
         <nav
           v-if="articles.total > articles.limit"
@@ -109,7 +109,8 @@
                   : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50',
                 i === 0 ? 'rounded-l-md' : '',
                 i === articles.links.length - 1 ? 'rounded-r-md' : '',
-                !link.url ? ' bg-gray-100 text-gray-700': ''
+                !link.url ? ' bg-gray-100 text-gray-700': '',
+                (link.label.includes('Anterior') || link.label.includes('Próxima')) ? 'hidden md:inline' : ''
               ]"
             v-html="link.label"
           >

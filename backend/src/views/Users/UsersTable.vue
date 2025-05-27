@@ -2,7 +2,7 @@
   <div class="bg-white p-4 rounded-lg shadow animate-fade-in-down">
     <div class="flex flex-col md:flex-row justify-between border-b-2 pb-3 gap-4">
       <div class="flex md:items-center flex-col md:flex-row gap-4">
-        <span class="whitespace-nowrap mr-3">Per Page</span>
+        <span class="whitespace-nowrap mr-3">Por Página</span>
         <select @change="getUsers(null)" v-model="perPage"
                 class="appearance-none relative block w-24 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
           <option value="5">5</option>
@@ -11,12 +11,12 @@
           <option value="50">50</option>
           <option value="100">100</option>
         </select>
-        <span class="ml-3">Found {{users.total}} users</span>
+        <span class="ml-3">{{users.total}} Usuarios encontrados</span>
       </div>
       <div>
         <input v-model="search" @change="getUsers(null)"
                class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-               placeholder="Type to Search users">
+               placeholder="Buscarusuarios">
       </div>
     </div>
 
@@ -29,7 +29,7 @@
         </TableHeaderCell>
         <TableHeaderCell field="name" :sort-field="sortField" :sort-direction="sortDirection"
                          @click="sortUsers('email')">
-          Name
+          Nombre
         </TableHeaderCell>
         <TableHeaderCell field="email" :sort-field="sortField" :sort-direction="sortDirection"
                          @click="sortUsers('email')">
@@ -37,10 +37,10 @@
         </TableHeaderCell>
         <TableHeaderCell field="created_at" :sort-field="sortField" :sort-direction="sortDirection"
                          @click="sortUsers('created_at')">
-          Create Date
+          Fecha de creación
         </TableHeaderCell>
         <TableHeaderCell field="actions">
-          Actions
+          Acciones
         </TableHeaderCell>
       </tr>
       </thead>
@@ -49,7 +49,7 @@
         <td colspan="6">
           <Spinner v-if="users.loading"/>
           <p v-else class="text-center py-8 text-gray-700">
-            There are no users
+            No se encontraron usuarios
           </p>
         </td>
       </tr>
@@ -75,7 +75,7 @@
 
     <div v-if="!users.loading" class="flex justify-between items-center mt-5">
       <div v-if="users.data.length">
-        Showing from {{ users.from }} to {{ users.to }}
+        Mostrando desde {{ users.from }} hasta {{ users.to }}
       </div>
       <nav
         v-if="users.total > users.limit"
@@ -92,13 +92,14 @@
           aria-current="page"
           class="relative inline-flex items-center px-4 py-2 border text-sm font-medium whitespace-nowrap"
           :class="[
-              link.active
-                ? 'z-10 bg-indigo-50 border-indigo-500 text-indigo-600'
-                : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50',
-              i === 0 ? 'rounded-l-md' : '',
-              i === users.links.length - 1 ? 'rounded-r-md' : '',
-              !link.url ? ' bg-gray-100 text-gray-700': ''
-            ]"
+                link.active
+                  ? 'z-10 bg-indigo-50 border-indigo-500 text-indigo-600'
+                  : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50',
+                i === 0 ? 'rounded-l-md' : '',
+                i === users.links.length - 1 ? 'rounded-r-md' : '',
+                !link.url ? ' bg-gray-100 text-gray-700': '',
+                (link.label.includes('Anterior') || link.label.includes('Próxima')) ? 'hidden md:inline' : ''
+              ]"
           v-html="link.label"
         >
         </a>

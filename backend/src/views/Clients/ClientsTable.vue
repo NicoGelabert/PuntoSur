@@ -2,7 +2,7 @@
     <div class="bg-white p-4 rounded-lg shadow animate-fade-in-down">
       <div class="flex flex-col md:flex-row justify-between border-b-2 pb-3 gap-4">
         <div class="flex md:items-center flex-col md:flex-row gap-4">
-          <span class="whitespace-nowrap mr-3">Per Page</span>
+          <span class="whitespace-nowrap mr-3">Por Página</span>
           <select @change="getClients(null)" v-model="perPage"
                   class="appearance-none relative block w-24 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
             <option value="5">5</option>
@@ -11,12 +11,12 @@
             <option value="50">50</option>
             <option value="100">100</option>
           </select>
-          <span class="ml-3">Found {{ clients.total }} clients</span>
+          <span class="ml-3">{{ clients.total }} Clientes encontrados</span>
         </div>
         <div>
           <input v-model="search" @change="getClients(null)"
                  class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                 placeholder="Type to Search clients">
+                 placeholder="Buscar clientes">
         </div>
       </div>
   
@@ -28,22 +28,22 @@
           </TableHeaderCell>
           <TableHeaderCell field="full_name" :sort-field="sortField" :sort-direction="sortDirection"
                            @click="sortClients('full_name')">
-            Name
+            Nombre
           </TableHeaderCell>
           <TableHeaderCell field="age" :sort-field="sortField" :sort-direction="sortDirection"
                            @click="sortClients('age')">
-            Age
+            Edad
           </TableHeaderCell>
           <TableHeaderCell field="town" :sort-field="sortField" :sort-direction="sortDirection"
                            @click="sortClients('town')">
-            Town
+            Ciudad
           </TableHeaderCell>
           <TableHeaderCell field="updated_at" :sort-field="sortField" :sort-direction="sortDirection"
                            @click="sortClients('updated_at')">
-            Last Updated At
+            Última edición
           </TableHeaderCell>
           <TableHeaderCell field="actions">
-            Actions
+            Acciones
           </TableHeaderCell>
         </tr>
         </thead>
@@ -52,7 +52,7 @@
           <td colspan="6">
             <Spinner v-if="clients.loading"/>
             <p v-else class="text-center py-8 text-gray-700">
-              There are no clients
+              No se encontraron clientes
             </p>
           </td>
         </tr>
@@ -87,7 +87,7 @@
   
       <div v-if="!clients.loading" class="flex justify-between items-center mt-5">
         <div v-if="clients.data.length">
-          Showing from {{ clients.from }} to {{ clients.to }}
+          Mostrando desde {{ clients.from }} hasta {{ clients.to }}
         </div>
         <nav
           v-if="clients.total > clients.limit"
@@ -109,7 +109,8 @@
                   : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50',
                 i === 0 ? 'rounded-l-md' : '',
                 i === clients.links.length - 1 ? 'rounded-r-md' : '',
-                !link.url ? ' bg-gray-100 text-gray-700': ''
+                !link.url ? ' bg-gray-100 text-gray-700': '',
+                (link.label.includes('Anterior') || link.label.includes('Próxima')) ? 'hidden md:inline' : ''
               ]"
             v-html="link.label"
           >

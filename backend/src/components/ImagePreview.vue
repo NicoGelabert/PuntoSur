@@ -12,7 +12,7 @@
           <img :src="image.url" class="max-w-full max-h-full" :class="image.deleted ? 'opacity-50' : ''">
           <small v-if="image.deleted"
                  class="absolute left-0 bottom-0 right-0 py-1 px-2 bg-black w-100 text-white justify-between items-center flex">
-            To be deleted
+            Se eliminará
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="w-4 h-4 cursor-pointer" @click="revertImage(image)">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"/>
@@ -30,7 +30,7 @@
     <div
       class="relative w-[120px] h-[120px] rounded border border-dashed flex items-center justify-center hover:border-purple-500 overflow-hidden">
       <span>
-        Upload
+        Subir Imagen
       </span>
       <input type="file" class="absolute left-0 top-0 bottom-0 right-0 w-full h-full opacity-0"
              @change="onFileChange" multiple>

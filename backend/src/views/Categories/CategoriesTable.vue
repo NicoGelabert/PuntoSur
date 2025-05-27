@@ -2,7 +2,7 @@
   <div class="bg-white p-4 rounded-lg shadow animate-fade-in-down">
       <div class="flex flex-col md:flex-row justify-between border-b-2 pb-3 gap-4">
       <div class="flex flex-col md:flex-row gap-4 md:items-center">
-          <span class="whitespace-nowrap mr-3">Per Page</span>
+          <span class="whitespace-nowrap mr-3">Por Página</span>
           <select @change="getCategories(null)" v-model="perPage"
                   class="appearance-none relative block w-24 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
           <option value="5">5</option>
@@ -11,12 +11,12 @@
           <option value="50">50</option>
           <option value="100">100</option>
           </select>
-          <span class="ml-3">Found {{categories.total}} categories</span>
+          <span class="ml-3">{{categories.total}} Categorías encontradas</span>
       </div>
       <div>
           <input v-model="search" @change="getCategories(null)"
               class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Type to Search categories">
+              placeholder="Buscar categorías">
       </div>
       </div>
 
@@ -27,18 +27,18 @@
           ID
           </TableHeaderCell>
           <TableHeaderCell field="image" :sort-field="sortField" :sort-direction="sortDirection">
-          Image
+          Imagen
           </TableHeaderCell>
           <TableHeaderCell field="name" :sort-field="sortField" :sort-direction="sortDirection"
                           @click="sortCategories('name')">
-          Name
+          Nombre
           </TableHeaderCell>
           <TableHeaderCell field="updated_at" :sort-field="sortField" :sort-direction="sortDirection"
                           @click="sortCategories('updated_at')">
-          Last Updated At
+          Última edición
           </TableHeaderCell>
           <TableHeaderCell field="actions">
-          Actions
+          Acciones
           </TableHeaderCell>
       </tr>
       </thead>
@@ -47,7 +47,7 @@
           <td colspan="6">
           <Spinner v-if="categories.loading"/>
           <p v-else class="text-center py-8 text-gray-700">
-              There are no categories
+              No se encontraron categorías
           </p>
           </td>
       </tr>
@@ -75,7 +75,7 @@
 
       <div v-if="!categories.loading" class="flex justify-between items-center mt-5">
       <div v-if="categories.data.length">
-          Showing from {{ categories.from }} to {{ categories.to }}
+          Mostrando desde {{ categories.from }} hasta {{ categories.to }}
       </div>
       <nav
           v-if="categories.total > categories.limit"
@@ -92,12 +92,13 @@
           aria-current="page"
           class="relative inline-flex items-center px-4 py-2 border text-sm font-medium whitespace-nowrap"
           :class="[
-              link.active
+                link.active
                   ? 'z-10 bg-indigo-50 border-indigo-500 text-indigo-600'
                   : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50',
-              i === 0 ? 'rounded-l-md' : '',
-              i === categories.links.length - 1 ? 'rounded-r-md' : '',
-              !link.url ? ' bg-gray-100 text-gray-700': ''
+                i === 0 ? 'rounded-l-md' : '',
+                i === categories.links.length - 1 ? 'rounded-r-md' : '',
+                !link.url ? ' bg-gray-100 text-gray-700': '',
+                (link.label.includes('Anterior') || link.label.includes('Próxima')) ? 'hidden md:inline' : ''
               ]"
           v-html="link.label"
           >

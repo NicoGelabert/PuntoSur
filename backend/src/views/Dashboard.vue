@@ -1,8 +1,8 @@
 <template>
   <div class="mb-2 flex flex-col md:flex-row justify-between">
-    <h1 class="text-3xl font-semibold">Dashboard</h1>
+    <h1 class="text-3xl font-semibold">Panel Principal</h1>
     <div class="flex flex-col md:flex-row itens-start md:items-center">
-      <label class="mr-2">Change Date Period</label>
+      <label class="mr-2">Cambiar período</label>
       <CustomInput type="select" v-model="chosenDate" @change="onDatePickerChange" :select-options="dateOptions"/>
     </div>
   </div>
@@ -10,7 +10,7 @@
     <!--    Active Hero Banners-->
     <router-link :to="{name: 'app.homeherobanners'}">
       <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center">
-        <label class="text-lg font-semibold block mb-2">Active Hero Banners</label>
+        <label class="text-lg font-semibold block mb-2">Home Hero Banners activos</label>
         <template v-if="!loading.homeHeroBannerCount">
           <span class="text-3xl font-semibold">{{ homeHeroBannerCount }}</span>
         </template>
@@ -21,7 +21,7 @@
     <!--    Active Categories-->
     <router-link :to="{name: 'app.categories'}">
       <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center">
-        <label class="text-lg font-semibold block mb-2">Active Categories</label>
+        <label class="text-lg font-semibold block mb-2">Categorías Activas</label>
         <template v-if="!loading.categoryCount">
           <span class="text-3xl font-semibold">{{ categoryCount }}</span>
         </template>
@@ -48,7 +48,7 @@
     <!--    Active Articles-->
     <router-link :to="{name: 'app.articles'}">
       <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center">
-        <label class="text-lg font-semibold block mb-2">Active Articles</label>
+        <label class="text-lg font-semibold block mb-2">Novedades Publicadas</label>
         <template v-if="!loading.articlesCount">
           <span class="text-3xl font-semibold">{{ articlesCount }}</span>
         </template>
@@ -59,7 +59,7 @@
     <!--    Active Authors-->
     <router-link :to="{name: 'app.authors'}">
       <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center">
-        <label class="text-lg font-semibold block mb-2">Active Authors</label>
+        <label class="text-lg font-semibold block mb-2">Autores Activos</label>
         <template v-if="!loading.authorsCount">
           <span class="text-3xl font-semibold">{{ authorsCount }}</span>
         </template>
@@ -72,7 +72,7 @@
     <router-link :to="{name: 'app.clients'}">
       <div class="animate-fade-in-down bg-white py-6 px-5 rounded-lg shadow flex flex-col items-center justify-center"
            style="animation-delay: 0.1s">
-        <label class="text-lg font-semibold block mb-2">Active Clients</label>
+        <label class="text-lg font-semibold block mb-2">Clientes Activos</label>
         <template v-if="!loading.clientsCount">
           <span class="text-3xl font-semibold">{{ clientsCount }}</span>
         </template>
@@ -84,7 +84,7 @@
 
   <div class="grid grid-rows-1 md:grid-rows-2 md:grid-flow-col grid-cols-1 md:grid-cols-3 gap-3">
     <div class="col-span-1 md:col-span-3 row-span-1 md:row-span-2 bg-white py-6 px-5 rounded-lg shadow">
-      <label class="text-lg font-semibold block mb-2">Latest Clients</label>
+      <label class="text-lg font-semibold block mb-2">Últimos Clientes</label>
       <template v-if="!loading.latestClients">
         <div v-for="o of latestClients" :key="o.id" class="py-2 px-3 hover:bg-gray-50">
           <p>

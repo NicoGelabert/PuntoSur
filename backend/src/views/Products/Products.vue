@@ -5,7 +5,7 @@
           <router-link type="button" :to="{name: 'app.products.create'}"
                         class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:text-black hover:bg-white focus:outline-none text-center"
           >
-          Crear nuevo Producto
+          Nuevo Producto
           </router-link>
       </div>
       <ProductsTable/>

@@ -2,7 +2,7 @@
   <div class="bg-white p-4 rounded-lg shadow animate-fade-in-down">
       <div class="flex flex-col md:flex-row justify-between border-b-2 pb-3 gap-4">
       <div class="flex md:items-center flex-col md:flex-row gap-4">
-          <span class="whitespace-nowrap mr-3">Per Page</span>
+          <span class="whitespace-nowrap mr-3">Por Página</span>
           <select @change="getAuthors(null)" v-model="perPage"
                   class="appearance-none relative block w-24 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
           <option value="5">5</option>
@@ -11,12 +11,12 @@
           <option value="50">50</option>
           <option value="100">100</option>
           </select>
-          <span class="ml-3">Found {{authors.total}} authors</span>
+          <span class="ml-3">{{authors.total}} Autores encontrados</span>
       </div>
       <div>
           <input v-model="search" @change="getAuthors(null)"
               class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Type to Search authors">
+              placeholder="Buscar autores">
       </div>
       </div>
 
@@ -27,18 +27,18 @@
           ID
           </TableHeaderCell>
           <TableHeaderCell field="image" :sort-field="sortField" :sort-direction="sortDirection">
-          Image
+          Imagen
           </TableHeaderCell>
           <TableHeaderCell field="name" :sort-field="sortField" :sort-direction="sortDirection"
                           @click="sortAuthors('name')">
-          Name
+          Nombre
           </TableHeaderCell>
           <TableHeaderCell field="updated_at" :sort-field="sortField" :sort-direction="sortDirection"
                           @click="sortAuthors('updated_at')">
-          Last Updated At
+          Última edición
           </TableHeaderCell>
           <TableHeaderCell field="actions">
-          Actions
+          Acciones
           </TableHeaderCell>
       </tr>
       </thead>
@@ -47,7 +47,7 @@
           <td colspan="6">
           <Spinner v-if="authors.loading"/>
           <p v-else class="text-center py-8 text-gray-700">
-              There are no authors
+              No se encontraron autores
           </p>
           </td>
       </tr>
@@ -79,7 +79,7 @@
 
       <div v-if="!authors.loading" class="flex justify-between items-center mt-5">
       <div v-if="authors.data.length">
-          Showing from {{ authors.from }} to {{ authors.to }}
+          Mostrando desde {{ authors.from }} hasta {{ authors.to }}
       </div>
       <nav
           v-if="authors.total > authors.limit"
@@ -97,12 +97,13 @@
           class="relative inline-flex items-center px-4 py-2 border text-sm font-medium whitespace-nowrap"
           :class="[
               link.active
-                  ? 'z-10 bg-indigo-50 border-indigo-500 text-indigo-600'
-                  : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50',
+                ? 'z-10 bg-indigo-50 border-indigo-500 text-indigo-600'
+                : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50',
               i === 0 ? 'rounded-l-md' : '',
               i === authors.links.length - 1 ? 'rounded-r-md' : '',
-              !link.url ? ' bg-gray-100 text-gray-700': ''
-              ]"
+              !link.url ? ' bg-gray-100 text-gray-700': '',
+              (link.label.includes('Anterior') || link.label.includes('Próxima')) ? 'hidden md:inline' : ''
+            ]"
           v-html="link.label"
           >
           </a>

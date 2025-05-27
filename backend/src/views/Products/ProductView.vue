@@ -2,7 +2,7 @@
 <template>
   <div class="flex items-center justify-between mb-3">
     <h1 v-if="!loading" class="text-3xl font-semibold">
-      {{ product.id ? `Editar producto: "${product.title}"` : 'Crear Nuevo Producto' }}
+      {{ product.id ? `Editar Producto: "${product.title}"` : 'Crear Nuevo Producto' }}
     </h1>
   </div>
   <div class="bg-white rounded-lg shadow animate-fade-in-down">
@@ -13,17 +13,17 @@
         <div class="col-span-2 px-4 pt-5 pb-4">
           <div class="flex flex-col gap-2">
             <h3 class="text-lg font-bold">Nombre</h3>
-            <CustomInput class="mb-2" v-model="product.title" label="Product Title" :errors="errors['title']"/>
+            <CustomInput class="mb-2" v-model="product.title" label="Nombre del Producto" :errors="errors['title']"/>
           </div>
           <hr class="my-4">
           <div class="flex flex-col gap-2">
-            <h3 class="text-lg font-bold">Category</h3>
-            <treeselect v-model="product.categories" :multiple="true" :options="categoriesOptions" :errors="errors['categories']"/>
+            <h3 class="text-lg font-bold">Categoría</h3>
+            <treeselect v-model="product.categories" :multiple="true" :options="categoriesOptions" :errors="errors['categories']" label="Seleccione una categoría"/>
           </div>
           <hr class="my-4">
           <div class="flex flex-col gap-2">
-            <h3 class="text-lg font-bold">Description</h3>
-            <CustomInput type="richtext" class="mb-2" v-model="product.description" label="Description" :errors="errors['description']"/>
+            <h3 class="text-lg font-bold">Descripción</h3>
+            <CustomInput type="richtext" class="mb-2" v-model="product.description" label="Descripción" :errors="errors['description']"/>
           </div>
           <hr class="my-4">
           <div class="flex flex-col gap-2">
@@ -32,13 +32,13 @@
           </div>
           <hr class="my-4">
           <div class="flex flex-col gap-2">
-            <h3 class="text-lg font-bold">Prices</h3>
+            <h3 class="text-lg font-bold">Precios</h3>
             <div v-for="(price, index) in product.prices" :key="index" class="flex gap-1">
               <CustomInput 
                 v-model="price.number" 
                 type="number" 
                 class="mb-2 w-4/12" 
-                label="Price" 
+                label="Precio" 
                 prepend="$" 
                 :errors="errors[`prices.${index}.number`]" 
               />
@@ -46,7 +46,7 @@
                 v-model="price.size" 
                 type="text" 
                 class="mb-2 w-7/12" 
-                label="Size" 
+                label="Tamaño" 
                 :errors="errors[`prices.${index}.size`]" 
               />
               <div class="w-1/12 flex items-center justify-center">
@@ -59,7 +59,7 @@
               </div>
             </div>
             <button class="group flex items-end gap-2 border rounded-lg px-4 py-2 w-fit hover:bg-black hover:text-white" type="button" @click="addPrice">
-              <h4 class="text-sm">New Price</h4>
+              <h4 class="text-sm">Nuevo Precio</h4>
               <PlusCircleIcon
                 class="h-5 w-5 text-black group-hover:text-white"
                 aria-hidden="true"
@@ -69,8 +69,8 @@
           <hr class="my-4">
           <hr class="my-4">
           <div class="flex flex-col gap-2">
-            <h3 class="text-lg font-bold">Published</h3>
-            <CustomInput type="checkbox" class="mb-2" v-model="product.published" label="Published" :errors="errors['published']"/>
+            <h3 class="text-lg font-bold">Publicar</h3>
+            <CustomInput type="checkbox" class="mb-2" v-model="product.published" :errors="errors['published']" :label="product.published ? 'Publicado' : 'No publicado'"/>
           </div>
         </div>
         <div class="col-span-1 px-4 pt-5 pb-4">
@@ -83,17 +83,17 @@
       <footer class="bg-gray-50 rounded-b-lg px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
         <button type="submit"
                 class="bg-black text-base font-medium text-white border rounded-md border-gray-300 shadow-sm w-full inline-flex justify-center mt-3 px-4 py-2 hover:bg-black/10 hover:text-black focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-black sm:w-auto sm:mt-0 sm:ml-3 sm:text-sm">
-          Save
+          Guardar
         </button>
         <button type="button"
                 @click="onSubmit($event, true)"
                 class="bg-black text-base font-medium text-white border rounded-md border-gray-300 shadow-sm w-full inline-flex justify-center mt-3 px-4 py-2 hover:bg-black/10 hover:text-black focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-black sm:w-auto sm:mt-0 sm:ml-3 sm:text-sm">
-          Save & Close
+          Guardar y Cerrar
         </button>
         <router-link :to="{name: 'app.products'}"
                       class="bg-white text-base font-medium text-gray-700 border rounded-md border-gray-300 shadow-sm w-full inline-flex justify-center mt-3 px-4 py-2 hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-300 sm:w-auto sm:mt-0 sm:ml-3 sm:text-sm"
                       ref="cancelButtonRef">
-          Cancel
+          Cancelar
         </router-link>
       </footer>
     </form>

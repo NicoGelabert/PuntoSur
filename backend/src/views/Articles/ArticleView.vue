@@ -2,7 +2,7 @@
 <template>
     <div class="flex items-center justify-between mb-3">
       <h1 v-if="!loading" class="text-3xl font-semibold">
-        {{ article.id ? `Update article: "${article.title}"` : 'Create new Article' }}
+        {{ article.id ? `Editar: "${article.title}"` : 'Crear Nuevo Artículo' }}
       </h1>
     </div>
     <div class="bg-white rounded-lg shadow animate-fade-in-down">
@@ -12,34 +12,34 @@
         <div class="grid grid-cols-1 md:grid-cols-3">
           <div class="col-span-2 px-4 pt-5 pb-4">
             <div class="flex flex-col gap-2">
-                <h3 class="text-lg font-bold">Article Title</h3>
-                <CustomInput class="mb-2" v-model="article.title" label="Article Title" :errors="errors['title']"/>
+                <h3 class="text-lg font-bold">Título</h3>
+                <CustomInput class="mb-2" v-model="article.title" label="Título del Artículo" :errors="errors['title']"/>
             </div>
             <hr class="my-4">
             <div class="flex flex-col gap-2">
-                <h3 class="text-lg font-bold">Article Subtitle</h3>
-                <CustomInput class="mb-2" v-model="article.subtitle" label="Article Subtitle" :errors="errors['subtitle']"/>
+                <h3 class="text-lg font-bold">Subtítulo</h3>
+                <CustomInput class="mb-2" v-model="article.subtitle" label="Subtítulo" :errors="errors['subtitle']"/>
             </div>
             
             <hr class="my-4">
             <div class="flex flex-col gap-2">
-                <h3 class="text-lg font-bold">Article News Lead</h3>
-                <CustomInput class="mb-2" v-model="article.news_lead" label="Article News Lead" :errors="errors['news_lead']"/>
+                <h3 class="text-lg font-bold">Párrafo Principal</h3>
+                <CustomInput class="mb-2" v-model="article.news_lead" label="Párrafo Principal" :errors="errors['news_lead']"/>
             </div>
             <hr class="my-4">
             <div class="flex flex-col gap-2">
-              <h3 class="text-lg font-bold">Description</h3>
+              <h3 class="text-lg font-bold">Cuerpo de la Noticia</h3>
               <CustomInput type="richtext" class="mb-2" v-model="article.description" label="Description" :errors="errors['description']"/>
             </div>
             <hr class="my-4">
             <div class="flex flex-col gap-2">
-              <h3 class="text-lg font-bold">Authors</h3>
+              <h3 class="text-lg font-bold">Autor/es</h3>
               <treeselect v-model="article.authors" :multiple="true" :options="authorsOptions" :errors="errors['authors']"/>
             </div>
             <hr class="my-4">
             <div class="flex flex-col gap-2">
-              <h3 class="text-lg font-bold">Published</h3>
-              <CustomInput type="checkbox" class="mb-2" v-model="article.published" label="Published" :errors="errors['published']"/>
+              <h3 class="text-lg font-bold">Publicar</h3>
+              <CustomInput type="checkbox" class="mb-2" v-model="article.published" :label="article.published ? 'Publicado' : 'No publicado'" :errors="errors['published']"/>
             </div>
           </div>
           <div class="col-span-1 px-4 pt-5 pb-4">
@@ -52,17 +52,17 @@
         <footer class="bg-gray-50 rounded-b-lg px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
           <button type="submit"
                   class="bg-black text-base font-medium text-white border rounded-md border-gray-300 shadow-sm w-full inline-flex justify-center mt-3 px-4 py-2 hover:bg-black/10 hover:text-black focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-black sm:w-auto sm:mt-0 sm:ml-3 sm:text-sm">
-            Save
+            Guardar
           </button>
           <button type="button"
                   @click="onSubmit($event, true)"
                   class="bg-black text-base font-medium text-white border rounded-md border-gray-300 shadow-sm w-full inline-flex justify-center mt-3 px-4 py-2 hover:bg-black/10 hover:text-black focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-black sm:w-auto sm:mt-0 sm:ml-3 sm:text-sm">
-            Save & Close
+            Guardar y Cerrar
           </button>
           <router-link :to="{name: 'app.articles'}"
                         class="bg-white text-base font-medium text-gray-700 border rounded-md border-gray-300 shadow-sm w-full inline-flex justify-center mt-3 px-4 py-2 hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-300 sm:w-auto sm:mt-0 sm:ml-3 sm:text-sm"
                         ref="cancelButtonRef">
-            Cancel
+            Cancelar
           </router-link>
         </footer>
       </form>

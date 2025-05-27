@@ -19,7 +19,7 @@
                       class="absolute left-0 top-0 bg-white right-0 bottom-0 flex items-center justify-center"/>
               <header class="py-3 px-4 flex justify-between items-center">
                   <DialogTitle as="h3" class="text-lg leading-6 font-medium text-gray-900">
-                  {{ category.id ? `Update category: "${props.category.name}"` : 'Create new Category' }}
+                  {{ category.id ? `Editar Categoría: "${props.category.name}"` : 'Crear Nueva Categoría' }}
                   </DialogTitle>
                   <button
                   @click="closeModal()"
@@ -43,19 +43,19 @@
               </header>
               <form @submit.prevent="onSubmit">
                   <div class="bg-white px-4 pt-5 pb-4">
-                  <CustomInput class="mb-2" v-model="category.name" label="Category Title"/>
+                  <CustomInput class="mb-2" v-model="category.name" label="Título de la categoría"/>
                   <CustomInput type="file" class="mb-2" label="Category Image" @change="file => category.image = file"/>
-                  <CustomInput type="checkbox" class="mb-2" v-model="category.active" label="Active"/>
+                  <CustomInput type="checkbox" class="mb-2" v-model="category.active" :label="category.active ? 'Activa' : 'Inactiva'"/>
                   </div>
                   <footer class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                   <button type="submit"
                           class="bg-black text-base font-medium text-white border rounded-md border-gray-300 shadow-sm w-full inline-flex justify-center mt-3 px-4 py-2 hover:bg-black/10 hover:text-black focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-black sm:w-auto sm:mt-0 sm:ml-3 sm:text-sm">
-                      Submit
+                      Guardar y Cerrar
                   </button>
                   <button type="button"
                           class="bg-white text-base font-medium text-gray-700 border rounded-md border-gray-300 shadow-sm w-full inline-flex justify-center mt-3 px-4 py-2 hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-300 sm:w-auto sm:mt-0 sm:ml-3 sm:text-sm "
                           @click="closeModal" ref="cancelButtonRef">
-                      Cancel
+                      Cancelar
                   </button>
                   </footer>
               </form>
@@ -101,7 +101,7 @@ const show = computed({
 })
 const parentCategories = computed(() => {
   return [
-    {key: '', text: 'Select Parent Category'},
+    {key: '', text: 'Seleccione Categoría Superior'},
     ...store.state.categories.data
       .filter(c => {
         if (category.value.id) {
