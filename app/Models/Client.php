@@ -15,26 +15,10 @@ class Client extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'full_name',
-        'slug',
-        'age',
-        'phone_number',
-        'emergency_phone_number',
-        'town',
-        'occupancy',
+        'nombre_completo',
+        'telefono',
+        'localidad',
         'email',
-        'producto',
-        'sore',
-        'medication',
-        'allergies',
-        'medicalBackground',
-        'sports',
-        'currentDiet',
-        'sleepPatterns',
-        'waterIntake',
-        'pregnancy',
-        'menopause',
-        'signed',
         'created_by',
         'updated_by'
     ];
@@ -42,7 +26,7 @@ class Client extends Model
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('full_name')
+            ->generateSlugsFrom('nombre_completo')
             ->saveSlugsTo('slug');
     }
 

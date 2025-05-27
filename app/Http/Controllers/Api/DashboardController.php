@@ -63,7 +63,7 @@ class DashboardController extends Controller
      */
     public function activeClients()
     {
-        return Client::where('signed', '=', 1)->count();
+        return Client::all()->count();
     }
 
     /**
@@ -72,8 +72,7 @@ class DashboardController extends Controller
     public function latestClients()
     {
         return Client::query()
-            ->select(['id', 'full_name', 'age', 'town'])
-            ->where('signed', 1)
+            ->select(['id', 'nombre_completo'])
             ->orderBy('created_at', 'desc')
             ->limit(5)
             ->get();
