@@ -76,7 +76,7 @@ const alergen = ref({
   parent_id: '',
   image: '',
   image_url: '',
-  active: '',
+  active: false,
 });
 
 const loading = ref(false);

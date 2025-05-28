@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image', 2000)->nullable();
             $table->string('image_mime')->nullable();
             $table->integer('image_size')->nullable();
-            $table->boolean('active');
+            $table->boolean('active')->default(true);
             $table->foreignId('parent_id')->nullable()->constrained('alergens');
             $table->foreignIdFor(User::class, 'created_by');
             $table->foreignIdFor(User::class, 'updated_by');
