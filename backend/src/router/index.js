@@ -11,6 +11,8 @@ import HomeHeroBanners from "../views/HomeHeroBanners/HomeHeroBanners.vue";
 import Categories from "../views/Categories/Categories.vue";
 import Products from "../views/Products/Products.vue";
 import ProductView from "../views/Products/ProductView.vue";
+import Alergens from "../views/Alergens/Alergens.vue";
+import AlergenView from "../views/Alergens/AlergenView.vue";
 import Articles from "../views/Articles/Articles.vue";
 import ArticleView from "../views/Articles/ArticleView.vue";
 import Authors from "../views/Authors/Authors.vue";
@@ -83,6 +85,24 @@ const routes = [
         path: 'products/:id',
         name: 'app.products.edit',
         component: ProductView,
+        props: {
+          id: (value) => /^\d+$/.test(value)
+        }
+      },
+      {
+        path: 'alergens',
+        name: 'app.alergens',
+        component: Alergens
+      },
+      {
+        path: 'alergens/create',
+        name: 'app.alergens.create',
+        component: AlergenView
+      },
+      {
+        path: 'alergens/:id',
+        name: 'app.alergens.edit',
+        component: AlergenView,
         props: {
           id: (value) => /^\d+$/.test(value)
         }

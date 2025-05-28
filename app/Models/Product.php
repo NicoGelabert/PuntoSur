@@ -48,5 +48,10 @@ class Product extends Model
         return $this->hasMany(ProductPrice::class);
     }
 
+    public function alergens()
+    {
+        return $this->belongsToMany(Alergen::class, 'product_alergens');
+    }
+
 }
 

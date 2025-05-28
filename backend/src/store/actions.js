@@ -206,6 +206,13 @@ export function createProduct({ commit }, product) {
     });
   }
 
+  //Product->alergen
+  if (product.alergens && product.alergens.length) {
+    product.alergens.forEach((alergen) => {
+      form.append(`alergens[]`, alergen);
+    });
+  }
+
   // Agregar imágenes al FormData
   if (product.images && product.images.length) {
     product.images.forEach((im) => {
@@ -252,6 +259,14 @@ export function updateProduct({commit}, product) {
         form.append(`prices[${index}][size]`, price.size);
       });
     }
+
+    //Product->alergen
+    if (product.alergens && product.alergens.length) {
+      product.alergens.forEach((alergen) => {
+        form.append(`alergens[]`, alergen);
+      });
+    }
+
     // Agregar imágenes al FormData
     if (product.images && product.images.length) {
       product.images.forEach((im) => {
@@ -276,6 +291,62 @@ export function updateProduct({commit}, product) {
 
 export function deleteProduct({commit}, id) {
   return axiosClient.delete(`/products/${id}`)
+}
+
+// ALERGENS
+export function getAlergens({commit, state}, {sort_field, sort_direction} = {}) {
+  commit('setAlergens', [true])
+  return axiosClient.get('/alergens', {
+    params: {
+      sort_field, sort_direction
+    }
+  })
+    .then((response) => {
+      console.log('Datos crudos desde el backend:', response.data)
+      commit('setAlergens', [false, response.data])
+    })
+    .catch(() => {
+      commit('setAlergens', [false])
+    })
+}
+
+export function getAlergen({commit}, id) {
+  return axiosClient.get(`/alergens/${id}`)
+}
+
+export function createAlergen({commit}, alergen) {
+  if (alergen.image instanceof File) {
+    const form = new FormData();
+    form.append('name', alergen.name);
+    form.append('image', alergen.image);
+    form.append('description', alergen.description);
+    form.append('active', alergen.active ? 1 : 0);
+    alergen = form;
+  }
+  return axiosClient.post('/alergens', alergen)
+}
+
+
+export function updateAlergen({commit}, alergen) {
+  const id = alergen.id
+  if (alergen.image instanceof File) {
+    const form = new FormData();
+    form.append('id', alergen.id);
+    form.append('name', alergen.name);
+    form.append('image', alergen.image);
+    form.append('description', alergen.description);
+    form.append('active', alergen.active ? 1 : 0);
+    form.append('_method', 'PUT');
+    alergen = form;
+  } else {
+    alergen._method = 'PUT'
+  }
+  return axiosClient.post(`/alergens/${id}`, alergen)
+}
+
+
+export function deleteAlergen({commit}, id) {
+  return axiosClient.delete(`/alergens/${id}`)
 }
 
 // ARTICLES

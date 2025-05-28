@@ -10,7 +10,9 @@ use App\Models\Api\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductImage;
 use App\Models\ProductPrice;
+use App\Models\ProductAlergen;
 use App\Models\Api\Category;
+use App\Models\Api\Alergen;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -30,7 +32,7 @@ class ProductController extends Controller
         $search = $request->get('search', '');
         $categorySlug = $request->get('category', '');  // Agregar parámetro category
 
-        $query = Product::query()->with(['categories', 'prices', 'images'])
+        $query = Product::query()->with(['categories', 'prices', 'images', 'alergens'])
             ->where('title', 'like', "%{$search}%");
 
         // Filtrar por categoría si se pasa el slug de la categoría
@@ -65,12 +67,14 @@ class ProductController extends Controller
         $imagePositions = $data['image_positions'] ?? [];
         $categories = $data['categories'] ?? [];
         $prices = $data['prices'] ?? [];
+        $alergens = $data['alergens'] ?? [];
 
         $product = Product::create($data);
 
         $this->saveCategories($categories, $product);
         $this->saveImages($images, $imagePositions, $product);
         $this->savePrices($prices, $product);
+        $this->saveAlergens($alergens, $product);
 
         return new ProductResource($product);
     }
@@ -99,6 +103,7 @@ class ProductController extends Controller
         $data['updated_by'] = $request->user()->id;
         $categories = $data['categories'] ?? [];
         $prices = $data['prices'] ?? [];
+        $alergens = $data['alergens'] ?? [];
 
         /** @var \Illuminate\Http\UploadedFile[] $images */
         $images = $data['images'] ?? [];
@@ -106,6 +111,7 @@ class ProductController extends Controller
         $imagePositions = $data['image_positions'] ?? [];
 
         $this->saveCategories($categories, $product);
+        $this->saveAlergens($alergens, $product);
         $this->saveImages($images, $imagePositions, $product);
         if (count($deletedImages) > 0) {
             $this->deleteImages($deletedImages, $product);
@@ -145,6 +151,14 @@ class ProductController extends Controller
         foreach ($prices as $price) {
             $product->prices()->create($price); // Esto usará la relación hasMany para crear los precios
         }
+    }
+
+    private function saveAlergens($alergenIds, Product $product)
+    {
+        ProductAlergen::where('product_id', $product->id)->delete();
+        $data = array_map(fn($id) => (['alergen_id' => $id, 'product_id' => $product->id]), $alergenIds);
+
+        ProductAlergen::insert($data);
     }
 
     /**

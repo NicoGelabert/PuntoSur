@@ -36,9 +36,9 @@
 
 import { 
     ArchiveBoxIcon,
+    BeakerIcon,
     BuildingStorefrontIcon,
     ChevronLeftIcon,
-    FingerPrintIcon,
     IdentificationIcon,
     MegaphoneIcon,
     NewspaperIcon,
@@ -62,6 +62,7 @@ const menuItems = ref([
     { type: 'divider' },
     { name: 'categories', label: 'Categorías', route: 'app.categories', icon: MegaphoneIcon },
     { name: 'products', label: 'Productos', route: 'app.products', icon: ArchiveBoxIcon },
+    { name: 'alergens', label: 'Alérgenos', route: 'app.alergens', icon: BeakerIcon },
     { type: 'divider' },
     { name: 'articles', label: 'Novedades', route: 'app.articles', icon: NewspaperIcon },
     { name: 'authors', label: 'Autores', route: 'app.authors', icon: IdentificationIcon },
