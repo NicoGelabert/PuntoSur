@@ -6,14 +6,11 @@ html {
   }
 body{
     @apply bg-yellow_light text-secondary font-sans_serif;
-    h1, h2, h3, h4, h5, h6{
-        @apply font-serif;
-    }
     h1{
         @apply text-mobile_h1 sm:text-tablet_h1 lg:text-desktop_h1;
     }
     h2{
-        @apply text-mobile_h2 sm:text-tablet_h2 lg:text-5xl;
+        @apply text-3xl lg:text-6xl font-black lg:leading-[1.25];
     }
     h3{
         @apply text-mobile_h3 sm:text-tablet_h3 lg:text-desktop_h3;
@@ -29,11 +26,5 @@ body{
     }
     p{
         @apply text-sm sm:text-base;
-    }
-    .text-large{
-        @apply text-base sm:text-lg lg:text-xl;
-    }
-    .text-small{
-        @apply font-semibold text-text_small leading-4 sm:text-xs;
     }
 }

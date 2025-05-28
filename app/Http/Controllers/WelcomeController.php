@@ -17,6 +17,7 @@ class WelcomeController extends Controller
     public function index()
     {
         // $products = Product::all();
-        return view('welcome');
+        $homeherobanners = HomeHeroBanner::all();
+        return view('welcome', compact('homeherobanners'));
     }
 }

@@ -18,7 +18,7 @@
         }
 
         h3 {
-            font-family: 'Adamina', serif;
+            font-family: 'Inter', sans-serif;
             font-size: 2rem;
             text-align: center;
             margin-bottom: 20px;

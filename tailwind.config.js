@@ -14,13 +14,14 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                'serif': ['Adamina'],
-                'sans_serif': ['Barlow']
+                'sans_serif': ['Inter']
             },
             colors: {
                 primary             : '#F7EC66',
                 secondary           : '#1F254A',
                 terciary            : '#C9A33D',
+
+                black               : '#0D0D0D',
 
                 violet              : '#6E5073',
 

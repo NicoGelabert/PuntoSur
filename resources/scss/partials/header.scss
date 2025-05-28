@@ -22,6 +22,9 @@ header{
             @apply h-12 w-auto;
         }
     }
+    .logo svg{
+        @apply h-12 w-auto fill-gray_50;
+    }
     nav ul li a{
         @apply transition-all font-serif text-base
         hover:text-terciary;        
