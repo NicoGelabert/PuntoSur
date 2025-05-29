@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\api;
+namespace App\Models\Api;
 
 class Alergen extends \App\Models\Alergen
 {

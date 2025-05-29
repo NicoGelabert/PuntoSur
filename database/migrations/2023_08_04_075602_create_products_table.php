@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('slug', 50);
             $table->longText('description')->nullable();
             $table->text('link')->nullable();
-            $table->decimal('price', 10, 2);
             $table->boolean('published')->default(true);
             $table->foreignIdFor(User::class, 'created_by')->nullable();
             $table->foreignIdFor(User::class, 'updated_by')->nullable();
