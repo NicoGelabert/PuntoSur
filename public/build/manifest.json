@@ -2203,8 +2203,20 @@
     "file": "assets/zw-C-hTA7Xb.svg",
     "src": "node_modules/flag-icon-css/flags/4x3/zw.svg"
   },
+  "public/fonts/MountHills.ttf": {
+    "file": "assets/MountHills-fHIlXEcb.ttf",
+    "src": "public/fonts/MountHills.ttf"
+  },
+  "public/fonts/MountHills.woff": {
+    "file": "assets/MountHills-BT9BkIo9.woff",
+    "src": "public/fonts/MountHills.woff"
+  },
+  "public/fonts/MountHills.woff2": {
+    "file": "assets/MountHills-vZnrdm5N.woff2",
+    "src": "public/fonts/MountHills.woff2"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-CPXsn-Ji.css",
+    "file": "assets/app-DkQ-tLmu.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },

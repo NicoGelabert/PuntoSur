@@ -6,11 +6,15 @@ html {
   }
 body{
     @apply bg-yellow_light text-secondary font-sans_serif;
+    h1, h2, h3, h4, h5, h6{
+        font-family: $primary-font;
+        letter-spacing: 0.025em;
+    }
     h1{
         @apply text-mobile_h1 sm:text-tablet_h1 lg:text-desktop_h1;
     }
     h2{
-        @apply text-3xl lg:text-6xl font-black lg:leading-[1.25];
+        @apply text-3xl lg:text-6xl;
     }
     h3{
         @apply text-mobile_h3 sm:text-tablet_h3 lg:text-desktop_h3;

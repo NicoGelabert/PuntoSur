@@ -14,7 +14,7 @@
     @apply opacity-50;
 }
 .btn-primary{
-    @apply border border-gray_50 bg-gray_50 hover:border-gray_300 hover:bg-gray_300 text-black;
+    @apply border border-primary bg-primary hover:border-primary_hover hover:bg-primary_hover text-black;
 }
 .btn-secondary{
     @apply border border-gray_300 text-secondary hover:bg-gray_50 hover:text-gray_800 hover:border-gray_50;

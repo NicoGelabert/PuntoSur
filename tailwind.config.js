@@ -17,8 +17,9 @@ export default {
                 'sans_serif': ['Inter']
             },
             colors: {
-                primary             : '#F7EC66',
-                secondary           : '#1F254A',
+                primary             : '#7BF5C9',
+                primary_hover       : '#BBF3DF',
+                secondary           : '#6C4852',
                 terciary            : '#C9A33D',
 
                 black               : '#0D0D0D',

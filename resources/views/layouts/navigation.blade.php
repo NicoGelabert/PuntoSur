@@ -32,7 +32,7 @@
     
     <div
         :class="mobileMenuOpen ? 'hidden' : ''"
-        class="hidden lg:flex w-full"
+        class="hidden lg:flex w-full custom-container"
     >
         <x-menu class="desktop-menu-inner" />
     </div>
