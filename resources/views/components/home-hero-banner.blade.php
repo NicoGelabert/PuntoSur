@@ -13,7 +13,7 @@
         </div>
     </div>
     @endforeach
-    <div class="w-full absolute bottom-0">
+    <div class="w-full absolute -bottom-px">
         <x-waves />
     </div>
 </div>

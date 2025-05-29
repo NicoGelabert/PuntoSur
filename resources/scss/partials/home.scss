@@ -27,7 +27,7 @@
 .home-hero-banner{
     background: #EFD7EF;
     background: linear-gradient(-40deg, rgba(239, 215, 239, 1) 8%, rgba(245, 249, 252, 1) 39%, rgba(248, 234, 225, 1) 66%, rgba(234, 248, 249, 1) 91%);
-    @apply h-[65vh] lg:h-[100vh] relative;
+    @apply lg:h-[100vh] relative;
     .hhb-content{
         @apply w-full md:w-1/2 flex items-center justify-center mt-32 md:mt-0;
         .hhb-content-text{
@@ -47,6 +47,133 @@
         }
     }
 }
+
+// PRODUCT LIST
+.home-product-list{
+    @apply my-12 md:my-14;
+    .btn-filtro{
+        @apply bg-white;
+    }
+    .modal-wrapper{
+        @apply fixed inset-0 z-50 pointer-events-none;
+    }
+    .modal-overlay {
+        @apply fixed top-0 left-0 w-full h-full bg-gray_900/50 flex justify-center items-end z-50;
+      }
+      
+      .modal-content {
+        @apply fixed bottom-0 left-0 right-0 bg-white rounded-t-xl shadow-lg px-4 py-8 min-h-[50vh] max-h-[85vh] overflow-y-auto z-[100] mx-auto pointer-events-auto;
+      }
+      
+      /* Ajuste extra por si el contenedor principal tiene un z-index alto */
+      .container {
+        position: relative;
+        z-index: 1;
+      }
+    .category_view_product_list{
+    }
+
+    /* Animación del fondo (overlay) */
+    .overlay-fade-enter-active,
+    .overlay-fade-leave-active {
+    transition: opacity 0.3s ease;
+    }
+
+    .overlay-fade-enter-from,
+    .overlay-fade-leave-to {
+    opacity: 0;
+    }
+
+    .overlay-fade-enter-to,
+    .overlay-fade-leave-from {
+    opacity: 1;
+    }
+
+    /* Animación del contenido (modal-content) */
+    .modal-slide-up-enter-active,
+    .modal-slide-up-leave-active {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .modal-slide-up-enter-from,
+    .modal-slide-up-leave-to {
+    opacity: 0;
+    transform: translateY(100%);
+    }
+
+    .modal-slide-up-enter-to,
+    .modal-slide-up-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+    }
+    .filter_categories{
+        @apply flex flex-col gap-2 lg:gap-4 text-text_small lg:text-xs ;
+        ul{
+            @apply flex flex-col gap-2;
+            li{
+                @apply uppercase text-text_small tracking-wide text-gray_600 border-b pb-2;
+            }
+            li.active{
+                @apply text-primary;
+            }
+            li:last-child{
+                @apply border-none;
+            }
+        }
+    }
+    .filter_tags{
+        @apply flex flex-col gap-4 text-text_small lg:text-xs;
+        ul{
+            @apply flex flex-row flex-wrap gap-2;
+            li{
+                @apply w-auto;
+            }
+            li.active{
+                @apply font-bold bg-primary text-secondary;
+            }
+        }
+    }
+    .filter_categories, .filter_tags{
+        @apply mt-4 lg:mt-0;
+    }
+    .product-list{
+        @apply h-fit lg:w-3/4 grid grid-cols-2 lg:grid-cols-4 gap-4 relative w-full overflow-x-hidden box-border;
+        .product_card{
+            @apply flex flex-col rounded-lg border border-gray_200 h-auto bg-white;
+            img{
+                @apply aspect-video object-cover rounded-t-lg;
+            }
+            h5{
+                @apply text-sm  ;
+            }
+            p{
+                @apply text-xs text-gray_500 overflow-hidden line-clamp-2;
+            }
+            .categories_badges{
+                @apply absolute top-2 left-2 flex gap-2;
+                .category_badge{
+                    @apply bg-gray_50 border border-primary rounded-full p-1 fill-white;
+                    img{
+                        @apply aspect-square border-none w-4 fill-white;
+                    }
+                }
+            }
+            .footer{
+                @apply px-2 py-4 flex flex-col gap-4;
+                    span{
+                        @apply hidden;
+                    }
+                    p{
+                        @apply text-xs text-gray_600 tracking-wide;
+                    }
+                    svg{
+                        @apply fill-gray_600;
+                    }
+            }
+        }
+    }
+}
+// FIN PRODUCT LIST
 
 .promos, .book{
     @apply bg-blue_light;
