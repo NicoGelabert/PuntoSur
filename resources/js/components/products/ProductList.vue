@@ -140,9 +140,9 @@
           <!-- INICIO IMAGEN CATEGORÍA -->
             <div class="categories_badges relative">
               <div v-for="category in product.categories" :key="category.id" class="category_badge relative w-6 h-6">
-                <img :src="category.image" :alt="category.name" class="" :data-tooltip-target="'tooltip-' + category.id">
+                <img :src="category.image" :alt="category.name" class="" :data-tooltip-target="'tooltip-category-' + category.id">
                 <!-- INICIO TOOLTIP -->
-                <div :id="'tooltip-' + category.id" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                <div :id="'tooltip-category-' + category.id" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
                   <span class="whitespace-nowrap">{{category.name}}</span>
                   <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
@@ -164,6 +164,22 @@
                   <p v-html="product.description"></p>
               </div>
             </a>
+            <!-- INICIO IMAGEN ALÉRGENO -->
+            <div>
+              <span class="text-[0.6rem] font-extrabold">Contiene:</span>
+              <div class="alergen_badges relative">
+                <div v-for="alergen in product.alergens" :key="alergen.id" class="alergen_badge relative w-6 h-6">
+                  <img :src="alergen.image" :alt="alergen.name" class="" :data-tooltip-target="'tooltip-alergen-' + alergen.id">
+                  <!-- INICIO TOOLTIP -->
+                  <div :id="'tooltip-alergen-' + alergen.id" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                    <span class="whitespace-nowrap">{{alergen.name}}</span>
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                  </div>
+                  <!-- INICIO TOOLTIP -->
+                </div>
+              </div>
+            </div>
+            <!-- FIN IMAGEN ALÉRGENO -->
           </div>
           <!-- FIN PRODUCT NAME, DESCRIPTION -->
           <!-- INICIO FOOTER DE PRODUCTO -->

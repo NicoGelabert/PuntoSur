@@ -3,4 +3,5 @@
     <div class="home-product-list custom-container">
         <product-list :products='@json($products)' :categories='@json($categories)' />
     </div>
+    <x-promotion />
 </x-app-layout>

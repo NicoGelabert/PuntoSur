@@ -21,7 +21,7 @@ class WelcomeController extends Controller
             $query->whereIn('categories.id', $categories->pluck('id'));
         })
         ->where('published', 1)
-        ->with(['images', 'categories', 'categories.parent', 'prices'])
+        ->with(['images', 'categories', 'categories.parent', 'prices', 'alergens'])
         ->get()
         ->map(function ($product) {
             $firstImage = $product->images->first();

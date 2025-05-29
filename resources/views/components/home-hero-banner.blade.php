@@ -1,4 +1,4 @@
-<div class="home-hero-banner">
+<div class="home-hero-banner fondo_degrado">
     @foreach ($homeherobanners as $homeherobanner)
     <div class="custom-container h-full flex flex-col md:flex-row items-center">
         <div class="hhb-content">
