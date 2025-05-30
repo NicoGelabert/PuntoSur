@@ -32,47 +32,19 @@
                     />
                 </svg> -->
             </a>
-            <ul
-                @click.outside="open = false"
-                x-show="open"
-                x-transition
-                x-cloak
-                class="dropdown"
-            >
-                <li class="py-lang-navbar-item" >
-                    <a href="#">
-                        <p class="text-sm">Sobre Nosotros</p>
-                    </a>
-                </li>
-                <li class="py-lang-navbar-item" >
-                    <a href="#">
-                    <p class="text-sm">Blends</p>
-                    </a>
-                </li>
-                <li class="py-lang-navbar-item" >
-                    <a href="#">
-                    <p class="text-sm">Gift Cards</p>
-                    </a>
-                </li>
-            </ul>
         </li>
         <li>
             <a href="/all/gift-cards/">
-                Gift Cards
-            </a>
-        </li>
-        <li>
-            <a href="/articles">
-                Healthy News
+                Sobre Nosotros
             </a>
         </li>
         <li>
             <a href="/contact">
-                Contact
+                Contacto
             </a>
         </li>
         <li class="flex gap-4">
-            <x-button href="/intake-form" class="btn btn-secondary">Consultanos <x-icons.whatsapp /></x-button>
+            <x-button href="/" class="btn btn-secondary">Consultanos <x-icons.whatsapp /></x-button>
         </li>
     </ul>
 </nav>

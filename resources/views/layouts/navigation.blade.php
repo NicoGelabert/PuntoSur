@@ -18,12 +18,7 @@
         <x-application-logo/>
     </div>
     <div class="flex items-center gap-2.5 lg:hidden">    
-        <div>
-            <x-button href="/intake-form" class="btn btn-secondary">intake <x-icons.login /></x-button>
-        </div>
-        <div>
-            <x-button href="https://calendly.com/chibalancetherapies" target="_blank" class="btn btn-primary">Escribinos <x-icons.booking /></x-button>
-        </div>
+        <x-button href="/" class="btn btn-secondary">Consultanos <x-icons.whatsapp /></x-button>
         <x-hamburguer />
     </div>
     <!--/ Responsive Menu -->
