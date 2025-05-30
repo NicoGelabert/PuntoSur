@@ -29,6 +29,7 @@
         "dotenv": "^16.4.5",
         "flag-icon-css": "^4.1.7",
         "http.js": "^1.0.0",
-        "owl.carousel": "^2.3.4"
+        "owl.carousel": "^2.3.4",
+        "tailwindcss-textshadow": "^2.1.3"
     }
 }

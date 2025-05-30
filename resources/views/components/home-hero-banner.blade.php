@@ -1,11 +1,14 @@
-<div class="home-hero-banner fondo_degrado">
+<div class="home-hero-banner fondo_degradado">
     @foreach ($homeherobanners as $homeherobanner)
     <div class="custom-container h-full flex flex-col md:flex-row items-center">
         <div class="hhb-content">
             <div class="hhb-content-text">
                 <h2>{{ $homeherobanner->headline }}</h2>
                 <p>{!! $homeherobanner->description !!}</p>
-                <button class="btn btn-primary">Order Now</button>
+                <div class="relative">
+                    <button class="btn btn-primary">Order Now</button>
+                    <p class="decoration">m</p>
+                </div>
             </div>
         </div>
         <div class="hhb-bg-image">

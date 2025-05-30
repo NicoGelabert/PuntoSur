@@ -1,33 +1,20 @@
-// header{
-//     @apply h-auto fixed top-0 w-full block shadow-none bg-transparent text-black dark:text-white;
-//     transition: top 0.3s, background-color 0.3s ease;
-//     i {
-//         @apply leading-none text-lg;
-//         }
-//     .indicator {
-//         top: 50%;
-//         transform: translateY(-50%);
-//         transition: transform 0.3s ease; /* Agregar transición para el cambio de posición */
-//     }
-//     .dark .indicator {
-//         transform: translateX(1.75rem) translateY(-50%); /* Mover el indicador al lado derecho en el modo oscuro */
-//     }
-// }
-
 header{
-    @apply py-2 h-auto fixed top-0 w-full block shadow-none bg-transparent text-black dark:text-white;
     transition: top 0.3s, background-color 0.3s ease;
+    @apply py-2 h-auto fixed top-0 w-full block shadow-none bg-transparent font-cursive;
     .desktop-menu-inner{
         .logo svg{
-            @apply h-16 w-auto;
+            @apply h-20 w-auto;
         }
     }
     .logo svg{
-        @apply h-12 w-auto fill-gray_50;
+        @apply h-12 md:h-24 w-auto fill-gray_50;
     }
     nav ul li a{
-        @apply transition-all font-serif text-base
-        hover:text-terciary;        
+        @apply text-secondary transition-all text-sm
+        hover:text-primary;
+    }
+    .btn{
+        @apply text-sm;
     }
 }
 .scrolled-bottom{

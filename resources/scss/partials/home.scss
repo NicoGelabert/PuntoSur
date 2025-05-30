@@ -1,5 +1,8 @@
 #loader-wrapper {
     @apply bg-white dark:bg-black items-center flex flex-col gap-8 h-full justify-center left-0 fixed top-0 w-full z-20;
+    .logo svg{
+        @apply h-28 w-auto;
+    }
     
 }
 
@@ -24,13 +27,13 @@
     @apply opacity-100;
 }
 
-.fondo_degrado{
+.fondo_degradado{
     background: #EFD7EF;
     background: linear-gradient(-40deg, rgba(239, 215, 239, 1) 8%, rgba(245, 249, 252, 1) 39%, rgba(248, 234, 225, 1) 66%, rgba(234, 248, 249, 1) 91%);
 }
 
 .home-hero-banner{
-    @apply lg:h-[100vh] relative;
+    @apply md:h-[60vh] lg:h-[100vh] relative;
     .hhb-content{
         @apply w-full md:w-1/2 flex items-center justify-center mt-32 md:mt-0;
         .hhb-content-text{
@@ -38,8 +41,8 @@
             h2{
                 @apply text-secondary;
             }
-            p{
-                @apply text-black;
+            .decoration{
+                @apply text-8xl md:text-9xl absolute left-40 -bottom-4;
             }
         }
     }
@@ -149,7 +152,7 @@
             h5{
                 @apply text-sm  ;
             }
-            p{
+            .product_description p{
                 @apply text-xs text-gray_500 overflow-hidden line-clamp-2;
             }
             .categories_badges{
@@ -177,7 +180,7 @@
                         @apply hidden;
                     }
                     p{
-                        @apply text-xs text-gray_600 tracking-wide;
+                        @apply text-gray_600 tracking-wide;
                     }
                     svg{
                         @apply fill-gray_600;

@@ -1,5 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import textshadow from 'tailwindcss-textshadow';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -14,7 +15,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                'sans_serif': ['Inter']
+                'sans_serif': ['Inter'],
+                'cursive':['Rock-Salt'],
             },
             colors: {
                 primary             : '#7BF5C9',
@@ -50,22 +52,21 @@ export default {
                 mobile_h1           : '2.5rem',
                 tablet_h1           : '3.5rem',
                 desktop_h1          : '4rem',
-                mobile_h2           : '2rem',
-                tablet_h2           : '2.5rem',
-                mobile_h3           : '1.75rem',
-                tablet_h3           : '2rem',
-                desktop_h3          : '2.5rem',
                 tablet_h4           : '1.75rem',
                 desktop_h4          : '2rem',
                 text_small          : '0.625rem',
             },
             boxShadow: {
                 cookie: '0 2px 4px 6px rgb(0 0 0 / 0.1)',
+            },
+            textShadow:{
+                sm: '1px 1px 1px rgba(0, 0, 0, 0.15)',
             }
         },
     },
     plugins: [
         forms,
-        require('flowbite/plugin')
+        require('flowbite/plugin'),
+        textshadow
     ],
 };

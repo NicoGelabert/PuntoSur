@@ -2203,25 +2203,33 @@
     "file": "assets/zw-C-hTA7Xb.svg",
     "src": "node_modules/flag-icon-css/flags/4x3/zw.svg"
   },
-  "public/fonts/MountHills.ttf": {
-    "file": "assets/MountHills-fHIlXEcb.ttf",
-    "src": "public/fonts/MountHills.ttf"
+  "public/fonts/Betterlett Swash.ttf": {
+    "file": "assets/Betterlett Swash-D8mcJeRd.ttf",
+    "src": "public/fonts/Betterlett Swash.ttf"
   },
-  "public/fonts/MountHills.woff": {
-    "file": "assets/MountHills-BT9BkIo9.woff",
-    "src": "public/fonts/MountHills.woff"
+  "public/fonts/Betterlett.ttf": {
+    "file": "assets/Betterlett-DsRPJq1i.ttf",
+    "src": "public/fonts/Betterlett.ttf"
   },
-  "public/fonts/MountHills.woff2": {
-    "file": "assets/MountHills-vZnrdm5N.woff2",
-    "src": "public/fonts/MountHills.woff2"
+  "public/fonts/Inter-Italic.ttf": {
+    "file": "assets/Inter-Italic-B-9PvMw6.ttf",
+    "src": "public/fonts/Inter-Italic.ttf"
+  },
+  "public/fonts/Inter-VariableFont.ttf": {
+    "file": "assets/Inter-VariableFont-c8O0ljhh.ttf",
+    "src": "public/fonts/Inter-VariableFont.ttf"
+  },
+  "public/fonts/RockSalt-Regular.ttf": {
+    "file": "assets/RockSalt-Regular-CHgLtmW_.ttf",
+    "src": "public/fonts/RockSalt-Regular.ttf"
   },
   "resources/css/app.css": {
-    "file": "assets/app-C0GkCMoj.css",
+    "file": "assets/app-CegarVO7.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CQdDmkca.js",
+    "file": "assets/app-CNBJS-5Z.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

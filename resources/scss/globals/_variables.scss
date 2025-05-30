@@ -1,14 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-/* Fonts */
 @font-face {
-    font-family: 'Mount-Hills';
+    font-family: 'Betterlett';
     font-style: normal;
     font-weight: 400;
-    src: url('/public/fonts/MountHills.woff2') format('woff2'), url('/public/fonts/MountHills.woff') format('woff'), url('/public/fonts/MountHills.ttf') format('truetype');
+    src: url('/public/fonts/Betterlett.ttf') format('truetype');
 }
 
-$primary-font: 'Mount-Hills', display;
-$secondary-font: "Inter", sans-serif;
+@font-face {
+    font-family: 'Betterlett-Swash';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/public/fonts/Betterlett\ Swash.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Rock-Salt';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/public/fonts/RockSalt-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900; /* porque es variable */
+    src: url('/public/fonts/Inter-VariableFont.ttf') format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 400; /* o el peso que tenga */
+    src: url('/public/fonts/Inter-Italic.ttf') format('truetype');
+}
 
 a{
     @apply text-secondary hover:text-primary;
@@ -117,7 +142,7 @@ header, .mobile-menu{
     }
 // Contenedor gral
 .custom-container{
-    @apply w-full max-w-screen-lg mx-auto px-4 2xl:px-0;
+    @apply w-full max-w-screen-xl mx-auto px-4 2xl:px-0;
 }
 // línea divisoria
 .divider{ 

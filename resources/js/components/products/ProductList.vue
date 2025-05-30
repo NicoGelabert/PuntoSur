@@ -161,7 +161,7 @@
                 <h5 class="w-fit text-base leading-none">{{ product.title }}</h5>
               </div>
               <div>
-                  <p v-html="product.description"></p>
+                  <p class="product_description" v-html="product.description"></p>
               </div>
             </a>
             <!-- INICIO IMAGEN ALÉRGENO -->
@@ -186,7 +186,7 @@
           <div class="footer">
             <div class="flex justify-between items-center">
               <div v-for="price in product.prices" :key="price.id"  class="flex items-center gap-2">
-                <p class="font-bold">${{ price.number }}</p><p class="capitalize">{{ price.size }}</p>
+                <p class="font-cursive text-base">${{ price.number }}</p><p class="capitalize text-xs">{{ price.size }}</p>
               </div>
             </div>
           </div>

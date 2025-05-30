@@ -1,12 +1,12 @@
 @use '../globals/variables' as *;
 
 .btn{
-    @apply w-fit flex gap-2 items-center justify-center font-medium uppercase text-gray_50 leading-none transition-all
-    rounded-xl font-sans_serif
-    text-xs sm:text-sm 
+    @apply w-fit h-fit flex gap-2 items-center justify-center text-gray_50 leading-none transition-all
+    rounded-xl font-cursive
+    text-xs 
     px-4 py-2;
     svg{
-        @apply h-auto fill-terciary max-h-4
+        @apply h-auto fill-secondary max-h-4
         w-4 sm:w-5 md:w-6;
     }
 }
@@ -17,7 +17,7 @@
     @apply border border-primary bg-primary hover:border-primary_hover hover:bg-primary_hover text-black;
 }
 .btn-secondary{
-    @apply border border-gray_300 text-secondary hover:bg-gray_50 hover:text-gray_800 hover:border-gray_50;
+    @apply border border-gray_300 text-secondary hover:bg-primary hover:border-primary hover:text-secondary;
 }
 
 .btn-products_list{

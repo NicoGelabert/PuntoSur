@@ -18,7 +18,7 @@
                 href="/all"
                 class="cursor-pointer flex justify-center items-center"
             >
-            Wellness therapies
+            Menú
                 <!-- <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-5 w-5"
@@ -41,7 +41,7 @@
             >
                 <li class="py-lang-navbar-item" >
                     <a href="#">
-                        <p class="text-sm">Treatments</p>
+                        <p class="text-sm">Sobre Nosotros</p>
                     </a>
                 </li>
                 <li class="py-lang-navbar-item" >
@@ -72,8 +72,7 @@
             </a>
         </li>
         <li class="flex gap-4">
-            <x-button href="/intake-form" class="btn btn-secondary">Intake <x-icons.login /></x-button>
-            <x-button href="https://calendly.com/chibalancetherapies" target="_blank" class="btn btn-primary">book <x-icons.booking /></x-button>
+            <x-button href="/intake-form" class="btn btn-secondary">Consultanos <x-icons.whatsapp /></x-button>
         </li>
     </ul>
 </nav>
