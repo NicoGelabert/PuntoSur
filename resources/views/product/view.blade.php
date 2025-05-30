@@ -1,83 +1,209 @@
+@section('meta')
+    <title>{{ $product->title }}, {{ $category->name }}</title>
+    <meta name="description" content="{{ $product->short_description }}">
+    <link rel="canonical" href="{{ url()->current() }}">
+@endsection
+
 <x-app-layout>
-    <div x-data="productItem({{ json_encode([
-        'id' => $product->id,
-        'slug' => $product->slug,
-        'image' => $product->image,
-        'title' => $product->title,
-        'addToCartUrl' => route('cart.add', $product),
-        'categories' => $product->categories->pluck('name'),
-        'prices' => $product->prices->map(function ($price) {
-            return [
-                'number' => $price->number,
-                'size' => $price->size,
-            ];
-        }),
-        'images' => $product->images->pluck('url') 
-        ]) }})"
-        class="mx-auto product-view"
-    >
-        <x-icons.first_leave class="absolute pointer-events-none" />
-        <x-icons.second_leave class="absolute pointer-events-none right-0 top-40 sm:top-28 z-10" />
-        <div class="product_view_hero">
-            <h2>
-                {{$product->title}}
-            </h2>
-        </div>
-        <div class="product-content">
-            <div class="flex flex-col md:flex-row gap-3 md:gap-12 container">
-                @if ($product->image)
-                    <img src="{{ $product->image }}" alt="{{ $product->title }}" class="product-view-img">
-                    @else
-                    <img src="{{ asset('storage/common/noimage.png') }}" alt="" class="product-view-img">
-                @endif
-                <div class="flex flex-col gap-3 md:w-1/2">
-                    <div class="flex gap-4">
-                        <ul>
-                            <template x-for="category in product.categories" :key="category">
-                                <li class="product-view-category" x-text="category"></li>
-                            </template>
-                        </ul>
-                    </div>
-                    <ul>
-                        <template x-for="price in product.prices" :key="price.number">
-                            <li class="flex justify-between">
-                                <h4 x-text="'€ ' + price.number"></h4>
-                                <div class="flex gap-2 items-center product-view-prices">
-                                    <x-icons.clock class="fill-gray_400" />
-                                    <h4 class="text-gray_400" x-text="price.size"></h4>
-                                </div>
-                            </li>
-                        </template>
-                    </ul>
-                    <div x-data="{expanded: false}">
-                        <div
-                            x-show="expanded"
-                            x-collapse.min.120px
-                            class="text-gray-500 wysiwyg-content"
-                        >
-                            {!! $product->description !!}
-                        </div>
-                        <p class="text-right">
+    <div  x-data="productItem({{ json_encode([
+                    'id' => $product->id,
+                    'slug' => $product->slug,
+                    'image' => $product->image,
+                    'title' => $product->title,
+                    'price' => $product->price,
+                    'addToCartUrl' => route('cart.add', $product)
+                ]) }})" class=" lg:p-8 mx-auto pt-24 lg:pt-32 custom-container">
+        <div class="flex flex-col md:flex-row gap-12">
+            <div class="w-full md:w-1/2">
+                <div
+                    x-data="{
+                      images: ['{{$product->image}}'],
+                      activeImage: null,
+                      prev() {
+                          let index = this.images.indexOf(this.activeImage);
+                          if (index === 0)
+                              index = this.images.length;
+                          this.activeImage = this.images[index - 1];
+                      },
+                      next() {
+                          let index = this.images.indexOf(this.activeImage);
+                          if (index === this.images.length - 1)
+                              index = -1;
+                          this.activeImage = this.images[index + 1];
+                      },
+                      init() {
+                          this.activeImage = this.images.length > 0 ? this.images[0] : null
+                      }
+                    }"
+                    class="max-w-fit flex flex-col-reverse lg:flex-row gap-4 md:sticky top-24" id="imagen"
+                >
+                    <div class="flex">
+                        <template x-for="image in images">
                             <a
-                                @click="expanded = !expanded"
-                                href="javascript:void(0)"
-                                class="text-purple-500 hover:text-purple-700"
-                                x-text="expanded ? 'Read Less' : 'Read More'"
-                            ></a>
-                        </p>
+                                @click.prevent="activeImage = image"
+                                class="cursor-pointer w-[80px] h-[80px] border flex items-center justify-center product-thumbnail"
+                                :class="{'product-thumbnail-active': activeImage === image}"
+                            >
+                                <img :src="image" alt="" class=""/>
+                            </a>
+                        </template>
                     </div>
-        
-                    <div class="flex gap-4">
-                        @if ($product->link)
-                        <x-button class="btn btn-primary" href="{{ $product->link }}" >
-                            Book <x-icons.booking />
-                        </x-button>
-                        @endif
-                        <x-button class="btn btn-secondary" href="https://wa.me/353852727422?text={{ urlencode('Hello! I would like more information about ' . $product->title) }}" target="_blank">Whatsapp <x-icons.whatsapp /></x-button>
+                    <div class="relative">
+                        <template x-for="image in images">
+                            <div
+                                x-show="activeImage === image"
+                                class="aspect-w-3 aspect-h-2"
+                            >
+                                <img :src="image" alt="" class="w-auto mx-auto"/>
+                            </div>
+                        </template>
+                        <a
+                            @click.prevent="prev"
+                            class="cursor-pointer bg-black/30 text-white absolute left-0 top-1/2 -translate-y-1/2"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-10 w-10"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M15 19l-7-7 7-7"
+                                />
+                            </svg>
+                        </a>
+                        <a
+                            @click.prevent="next"
+                            class="cursor-pointer bg-black/30 text-white absolute right-0 top-1/2 -translate-y-1/2"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-10 w-10"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9 5l7 7-7 7"
+                                />
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
+            <div class="w-full md:w-1/2 product-view" id="texto">
+                <div class="flex flex-col gap-8 justify-between align-center">
+                    <div class="relative">
+                        <h4>{{ $product->title }}</h4>
+                        <h2 class="decoration absolute top-14 lg:top-0 text-8xl">O</h2>
+                    </div>
+                    <div class="flex justify-between">
+                        @foreach($product->prices as $price)
+                        <div class="flex flex-col gap-2 items-center">
+                            <p class="capitalize text-xs font-bold">{{ $price->size }}</p>
+                            <h5>${{ $price->number }}</h5>
+                        </div>
+                        @endforeach
+                        <div class="flex flex-col gap-2 items-center">
+                            <p class="capitalize text-xs font-bold">Cantidad</p>
+                            <div class="flex items-start quantity gap-4">
+                                <button id="down" class="" onclick=" down('0')">
+                                    <h5 class="text-secondary">-</h5>
+                                </button>
+                                <div class="flex flex-col items-center relative">
+                                    <input
+                                        type="number"
+                                        name="quantity"
+                                        x-ref="quantityEl"
+                                        value="1"
+                                        min="1"
+                                        class="w-32 qty font-cursive text-lg"
+                                        id="myNumber"
+                                    />
+                                    <p class="decoration text-6xl absolute top-2">e</p>
+                                </div>
+                                <button id="up" class="" onclick="up('9')">
+                                    <h5 class="text-secondary">+</h5>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add to cart button -->
+                    <div class="add-to-cart-container flex-[1_0_100%]">
+                        <button
+                            @click="addToCart($refs.quantityEl.value)"
+                            class="add-to-cart-button flex items-center btn btn-primary"
+                        >
+                        <x-icons.cart />
+                        <span>Sumar al Carrito</span>
+                        </button>
+                    </div>
+                    <!-- Add to cart button -->
+                </div>
+                <div class="mb-6" x-data="{expanded: false}">
+                    <div
+                        x-show="expanded"
+                        x-collapse.min.120px
+                        class="text-gray-500 wysiwyg-content"
+                    >
+                        {!! $product->description !!}
+                    </div>
+                    <p class="text-right">
+                        <a
+                            @click="expanded = !expanded"
+                            href="javascript:void(0)"
+                            class="text-secondary hover:text-primary"
+                            x-text="expanded ? 'Ver menos' : 'Ver más'"
+                        ></a>
+                    </p>
+                </div>
+            </div>
         </div>
-        <x-products :products="$products" header_title="More Treatments"/>
     </div>
 </x-app-layout>
+
+<script>
+    function up(max) {
+    document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) + 1;
+    if (document.getElementById("myNumber").value >= parseInt(max)) {
+        document.getElementById("myNumber").value = max;
+    }
+    }
+    function down(min) {
+        document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) - 1;
+        if (document.getElementById("myNumber").value <= parseInt(min)) {
+            document.getElementById("myNumber").value = min;
+        }
+    }
+
+</script>
+<style>
+    .quantity .qty {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        background-color:transparent;
+        border:transparent;
+        text-align: center;
+        margin-bottom: 0;
+    }
+    .quantity button{
+        color:white;
+        height:auto;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>

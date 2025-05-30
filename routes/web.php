@@ -43,7 +43,11 @@ Route::middleware(['guestOrVerified'])->group(function () {
 
     //Productos 
     // Route::get('/all', [ProductController::class, 'index'])->name('products.index');
-    // Route::get('/all/{category:slug}/{product:slug}', [ProductController::class, 'view'])->name('product.view');
+    Route::get('/menu/{category:slug}/{product:slug}', [ProductController::class, 'view'])->name('product.view');
+
+    // Categorías
+    Route::get('/menu', [CategoriesController::class, 'index'])->name('categories.index');
+    Route::get('/menu/{category:slug}', [CategoriesController::class, 'view'])->name('categories.view');
 
     Route::prefix('/cart')->name('cart.')->group(function () {
         Route::get('/', [CartController::class, 'index'])->name('index');

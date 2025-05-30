@@ -101,28 +101,6 @@
 // FIN VISTA DE PRODUCTOS
 // VISTA DE PRODUCTO
 .product-view{
-    .product_view_hero{
-        @apply flex justify-center mt-14 py-12 lg:py-24;
-        h2{
-            @apply text-center
-        }
-    }
-    .product-content{
-        @apply bg-blue_light py-12;
-        .product-view-img{
-            @apply object-cover rounded-xl
-            aspect-square sm:aspect-video
-            md:w-1/2;
-        }
-        .product-view-category{
-            @apply bg-gray_200 text-gray_600 rounded-md py-1 px-2;
-        }
-        .product-view-prices{
-            @apply text-gray_400;
-            svg{
-                @apply fill-gray_400;
-            }
-        }
-    }
+    @apply flex flex-col gap-8;
 }
 // FIN VISTA DE PRODUCTO

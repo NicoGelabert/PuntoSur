@@ -156,7 +156,7 @@
         <div class="flex flex-col justify-between flex-1">
           <!-- INICIO PRODUCT NAME, DESCRIPTION -->
           <div class="flex flex-col justify-between flex-1 py-4 px-2 gap-4 border-b">
-            <a :href="`/categorias/${product.categories?.[0]?.slug || 'sin-subcategoria'}/${product.slug}`">
+            <a :href="`/menu/${product.categories?.[0]?.slug || 'sin-subcategoria'}/${product.slug}`">
               <div class="flex items-center justify-between mb-2">
                 <h5 class="w-fit text-base leading-none">{{ product.title }}</h5>
               </div>
