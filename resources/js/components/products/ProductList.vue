@@ -185,7 +185,7 @@
           <!-- INICIO FOOTER DE PRODUCTO -->
           <div class="footer">
             <div class="flex justify-between items-center">
-              <div v-for="price in product.prices" :key="price.id"  class="flex items-center gap-2">
+              <div v-for="price in product.prices" :key="price.id"  class="flex items-center gap-2 text-secondary">
                 <p class="font-cursive text-base">${{ price.number }}</p><p class="capitalize text-xs">{{ price.size }}</p>
               </div>
             </div>

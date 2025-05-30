@@ -33,6 +33,7 @@ class ProductRequest extends FormRequest
             'prices' => ['required', 'array'],
             'prices.*.number' => ['required', 'numeric', 'min:0.01'],
             'prices.*.size' => ['required', 'string', 'max:200'],
+            'tags.*' => ['nullable', 'int', 'exists:tags,id'],
             'images.*' => ['nullable', 'image'],
             'deleted_images.*' => ['nullable', 'int'],
             'image_positions.*' => ['nullable', 'int'],

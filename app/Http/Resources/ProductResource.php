@@ -34,6 +34,7 @@ class ProductResource extends JsonResource
                     'size' => $price->size,
                 ];
             }),
+            'tags' => $this->tags->map(fn($t) => $t->id),
             'image_url' => $this->image,
             'images' => $this->images,
             'created_at' => (new \DateTime($this->created_at))->format('Y-m-d H:i:s'),

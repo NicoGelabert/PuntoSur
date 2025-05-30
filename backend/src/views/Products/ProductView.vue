@@ -72,6 +72,10 @@
             </button>
           </div>
           <hr class="my-4">
+          <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-bold">Tags</h3>
+              <treeselect v-model="product.tags" :multiple="true" :options="tagsOptions" :errors="errors['tags']"/>
+          </div>
           <hr class="my-4">
           <div class="flex flex-col gap-2">
             <h3 class="text-lg font-bold">Publicar</h3>
@@ -134,6 +138,7 @@ const product = ref({
   published: false,
   categories: [],
   alergens: [],
+  tags:[],
 })
 
 console.log(product.prices)
@@ -142,6 +147,7 @@ const errors = ref({});
 const loading = ref(false);
 const categoriesOptions = ref([]);
 const alergensOptions = ref([]);
+const tagsOptions = ref([]);
 
 const emit = defineEmits(['update:modelValue', 'close'])
 
@@ -165,6 +171,10 @@ onMounted(() => {
   axiosClient.get('/alergens/tree')
   .then(result => {
     alergensOptions.value = result.data
+  })
+  axiosClient.get('/tags/tree')
+  .then(result => {
+    tagsOptions.value = result.data.sort((a, b) => a.label.localeCompare(b.label));
   })
 
 })

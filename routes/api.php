@@ -39,6 +39,8 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::apiResource('products', ProductController::class);
     Route::apiResource('alergens', AlergenController::class)->except('show');
     Route::get('/alergens/tree', [AlergenController::class, 'getAsTree']);
+    Route::apiResource('tags', TagController::class)->except('show');
+    Route::get('/tags/tree', [TagController::class, 'getAsTree']);
     Route::apiResource('articles', ArticleController::class);
     Route::apiResource('authors', AuthorController::class)->except('show');
     Route::get('/authors/tree', [AuthorController::class, 'getAsTree']);

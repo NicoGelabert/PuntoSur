@@ -11,6 +11,7 @@ use App\Models\ProductCategory;
 use App\Models\ProductImage;
 use App\Models\ProductPrice;
 use App\Models\ProductAlergen;
+use App\Models\ProductTag;
 use App\Models\Api\Category;
 use App\Models\Api\Alergen;
 use Illuminate\Http\Request;
@@ -68,6 +69,7 @@ class ProductController extends Controller
         $categories = $data['categories'] ?? [];
         $prices = $data['prices'] ?? [];
         $alergens = $data['alergens'] ?? [];
+        $tags = $data['tags'] ?? [];
 
         $product = Product::create($data);
 
@@ -75,6 +77,7 @@ class ProductController extends Controller
         $this->saveImages($images, $imagePositions, $product);
         $this->savePrices($prices, $product);
         $this->saveAlergens($alergens, $product);
+        $this->saveTags($tags, $product);
 
         return new ProductResource($product);
     }
@@ -104,6 +107,7 @@ class ProductController extends Controller
         $categories = $data['categories'] ?? [];
         $prices = $data['prices'] ?? [];
         $alergens = $data['alergens'] ?? [];
+        $tags = $data['tags'] ?? [];
 
         /** @var \Illuminate\Http\UploadedFile[] $images */
         $images = $data['images'] ?? [];
@@ -117,6 +121,7 @@ class ProductController extends Controller
             $this->deleteImages($deletedImages, $product);
         }
         $this->savePrices($prices, $product);
+        $this->saveTags($tags, $product);
 
         $product->update($data);
 
@@ -159,6 +164,14 @@ class ProductController extends Controller
         $data = array_map(fn($id) => (['alergen_id' => $id, 'product_id' => $product->id]), $alergenIds);
 
         ProductAlergen::insert($data);
+    }
+
+    private function saveTags($tagIds, Product $product)
+    {
+        ProductTag::where('product_id', $product->id)->delete();
+        $data = array_map(fn($id) => (['tag_id' => $id, 'product_id' => $product->id]), $tagIds);
+
+        ProductTag::insert($data);
     }
 
     /**
@@ -225,7 +238,7 @@ class ProductController extends Controller
         }
 
         // Obtener los productos asociados a la categoría
-        $products = $category->products()->with(['categories', 'prices'])->get();
+        $products = $category->products()->with(['categories', 'prices', 'alergens', 'tags'])->get();
 
         // Retornar los productos usando el recurso ProductListResource
         return ProductListResource::collection($products);

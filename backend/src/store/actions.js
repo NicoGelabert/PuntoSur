@@ -232,6 +232,13 @@ export function createProduct({ commit }, product) {
     form.append('quantity', product.quantity);
   }
 
+  // Agregar tags al FormData
+  if (product.tags && product.tags.length) {
+    product.tags.forEach((tag) => {
+      form.append(`tags[]`, tag);
+    });
+  }
+
   return axiosClient.post('/products', form);
 }
 
@@ -264,6 +271,13 @@ export function updateProduct({commit}, product) {
     if (product.alergens && product.alergens.length) {
       product.alergens.forEach((alergen) => {
         form.append(`alergens[]`, alergen);
+      });
+    }
+
+    // Agregar tags al FormData
+    if (product.tags && product.tags.length) {
+      product.tags.forEach((tag) => {
+        form.append(`tags[]`, tag);
       });
     }
 
@@ -347,6 +361,52 @@ export function updateAlergen({commit}, alergen) {
 
 export function deleteAlergen({commit}, id) {
   return axiosClient.delete(`/alergens/${id}`)
+}
+
+//TAGS
+export function getTags({commit, state}, {sort_field, sort_direction} = {}) {
+  commit('setTags', [true])
+  return axiosClient.get('/tags', {
+    params: {
+      sort_field, sort_direction
+    }
+  })
+    .then((response) => {
+      commit('setTags', [false, response.data])
+    })
+    .catch(() => {
+      commit('setTags', [false])
+    })
+}
+
+export function createTag({commit}, tag) {
+  if (tag.image instanceof File) {
+    const form = new FormData();
+    form.append('name', tag.name);
+    form.append('image', tag.image);
+    form.append('active', tag.active ? 1 : 0);
+    tag = form;
+  }
+  return axiosClient.post('/tags', tag)
+}
+
+export function updateTag({commit}, tag) {
+  const id = tag.id
+  if (tag.image instanceof File) {
+    const form = new FormData();
+    form.append('name', tag.name);
+    form.append('image', tag.image);
+    form.append('active', tag.active ? 1 : 0);
+    form.append('_method', 'PUT');
+    tag = form;
+  } else {
+    tag._method = 'PUT'
+  }
+  return axiosClient.post(`/tags/${id}`, tag)
+}
+
+export function deleteTag({commit}, tag) {
+  return axiosClient.delete(`/tags/${tag.id}`)
 }
 
 // ARTICLES
@@ -748,52 +808,6 @@ export function updateProject({commit}, project) {
 
 export function deleteProject({commit}, id) {
   return axiosClient.delete(`/projects/${id}`)
-}
-
-//TAGS
-export function getTags({commit, state}, {sort_field, sort_direction} = {}) {
-  commit('setTags', [true])
-  return axiosClient.get('/tags', {
-    params: {
-      sort_field, sort_direction
-    }
-  })
-    .then((response) => {
-      commit('setTags', [false, response.data])
-    })
-    .catch(() => {
-      commit('setTags', [false])
-    })
-}
-
-export function createTag({commit}, tag) {
-  if (tag.image instanceof File) {
-    const form = new FormData();
-    form.append('name', tag.name);
-    form.append('image', tag.image);
-    form.append('active', tag.active ? 1 : 0);
-    tag = form;
-  }
-  return axiosClient.post('/tags', tag)
-}
-
-export function updateTag({commit}, tag) {
-  const id = tag.id
-  if (tag.image instanceof File) {
-    const form = new FormData();
-    form.append('name', tag.name);
-    form.append('image', tag.image);
-    form.append('active', tag.active ? 1 : 0);
-    form.append('_method', 'PUT');
-    tag = form;
-  } else {
-    tag._method = 'PUT'
-  }
-  return axiosClient.post(`/tags/${id}`, tag)
-}
-
-export function deleteTag({commit}, tag) {
-  return axiosClient.delete(`/tags/${tag.id}`)
 }
 
 //CLIENTS

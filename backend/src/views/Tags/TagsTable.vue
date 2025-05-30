@@ -1,186 +1,178 @@
 <template>
-    <div class="bg-white p-4 rounded-lg shadow animate-fade-in-down">
-        <div class="flex justify-between border-b-2 pb-3">
-            <div class="flex items-center">
-                <span class="ml-3">Found {{tags.data.length}} tags</span>
+  <div class="bg-white p-4 rounded-lg shadow animate-fade-in-down">
+      <div class="flex flex-col md:flex-row justify-between border-b-2 pb-3 gap-4">
+      <div class="flex md:items-center flex-col md:flex-row gap-4">
+          <span class="whitespace-nowrap mr-3">Por Página</span>
+          <select @change="getTags(null)" v-model="perPage"
+                  class="appearance-none relative block w-24 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          </select>
+          <span class="ml-3">{{tags.total}} Autores encontrados</span>
+      </div>
+      <div>
+          <input v-model="search" @change="getTags(null)"
+              class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              placeholder="Buscar autores">
+      </div>
+      </div>
+
+      <table class="table-auto w-full">
+      <thead class="hidden md:contents">
+      <tr>
+          <TableHeaderCell field="id" :sort-field="sortField" :sort-direction="sortDirection" @click="sortTags('id')">
+          ID
+          </TableHeaderCell>
+          <TableHeaderCell field="image" :sort-field="sortField" :sort-direction="sortDirection">
+          Imagen
+          </TableHeaderCell>
+          <TableHeaderCell field="name" :sort-field="sortField" :sort-direction="sortDirection"
+                          @click="sortTags('name')">
+          Nombre
+          </TableHeaderCell>
+          <TableHeaderCell field="updated_at" :sort-field="sortField" :sort-direction="sortDirection"
+                          @click="sortTags('updated_at')">
+          Última edición
+          </TableHeaderCell>
+          <TableHeaderCell field="actions">
+          Acciones
+          </TableHeaderCell>
+      </tr>
+      </thead>
+      <tbody v-if="tags.loading || !tags.data.length">
+      <tr>
+          <td colspan="6">
+          <Spinner v-if="tags.loading"/>
+          <p v-else class="text-center py-8 text-gray-700">
+              No se encontraron tags
+          </p>
+          </td>
+      </tr>
+      </tbody>
+      <tbody v-else>
+      <tr v-for="(tag, index) of tags.data" :key="index">
+          <td class="border-b p-2 ">{{ tag.id }}</td>
+          <td class="border-b p-2 hidden md:table-cell">
+          <img class="w-16 h-16 object-cover" :src="tag.image_url" :alt="tag.name">
+          </td>
+          <td class="border-b p-2">
+            <div class="truncate overflow-hidden text-ellipsis whitespace-nowrap w-[100px]">
+              {{ tag.name }}
             </div>
-        </div>
-      
-        <table class="table-auto w-full">
-            <thead>
-                <tr>
-                    <TableHeaderCell field="id" :sort-field="sortField" :sort-direction="sortDirection" @click="sortTags('id')">
-                        ID
-                    </TableHeaderCell>
-                    <TableHeaderCell field="name" :sort-field="sortField" :sort-direction="sortDirection" @click="sortTags('name')">
-                        Name
-                    </TableHeaderCell>
-                    <TableHeaderCell field="image" :sort-field="sortField" :sort-direction="sortDirection">
-                        Image
-                    </TableHeaderCell>
-                    <TableHeaderCell field="active" :sort-field="sortField" :sort-direction="sortDirection" @click="sortTags('active')">
-                        Active
-                    </TableHeaderCell>
-                    <TableHeaderCell field="parent_id" :sort-field="sortField" :sort-direction="sortDirection" @click="sortTags('parent_id')">
-                        Parent
-                    </TableHeaderCell>
-                    <TableHeaderCell field="created_at" :sort-field="sortField" :sort-direction="sortDirection" @click="sortTags('created_at')">
-                        Create Date
-                    </TableHeaderCell>
-                    <TableHeaderCell field="actions">
-                        Actions
-                    </TableHeaderCell>
-                </tr>
-            </thead>
-            <tbody v-if="tags.loading || !tags.data.length">
-                <tr>
-                    <td colspan="7">
-                        <Spinner v-if="tags.loading"/>
-                        <p v-else class="text-center py-8 text-gray-700">
-                            There are no tags
-                        </p>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody v-else>
-                <tr v-for="(tag, index) of tags.data" :key="index">
-                    <td class="border-b p-2 ">{{ tag.id }}</td>
-                    <td class="border-b p-2 ">{{ tag.name }}</td>
-                    <td class="border-b p-2 ">
-                        <img v-if="tag.image_url" class="w-16 h-16 object-cover" :src="tag.image_url" :alt="tag.name">
-                        <img v-else class="w-16 h-16 object-cover" src="../../assets/noimage.png">
-                    </td>
-                    <td class="border-b p-2">{{ tag.active ? 'Yes' : 'No' }}</td>
-                    <td class="border-b p-2">{{ tag.parent?.name }}</td>
-                    <td class="border-b p-2">{{ tag.created_at }}</td>
-                    <td class="border-b p-2 ">
-                        <Menu as="div" class="relative inline-block text-left">
-                            <div>
-                                <MenuButton
-                                    class="inline-flex items-center justify-center w-full justify-center rounded-full w-10 h-10 bg-black bg-opacity-0 text-sm font-medium text-white hover:bg-opacity-5 focus:bg-opacity-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-                                    >
-                                    <EllipsisVerticalIcon class="h-5 w-5 text-indigo-500" aria-hidden="true"/>
-                                </MenuButton>
-                            </div>
-              
-                            <transition
-                                enter-active-class="transition duration-100 ease-out"
-                                enter-from-class="transform scale-95 opacity-0"
-                                enter-to-class="transform scale-100 opacity-100"
-                                leave-active-class="transition duration-75 ease-in"
-                                leave-from-class="transform scale-100 opacity-100"
-                                leave-to-class="transform scale-95 opacity-0"
-                                >
-                                <MenuItems class="absolute z-10 right-0 mt-2 w-32 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                                >
-                                    <div class="px-1 py-1">
-                                        <MenuItem v-slot="{ active }">
-                                            <button
-                                                :class="[
-                                                    active ? 'bg-indigo-600 text-white' : 'text-gray-900',
-                                                    'group flex w-full items-center rounded-md px-2 py-2 text-sm',
-                                                ]"
-                                                @click="editTag(tag)"
-                                                >
-                                                <PencilSquareIcon :active="active" class="mr-2 h-5 w-5 text-indigo-400" aria-hidden="true"
-                                                />
-                                                Edit
-                                            </button>
-                                        </MenuItem>
-                                        <MenuItem v-slot="{ active }">
-                                            <button
-                                                :class="[
-                                                    active ? 'bg-indigo-600 text-white' : 'text-gray-900',
-                                                    'group flex w-full items-center rounded-md px-2 py-2 text-sm',
-                                                ]"
-                                                @click="deleteTag(tag)"
-                                                >
-                                                <TrashIcon :active="active" class="mr-2 h-5 w-5 text-indigo-400" aria-hidden="true"
-                                                />
-                                                Delete
-                                            </button>
-                                        </MenuItem>
-                                    </div>
-                                </MenuItems>
-                            </transition>
-                        </Menu>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+          </td>
+          <td class="border-b p-2 hidden md:table-cell">
+          {{ tag.updated_at }}
+          </td>
+          <td class="border-b p-2 ">
+            <ActionMenu
+              :editType="'router-link'"
+              :editTo="{ name: 'app.tags.edit', params: { id: tag.id } }"
+              :remove="() => deleteTag(tag)"
+            />
+          </td>
+      </tr>
+      </tbody>
+      </table>
+
+      <div v-if="!tags.loading" class="flex justify-between items-center mt-5">
+      <div v-if="tags.data.length">
+          Mostrando desde {{ tags.from }} hasta {{ tags.to }}
+      </div>
+      <nav
+          v-if="tags.total > tags.limit"
+          class="relative z-0 inline-flex justify-center rounded-md shadow-sm -space-x-px"
+          aria-label="Pagination"
+      >
+          <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
+          <a
+          v-for="(link, i) of tags.links"
+          :key="i"
+          :disabled="!link.url"
+          href="#"
+          @click="getForPage($event, link)"
+          aria-current="page"
+          class="relative inline-flex items-center px-4 py-2 border text-sm font-medium whitespace-nowrap"
+          :class="[
+              link.active
+                ? 'z-10 bg-indigo-50 border-indigo-500 text-indigo-600'
+                : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50',
+              i === 0 ? 'rounded-l-md' : '',
+              i === tags.links.length - 1 ? 'rounded-r-md' : '',
+              !link.url ? ' bg-gray-100 text-gray-700': '',
+              (link.label.includes('Anterior') || link.label.includes('Próxima')) ? 'hidden md:inline' : ''
+            ]"
+          v-html="link.label"
+          >
+          </a>
+      </nav>
+      </div>
+  </div>
 </template>
-  
+
 <script setup>
 import {computed, onMounted, ref} from "vue";
 import store from "../../store";
 import Spinner from "../../components/core/Spinner.vue";
+import {TAGS_PER_PAGE} from "../../constants";
 import TableHeaderCell from "../../components/core/Table/TableHeaderCell.vue";
 import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/vue";
 import {EllipsisVerticalIcon, PencilSquareIcon, TrashIcon} from '@heroicons/vue/24/solid';
-import TagModal from "./TagModal.vue";
+import ActionMenu from "../../components/core/ActionMenu.vue";
 
+const perPage = ref(TAGS_PER_PAGE);
+const search = ref('');
 const tags = computed(() => store.state.tags);
-const sortField = ref('name');
-const sortDirection = ref('asc')
-
+const sortField = ref('updated_at');
+const sortDirection = ref('desc')
 const tag = ref({})
-const showTagModal = ref(false);
-
-const emit = defineEmits(['clickEdit'])
 
 onMounted(() => {
-    getTags();
+getTags();
 })
-
 function getForPage(ev, link) {
-    ev.preventDefault();
-    if (!link.url || link.active) {
-        return;
-    }
-
-    getTags(link.url)
+ev.preventDefault();
+if (!link.url || link.active) {
+  return;
 }
-
+getTags(link.url)
+}
 function getTags(url = null) {
-    store.dispatch("getTags", {
-        url,
-        sort_field: sortField.value,
-        sort_direction: sortDirection.value
-    });
+store.dispatch("getTags", {
+  url,
+  search: search.value,
+  per_page: perPage.value,
+  sort_field: sortField.value,
+  sort_direction: sortDirection.value
+});
 }
-
 function sortTags(field) {
     if (field === sortField.value) {
-        if (sortDirection.value === 'desc') {
-            sortDirection.value = 'asc'
-        } else {
-            sortDirection.value = 'desc'
-        }
-    } else {
-        sortField.value = field;
+    if (sortDirection.value === 'desc') {
         sortDirection.value = 'asc'
+    } else {
+        sortDirection.value = 'desc'
     }
-
+    } else {
+    sortField.value = field;
+    sortDirection.value = 'asc'
+    }
     getTags()
 }
 
-function showAddNewModal() {
-    showTagModal.value = true
-}
-
 function deleteTag(tag) {
-    if (!confirm(`Are you sure you want to delete the tag?`)) {
-        return
-    }
-    store.dispatch('deleteTag', tag)
-    .then(res => {
-        store.commit('showToast', 'Tag was successfully deleted');
-        store.dispatch('getTags')
-    })
+if (!confirm(`Está seguro de borrar el alérgeno?`)) {
+  return
 }
-
-function editTag(t) {
-    emit('clickEdit', t)
+store.dispatch('deleteTag', tag.id)
+  .then(res => {
+    // TODO Show notification
+    store.dispatch('getTags')
+  })
 }
 </script>
+
+<style>
+</style>

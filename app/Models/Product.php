@@ -53,5 +53,9 @@ class Product extends Model
         return $this->belongsToMany(Alergen::class, 'product_alergens');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'product_tags');
+    }
 }
 

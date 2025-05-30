@@ -13,6 +13,8 @@ import Products from "../views/Products/Products.vue";
 import ProductView from "../views/Products/ProductView.vue";
 import Alergens from "../views/Alergens/Alergens.vue";
 import AlergenView from "../views/Alergens/AlergenView.vue";
+import Tags from "../views/Tags/Tags.vue";
+import TagView from "../views/Tags/TagView.vue";
 import Articles from "../views/Articles/Articles.vue";
 import ArticleView from "../views/Articles/ArticleView.vue";
 import Authors from "../views/Authors/Authors.vue";
@@ -103,6 +105,25 @@ const routes = [
         path: 'alergens/:id',
         name: 'app.alergens.edit',
         component: AlergenView,
+        props: {
+          id: (value) => /^\d+$/.test(value)
+        }
+      },
+      
+      {
+        path: 'tags',
+        name: 'app.tags',
+        component: Tags
+      },
+      {
+        path: 'tags/create',
+        name: 'app.tags.create',
+        component: TagView
+      },
+      {
+        path: 'tags/:id',
+        name: 'app.tags.edit',
+        component: TagView,
         props: {
           id: (value) => /^\d+$/.test(value)
         }

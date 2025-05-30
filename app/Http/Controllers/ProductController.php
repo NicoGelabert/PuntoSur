@@ -57,7 +57,7 @@ class ProductController extends Controller
         $product = Product::where('slug', $productSlug)->firstOrFail();
         
         // Cargar el producto con sus relaciones
-        $product->load(['categories', 'images', 'prices', 'alergens']);
+        $product->load(['categories', 'images', 'prices', 'alergens', 'tags']);
 
         // --- Lógica para la cookie ---
         $viewedProducts = json_decode(Cookie::get('recently_viewed'), true) ?? [];

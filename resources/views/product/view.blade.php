@@ -147,6 +147,22 @@
                     </div>
                     <!-- Add to cart button -->
                 </div>
+                <div>
+                    <h6>Le Ponemos</h6>
+                    <ul>
+                        @foreach ($product->tags as $tag)
+                        <li><span class="text-xs">{{ $tag->name }}</span></li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div>
+                    <h6>Alérgenos</h6>
+                    <ul>
+                        @foreach ($product->alergens as $alergen)
+                        <li><span class="text-xs">{{ $alergen->name }}</span></li>
+                        @endforeach
+                    </ul>
+                </div>
                 <div class="mb-6" x-data="{expanded: false}">
                     <div
                         x-show="expanded"
