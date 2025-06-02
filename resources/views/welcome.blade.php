@@ -4,4 +4,5 @@
         <product-list :products='@json($products)' :categories='@json($categories)' />
     </div>
     <x-promotion />
+    <x-history />
 </x-app-layout>

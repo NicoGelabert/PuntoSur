@@ -142,112 +142,112 @@ document.addEventListener('DOMContentLoaded', () => {
 // dark mode
 
 // SPLIDE
-document.addEventListener('DOMContentLoaded', function () {
-  // Home Hero Banner
-  var homeHeroBannerElement = document.querySelector('.home-hero-banner');
-  if (homeHeroBannerElement) {
-    var homeHeroBanner = new Splide(homeHeroBannerElement, {
-      type        : 'fade',
-      rewind      : true,
-      pagination  : true,
-      isNavigation: false,
-      arrows      : false,
-      focus       : 'center',
-      autoplay    : true,
-      interval    : 10000,
-      classes: {
-        pagination: 'splide__pagination_custom',
-      },
-    });
+// document.addEventListener('DOMContentLoaded', function () {
+//   // Home Hero Banner
+//   var homeHeroBannerElement = document.querySelector('.home-hero-banner');
+//   if (homeHeroBannerElement) {
+//     var homeHeroBanner = new Splide(homeHeroBannerElement, {
+//       type        : 'fade',
+//       rewind      : true,
+//       pagination  : true,
+//       isNavigation: false,
+//       arrows      : false,
+//       focus       : 'center',
+//       autoplay    : true,
+//       interval    : 10000,
+//       classes: {
+//         pagination: 'splide__pagination_custom',
+//       },
+//     });
 
-    homeHeroBanner.on('mounted move', function () {
-      var activeSlide = homeHeroBanner.Components.Slides.getAt(homeHeroBanner.index).slide;
-      var previousSlide = homeHeroBanner.Components.Slides.getAt(homeHeroBanner.index - 1);
-      if (previousSlide) {
-        animateSlideOutElements(previousSlide.slide);
-      }
-      animateSlideElements(activeSlide);
-    });
+//     homeHeroBanner.on('mounted move', function () {
+//       var activeSlide = homeHeroBanner.Components.Slides.getAt(homeHeroBanner.index).slide;
+//       var previousSlide = homeHeroBanner.Components.Slides.getAt(homeHeroBanner.index - 1);
+//       if (previousSlide) {
+//         animateSlideOutElements(previousSlide.slide);
+//       }
+//       animateSlideElements(activeSlide);
+//     });
 
-    homeHeroBanner.mount();
+//     homeHeroBanner.mount();
 
-    function animateElement(element, delay) {
-      setTimeout(() => {
-        element.classList.add('active');
-      }, delay);
-    }
+//     function animateElement(element, delay) {
+//       setTimeout(() => {
+//         element.classList.add('active');
+//       }, delay);
+//     }
 
-    function animateSlideElements(slide) {
-      var h2 = slide.querySelector('.animate-h2');
-      var img = slide.querySelector('.animate-img');
-      var p = slide.querySelector('.animate-p');
-      var button = slide.querySelector('.animate-button');
+//     function animateSlideElements(slide) {
+//       var h2 = slide.querySelector('.animate-h2');
+//       var img = slide.querySelector('.animate-img');
+//       var p = slide.querySelector('.animate-p');
+//       var button = slide.querySelector('.animate-button');
 
-      animateElement(h2, 750); // 0.75 segundos después
-      animateElement(img, 1000); // 1 segundo después
-      animateElement(p, 1250); // 1.25 segundos después
-      animateElement(button, 1750); // 1.75 segundos después
-    }
+//       animateElement(h2, 750); // 0.75 segundos después
+//       animateElement(img, 1000); // 1 segundo después
+//       animateElement(p, 1250); // 1.25 segundos después
+//       animateElement(button, 1750); // 1.75 segundos después
+//     }
 
-    function animateSlideOutElements(slide) {
-      var elements = slide.querySelectorAll('.active');
-      elements.forEach(function (element) {
-        element.classList.remove('active');
-      });
-    }
-  }
+//     function animateSlideOutElements(slide) {
+//       var elements = slide.querySelectorAll('.active');
+//       elements.forEach(function (element) {
+//         element.classList.remove('active');
+//       });
+//     }
+//   }
 
-  // Productos
-  var productsElement = document.querySelector('.treatments');
-  if (productsElement) {
-    var products = new Splide(productsElement, {
-      arrows    : true,
-      autoplay  : false,
-      autoWidth : true,
-      breakpoints: {
-          1024: {
-              perPage     : 2,
-          },
-          480: {
-              perPage     : 1,        
-          }
-      },
-      classes: {
-        pagination: 'splide__pagination_custom',
-        arrows    : 'splide__arrows_custom',
-      },
-      gap       : '1.5rem',
-      interval  : 7000,
-      isNavigation: false,
-      pagination  : true,
-      perPage     : '3',
-      rewind      : true,
-      type        : 'slide',
-    });
-    products.mount();
-  }
+//   // Productos
+//   var productsElement = document.querySelector('.treatments');
+//   if (productsElement) {
+//     var products = new Splide(productsElement, {
+//       arrows    : true,
+//       autoplay  : false,
+//       autoWidth : true,
+//       breakpoints: {
+//           1024: {
+//               perPage     : 2,
+//           },
+//           480: {
+//               perPage     : 1,        
+//           }
+//       },
+//       classes: {
+//         pagination: 'splide__pagination_custom',
+//         arrows    : 'splide__arrows_custom',
+//       },
+//       gap       : '1.5rem',
+//       interval  : 7000,
+//       isNavigation: false,
+//       pagination  : true,
+//       perPage     : '3',
+//       rewind      : true,
+//       type        : 'slide',
+//     });
+//     products.mount();
+//   }
 
-  // Noticias
-  var newsElement = document.querySelector('.news_gallery');
-  if (newsElement) {
-    var news = new Splide(newsElement, {      
-      arrows      : false,
-      breakpoints : {
-        480 :{
-          perPage : 2,
-        }
-      },
-      classes     : {
-        pagination: 'splide__pagination_custom',
-        arrows    : 'splide__arrows_custom splide__arrows_custom_news',
-      },
-      focus      : 'center',
-      gap         : '0.5rem',
-      pagination  : false,
-      perPage     : 3,
-      rewind      : false,
-      type        : 'carousel',
-    });
-    news.mount();
-  }
-});
+//   // Noticias
+//   var newsElement = document.querySelector('.news_gallery');
+//   if (newsElement) {
+//     var news = new Splide(newsElement, {      
+//       arrows      : false,
+//       breakpoints : {
+//         480 :{
+//           perPage : 2,
+//         }
+//       },
+//       classes     : {
+//         pagination: 'splide__pagination_custom',
+//         arrows    : 'splide__arrows_custom splide__arrows_custom_news',
+//       },
+//       focus      : 'center',
+//       gap         : '0.5rem',
+//       pagination  : false,
+//       perPage     : 3,
+//       rewind      : false,
+//       type        : 'carousel',
+//     });
+//     news.mount();
+//   }
+// });

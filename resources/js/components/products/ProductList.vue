@@ -15,14 +15,13 @@
       </transition>
       <transition name="modal-slide-up">
         <div v-if="showModal" class="modal-content">
-          <div class="flex justify-between items-center">
-            <h2>Filtros</h2>
-            <button @click="showModal = false" class="close-btn">✖</button>
+          <div class="relative w-full">
+            <button @click="showModal = false" class="absolute right-2 top-2 close-btn">✖</button>
           </div>
           
           <!-- Categorías dentro del modal -->
           <div v-if="categories && categories.length > 0" class="filter_categories">
-            <h4>Categorías</h4>
+            <h6>Categorías</h6>
             <ul>
               <li 
                 @click="changeCategory('all')" 

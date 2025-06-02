@@ -1,4 +1,22 @@
-<div class="fondo_degradado">
+<div class="fondo_degradado relative">
+    <div class="w-full absolute top-0 flex h-full">
+        <div class="h-full flex flex-col justify-between w-1/2">
+            <div class="izquierdo-superior md:h-1/2">
+                <img src="{{ asset('storage/images/common/promo-izquierdo-superior.png') }}" alt="" class="h-full w-auto">
+            </div>
+            <div class="izquierdo-inferior md:h-1/2">
+                <img src="{{ asset('storage/images/common/promo-izquierdo-inferior.png') }}" alt="" class="h-full w-auto">
+            </div>
+        </div>
+        <div class="h-full flex flex-col justify-between w-1/2 items-end">
+            <div class="derecho-superior md:h-1/2">
+                <img src="{{ asset('storage/images/common/promo-derecho-superior.png') }}" alt="" class="h-full w-auto">
+            </div>
+            <div class="derecho-inferior md:h-1/2">
+                <img src="{{ asset('storage/images/common/promo-derecho-inferior.png') }}" alt="" class="h-full w-auto">
+            </div>
+        </div>
+    </div>
     <div class="custom-container flex flex-col-reverse md:flex-row gap-4 md:gap-8 items-center pt-20 md:pt-0">
         <div class="md:w-1/2">
             <img src="{{ asset('storage/images/common/comiendo-tarta.png') }}" alt="">

@@ -4,16 +4,16 @@
             <div class="footer-logo" >
                 <x-application-logo/>
             </div>
-            <p>11 Main Street, Dungloe, Donegal, F94 WR6T (above Kenneth Campbell's)</p>
+            <p>Montevideo, Uruguay</p>
             <x-social-icons />
-            <div class="flex flex-col gap-4">
-                <a href="/terms-and-conditions"><p>Cancelation policy & Terms and conditions</p></a>
-                <a href="/privacy-policy"><p>Cookies & Privacy policy</p></a>
+            <div class="footer-legals">
+                <a href="/terms-and-conditions"><span>Términos y Condiciones & Política de Cancelación</span></a>
+                <a href="/privacy-policy"><span>Cookies & Política de Privacidad</span></a>
             </div>
         </div>
     </div>
     <hr class="footer-divider" />
     <div class="post-footer">
-        <span class="developed-by">Site designed and developed by <a href="https://chimicreativo.es" target="_blank">CHIMI CREATIVO</a></span>
+        <span class="developed-by">Diseño y desarrollo por <a href="https://chimicreativo.es" target="_blank">CHIMI CREATIVO</a></span>
     </div>
 </footer>
